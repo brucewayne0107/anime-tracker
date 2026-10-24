@@ -1,23 +1,9 @@
 name: probe
 on: push
-permissions:
-  contents: write
 jobs:
   probe:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: |
-          UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0 Safari/537.36"
-          mkdir -p raw && cd raw
-          curl -sSL -m 30 -A "$UA" -o play_new.js "https://www.ikanbot.com/resources/play_new.js?v=1.64"
-          curl -sSL -m 30 -A "$UA" -o common.js "https://www.ikanbot.com/resources/common.js?v=3.19"
-          curl -sSL -m 30 -A "$UA" -o ik_play.html "https://www.ikanbot.com/play/1002333"
-          curl -sSL -m 30 -A "$UA" -o hr_detail.html "https://huaren.live/voddetail/109.html"
-          i=0
-          for t in 仙逆 牧神记 一斩苍穹 灵境行者 沧元图 光阴之外 择日飞升 星辰变 咒术回战 海贼王 斗破苍穹; do
-            i=$((i+1))
-            curl -sSL -m 30 -A "$UA" -G --data-urlencode "wd=$t" -o hr_s$i.html "https://huaren.live/vodsearch/-------------.html"
-            curl -sSL -m 30 -A "$UA" -G --data-urlencode "q=$t" -o ik_s$i.html "https://www.ikanbot.com/search"
-          done
-          cd .. && git config user.name bot && git config user.email bot@x && git add raw && git commit -qm raw && git push
+        with: { ref: feat/tracker }
+      - run: python scripts/check.py && cat docs/data/status.json | python -c "import json,sys;[print(s['name'],s['latest'],json.dumps(s['primary'],ensure_ascii=False),json.dumps(s['secondary'],ensure_ascii=False)) for s in json.load(sys.stdin)['shows']]"
