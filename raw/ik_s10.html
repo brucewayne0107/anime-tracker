@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>
+        海贼王-爱看机器人搜索-ikanbot.com
+    </title>
+    <meta name="description" content="海贼王-爱看机器人搜到的影视资源结果" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
+    <link rel="icon" sizes="any" mask href="/resources/logo.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha512-Dop/vW3iOtayerlYAqCgkVr2aTr2ErwwTYOvRFUpzl2VhCMJyjQF0Q9TjUXIo6JhuM/3i0vVEt2e/7QQmnHQqw==" crossorigin="anonymous"  referrerpolicy="no-referrer"/>
+    <link href="/resources/common.css?v=3.0" rel="stylesheet" type="text/css">
+    <script data-cfasync="false" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.6/zepto.min.js" integrity="sha512-8dWIASHPOuL9XbkSrCT5dxYFrISMc2z7RLE1olMBvLvyHhWQPIYeoUKPlRlkaoWUbzt14yWMCCmA5BIYJA5xEw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/resources/common.js?v=3.19"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async data-cfasync="false" src="https://www.googletagmanager.com/gtag/js?id=G-68RFVMY7K6"></script>
+    <script data-cfasync="false">
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-68RFVMY7K6');
+    </script>
+    <style>
+        .page-more{
+            height: 20px;line-height: 20px;text-align: center;width: 100%;margin: 20px 0px;font-size: 14px;font-width: 500;
+        }
+        .media{margin-top: 15px;}
+        .media-pic {
+            width: 65px;
+        }
+        .nav{
+            margin-left: -15px;
+        }
+        .navbar .nav{
+            display: -webkit-flex;
+            display: flex;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            margin-left: 0px;
+        }
+        .navbar .nav>li{
+            /*width: 20%;*/
+            -webkit-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+            -webkit-box-flex: 1;
+            -moz-box-flex: 1;
+            text-align: center;
+        }
+        .navbar .nav a{
+            padding: 10px 0px;
+        }
+        .g-s-common {display: block}
+        ins.adsbygoogle[data-ad-status="unfilled"] {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="jumbotron" style="background: none;border-bottom: solid 1px #eaeaea;padding: 15px 0px;margin-bottom: 0px">
+        <div class="container">
+            <div class="nav-container">
+                <div class="nav-left">
+                    <a href="/" title="回到首页">
+                        <img src="/resources/logo.svg" width="55px" height="55px">
+                    </a>
+                </div>
+                <div class="nav-right">
+                    <form action="/search" method="get">
+                        <div class="green_window" style="left: 0px">
+                            <input id="q"  name="q" type="text" title="" maxlength="255" class="input_text" placeholder="请输入影片、短剧、演职人员"  value="海贼王">
+                        </div>
+                        <button id="search_btn" type="submit"  class="btn_submit" style="right: 0px">
+                            搜索
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="jumbotron hidden-xs hidden-sm" style="background: none;border-bottom: solid 1px #eaeaea;padding: 5px 0px;margin-bottom:0px;-webkit-box-shadow:0 1px 3px 0 rgb(0 0 0 / 12%);box-shadow: 0 1px 3px 0 rgb(0 0 0 / 12%);">
+        <div class="container" style="font-size: 15px;">
+            <ul class="nav nav-pills">
+                <li>
+                    <a  href="/">首页</a>
+                </li>
+                <li>
+                    <a  href="/hot/index-movie-热门.html">电影</a>
+                </li>
+                <li>
+                    <a  href="/hot/index-tv-热门.html">剧集</a>
+                </li>
+                <li>
+                    <a  href="/billboard.html">榜单</a>
+                </li>
+                <li style="display: none">
+                    <a  href="/kanlist/全部-p-1.html">片单</a>
+                </li>
+                <li style="display: none">
+                    <a  href="/category/">分类</a>
+                </li>
+                <li style="float: right;text-decoration: underline">
+                    <a  href="/history.html">播放历史</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="container" style="margin-bottom: 80px;margin-top: 15px;">
+        <div class="row">
+            <div class="alert alert-warning" style="margin: 0px 15px 10px 15px;border-radius: unset;padding: 5px;">建议使用中文搜索，支持简繁体，外文搜索可能结果会不友好。</div>
+                <div class="ol-xs-12 col-md-8">
+                    <div id="t-adv-wrap"></div>
+                    <div id="m-adv-wrap"></div>
+                    <h1 style="margin: 15px 0px;font-size: 24px">搜索：海贼王</h1>
+                    <div>
+                        <div class="media">
+                            <div class="media-left media-top">
+                                <a href="/play/603605" class="cover-link">
+                                    <img id="603605" class="media-object media-pic lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 14'%3E%3C/svg%3E"  alt="海贼王" data-src="https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2298457296.jpg"/>
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h5 class="media-heading">
+                                    <a href="/play/603605" class="title-text">海贼王  1999</a>
+                                    <span class="label" style="color: rgb(0, 173, 63);">[42条线路可播放]</span>
+                                </h5>
+                                <span class="small">日本  航海王,OnePiece,ワンピース</span><br/>
+                                <span class="small" style="margin-top: 5px;">宇田钢之助,志水淳儿,境宗久,宮元宏彰,长峰达也 田中真弓,冈村明美,中井和哉,山口胜平,平田广明</span>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left media-top">
+                                <a href="/play/894770" class="cover-link">
+                                    <img id="894770" class="media-object media-pic lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 14'%3E%3C/svg%3E"  alt="海贼王" data-src="https://www.imgzy360.com:7788/upload/vod/20250125-1/8abbb792e66ac6241fc6bea4d5709715.jpg"/>
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h5 class="media-heading">
+                                    <a href="/play/894770" class="title-text">海贼王  2025</a>
+                                    <span class="label" style="color: rgb(0, 173, 63);">[1条线路可播放]</span>
+                                </h5>
+                                <span class="small">日本  </span><br/>
+                                <span class="small" style="margin-top: 5px;">贝泽幸男,长峰达也,山内重保,宇田钢之助,志水淳儿 大川透,三宅健太,岛崎信长,代永翼,雪野五月</span>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left media-top">
+                                <a href="/play/772638" class="cover-link">
+                                    <img id="772638" class="media-object media-pic lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 14'%3E%3C/svg%3E"  alt="海贼王" data-src="https://img.ukuapi.com/upload/vod/20220617-1/09961daea669279edb2dd08c6961467e.jpg"/>
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h5 class="media-heading">
+                                    <a href="/play/772638" class="title-text">海贼王  2008</a>
+                                    <span class="label" style="color: rgb(0, 173, 63);">[1条线路可播放]</span>
+                                </h5>
+                                <span class="small">日本  </span><br/>
+                                <span class="small" style="margin-top: 5px;">宇田钢之助,志水淳儿,境宗久,宮元宏彰,长峰达也 田中真弓,冈村明美,中井和哉,山口胜平,平田广明</span>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left media-top">
+                                <a href="/play/610956" class="cover-link">
+                                    <img id="610956" class="media-object media-pic lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 14'%3E%3C/svg%3E"  alt="海贼王女" data-src="https://img9.doubanio.com/view/photo/m_ratio_poster/public/p2686441686.jpg"/>
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h5 class="media-heading">
+                                    <a href="/play/610956" class="title-text">海贼王女  2021</a>
+                                    <span class="label" style="color: rgb(0, 173, 63);">[20条线路可播放]</span>
+                                </h5>
+                                <span class="small">日本,美国  海賊王女,Fena: Pirate Princess</span><br/>
+                                <span class="small" style="margin-top: 5px;">中泽一登 濑户麻沙美,铃木崚汰,樱井孝宏,悠木碧,佐藤元</span>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left media-top">
+                                <a href="/play/901290" class="cover-link">
+                                    <img id="901290" class="media-object media-pic lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 14'%3E%3C/svg%3E"  alt="海贼王女" data-src="https://dbzy3.com/upload/vod/20250210-1/c39f174b2b61885c99492f88b5874af2.jpg"/>
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h5 class="media-heading">
+                                    <a href="/play/901290" class="title-text">海贼王女  2001</a>
+                                    <span class="label" style="color: rgb(0, 173, 63);">[2条线路可播放]</span>
+                                </h5>
+                                <span class="small">日本  </span><br/>
+                                <span class="small" style="margin-top: 5px;">中泽一登 濑户麻沙美,铃木崚汰,樱井孝宏,悠木碧,佐藤元</span>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left media-top">
+                                <a href="/play/815385" class="cover-link">
+                                    <img id="815385" class="media-object media-pic lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 14'%3E%3C/svg%3E"  alt="海贼王 真人版" data-src="https://img1.doubanio.com/view/photo/m_ratio_poster/public/p2897001977.jpg"/>
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h5 class="media-heading">
+                                    <a href="/play/815385" class="title-text">海贼王 真人版  2023</a>
+                                    <span class="label" style="color: rgb(0, 173, 63);">[17条线路可播放]</span>
+                                </h5>
+                                <span class="small">美国  航海王,海盗王,One Piece</span><br/>
+                                <span class="small" style="margin-top: 5px;">马克·约布斯特,蒂姆·索瑟姆 伊纳基·戈多伊,新田真剑佑,埃米莉·拉德,雅各布·吉布森,塔兹·斯盖拉</span>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left media-top">
+                                <a href="/play/815396" class="cover-link">
+                                    <img id="815396" class="media-object media-pic lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 14'%3E%3C/svg%3E"  alt="海贼王 真人版" data-src="https://www.imgikzy.com/upload/vod/20230831-11/ba9812299c8b30a6210ca0ee9a6d46a7.webp"/>
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h5 class="media-heading">
+                                    <a href="/play/815396" class="title-text">海贼王 真人版  2022</a>
+                                    <span class="label" style="color: rgb(0, 173, 63);">[2条线路可播放]</span>
+                                </h5>
+                                <span class="small">美国  </span><br/>
+                                <span class="small" style="margin-top: 5px;">马克·约布斯特 新田真剑佑,克雷格·法布拉斯,杰夫·沃德,文森特·里根,斯文·鲁格洛克</span>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left media-top">
+                                <a href="/play/889382" class="cover-link">
+                                    <img id="889382" class="media-object media-pic lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 14'%3E%3C/svg%3E"  alt="海贼王系列" data-src="https://www.imgzy360.com:7788/upload/vod/20241207-1/a49de79a93e7a7925bdaabef1e773aa7.jpg"/>
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h5 class="media-heading">
+                                    <a href="/play/889382" class="title-text">海贼王系列  2024</a>
+                                    <span class="label" style="color: rgb(0, 173, 63);">[1条线路可播放]</span>
+                                </h5>
+                                <span class="small">国产  </span><br/>
+                                <span class="small" style="margin-top: 5px;"> </span>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left media-top">
+                                <a href="/play/994688" class="cover-link">
+                                    <img id="994688" class="media-object media-pic lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 14'%3E%3C/svg%3E"  alt="海贼王：女英雄们的故事" data-src="https://img9.doubanio.com/view/photo/m_ratio_poster/public/p2930461244.jpg"/>
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h5 class="media-heading">
+                                    <a href="/play/994688" class="title-text">海贼王：女英雄们的故事  2026</a>
+                                    <span class="label" style="color: rgb(0, 173, 63);">[21条线路可播放]</span>
+                                </h5>
+                                <span class="small">日本  One Piece Heroines</span><br/>
+                                <span class="small" style="margin-top: 5px;">镰谷悠 冈村明美,山口由里子,坂本真绫,子安武人</span>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left media-top">
+                                <a href="/play/994702" class="cover-link">
+                                    <img id="994702" class="media-object media-pic lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 14'%3E%3C/svg%3E"  alt="海贼王：女英雄们的故事" data-src="https://mtzy2.com/upload/vod/20260706-1/8e401e61ecb2e50210063bce32c0040b.jpg"/>
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h5 class="media-heading">
+                                    <a href="/play/994702" class="title-text">海贼王：女英雄们的故事  2026</a>
+                                    <span class="label" style="color: rgb(0, 173, 63);">[3条线路可播放]</span>
+                                </h5>
+                                <span class="small">日本  </span><br/>
+                                <span class="small" style="margin-top: 5px;">镰谷悠 冈村明美,山口由里子,坂本真绫,子安武人</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="page-more">
+                        
+                        
+                        <a href="/search?q=%E6%B5%B7%E8%B4%BC%E7%8E%8B&amp;p=2&amp;n=Q1UBABlzY29yZV9kZXNjfGFrYV9jb3VudF9kZXNjAAagDX_AAAAAAAACA0GKsw0BAAAAAA">下一页</a>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <div id="pc-adv-wrap">
+                        <div id="adv-content" style="background-color: #f4f4f4;">
+                            <div id="container-301e00b40329cf984f8e1326b4626bf8"></div>
+                            <div id="h-y-container"></div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+    </div>
+    <nav class="navbar navbar-default navbar-fixed-bottom visible-xs-block visible-sm-block">
+        <div class="container" style="font-size: 15px;margin-top:5px;margin-bottom: 5px;padding: 0px;">
+            <ul class="nav nav-pills">
+                <li style="margin-left: 0px">
+
+                    <a  href="/">
+                        <span class="glyphicon glyphicon-home" ></span></br>
+                        <span>首页</span>
+                    </a>
+                </li>
+                <li style="margin-left: 0px">
+                    <a  href="/hot/index-movie-热门.html">
+                        <span class="glyphicon glyphicon-film" ></span></br>
+                        <span>电影</span>
+                    </a>
+                </li>
+                <li style="margin-left: 0px">
+                    <a  href="/hot/index-tv-热门.html">
+                        <span class="glyphicon glyphicon-facetime-video" ></span></br>
+                        <span>剧集</span>
+                    </a>
+                </li>
+                <li style="margin-left: 0px">
+
+                    <a  href="/billboard.html">
+                        <span class="glyphicon glyphicon-stats" ></span></br>
+                        <span>榜单</span>
+                    </a>
+                </li>
+                <li style="margin-left: 0px;display: none">
+                    <a  href="/kanlist/全部-p-1.html">
+                        <span class="glyphicon glyphicon-th-list" ></span></br>
+                        <span>片单</span>
+                    </a>
+                </li>
+                <li style="margin-left: 0px;display: none;">
+                    <a  href="/category/">
+                        <span class="glyphicon glyphicon-th" ></span></br>
+                        <span>分类</span>
+                    </a>
+                </li>
+                <li style="margin-left: 0px;">
+                    <a  href="/history.html">
+                        <span class="glyphicon glyphicon-time" ></span></br>
+                        <span>看过</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <script type="text/javascript">
+        g_init('search',null);
+    </script>
+    <script async data-cfasync="false" src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-lazyload/17.8.3/lazyload.min.js" integrity="sha512-PYqZh14FSExDb67jbM60M4ri5A/Bn/xOiM1ihfPx7c1d8XywMmn2M7+Z4i+v9RF9dlzRYzqk7sXamAHKZjfyFA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+</html>

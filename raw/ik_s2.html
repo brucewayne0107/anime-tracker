@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>
+        牧神记-爱看机器人搜索-ikanbot.com
+    </title>
+    <meta name="description" content="牧神记-爱看机器人搜到的影视资源结果" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
+    <link rel="icon" sizes="any" mask href="/resources/logo.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha512-Dop/vW3iOtayerlYAqCgkVr2aTr2ErwwTYOvRFUpzl2VhCMJyjQF0Q9TjUXIo6JhuM/3i0vVEt2e/7QQmnHQqw==" crossorigin="anonymous"  referrerpolicy="no-referrer"/>
+    <link href="/resources/common.css?v=3.0" rel="stylesheet" type="text/css">
+    <script data-cfasync="false" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.6/zepto.min.js" integrity="sha512-8dWIASHPOuL9XbkSrCT5dxYFrISMc2z7RLE1olMBvLvyHhWQPIYeoUKPlRlkaoWUbzt14yWMCCmA5BIYJA5xEw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/resources/common.js?v=3.19"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async data-cfasync="false" src="https://www.googletagmanager.com/gtag/js?id=G-68RFVMY7K6"></script>
+    <script data-cfasync="false">
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-68RFVMY7K6');
+    </script>
+    <style>
+        .page-more{
+            height: 20px;line-height: 20px;text-align: center;width: 100%;margin: 20px 0px;font-size: 14px;font-width: 500;
+        }
+        .media{margin-top: 15px;}
+        .media-pic {
+            width: 65px;
+        }
+        .nav{
+            margin-left: -15px;
+        }
+        .navbar .nav{
+            display: -webkit-flex;
+            display: flex;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            margin-left: 0px;
+        }
+        .navbar .nav>li{
+            /*width: 20%;*/
+            -webkit-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+            -webkit-box-flex: 1;
+            -moz-box-flex: 1;
+            text-align: center;
+        }
+        .navbar .nav a{
+            padding: 10px 0px;
+        }
+        .g-s-common {display: block}
+        ins.adsbygoogle[data-ad-status="unfilled"] {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="jumbotron" style="background: none;border-bottom: solid 1px #eaeaea;padding: 15px 0px;margin-bottom: 0px">
+        <div class="container">
+            <div class="nav-container">
+                <div class="nav-left">
+                    <a href="/" title="回到首页">
+                        <img src="/resources/logo.svg" width="55px" height="55px">
+                    </a>
+                </div>
+                <div class="nav-right">
+                    <form action="/search" method="get">
+                        <div class="green_window" style="left: 0px">
+                            <input id="q"  name="q" type="text" title="" maxlength="255" class="input_text" placeholder="请输入影片、短剧、演职人员"  value="牧神记">
+                        </div>
+                        <button id="search_btn" type="submit"  class="btn_submit" style="right: 0px">
+                            搜索
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="jumbotron hidden-xs hidden-sm" style="background: none;border-bottom: solid 1px #eaeaea;padding: 5px 0px;margin-bottom:0px;-webkit-box-shadow:0 1px 3px 0 rgb(0 0 0 / 12%);box-shadow: 0 1px 3px 0 rgb(0 0 0 / 12%);">
+        <div class="container" style="font-size: 15px;">
+            <ul class="nav nav-pills">
+                <li>
+                    <a  href="/">首页</a>
+                </li>
+                <li>
+                    <a  href="/hot/index-movie-热门.html">电影</a>
+                </li>
+                <li>
+                    <a  href="/hot/index-tv-热门.html">剧集</a>
+                </li>
+                <li>
+                    <a  href="/billboard.html">榜单</a>
+                </li>
+                <li style="display: none">
+                    <a  href="/kanlist/全部-p-1.html">片单</a>
+                </li>
+                <li style="display: none">
+                    <a  href="/category/">分类</a>
+                </li>
+                <li style="float: right;text-decoration: underline">
+                    <a  href="/history.html">播放历史</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="container" style="margin-bottom: 80px;margin-top: 15px;">
+        <div class="row">
+            <div class="alert alert-warning" style="margin: 0px 15px 10px 15px;border-radius: unset;padding: 5px;">建议使用中文搜索，支持简繁体，外文搜索可能结果会不友好。</div>
+                <div class="ol-xs-12 col-md-8">
+                    <div id="t-adv-wrap"></div>
+                    <div id="m-adv-wrap"></div>
+                    <h1 style="margin: 15px 0px;font-size: 24px">搜索：牧神记</h1>
+                    <div>
+                        <div class="media">
+                            <div class="media-left media-top">
+                                <a href="/play/885214" class="cover-link">
+                                    <img id="885214" class="media-object media-pic lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 14'%3E%3C/svg%3E"  alt="牧神记" data-src="https://img9.doubanio.com/view/photo/m_ratio_poster/public/p2898691856.jpg"/>
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h5 class="media-heading">
+                                    <a href="/play/885214" class="title-text">牧神记  2024</a>
+                                    <span class="label" style="color: rgb(0, 173, 63);">[39条线路可播放]</span>
+                                </h5>
+                                <span class="small">中国大陆  Tales of Qin Mu</span><br/>
+                                <span class="small" style="margin-top: 5px;">沈乐平 张若瑜,李欣,程玉珠,杜晴晴,虞晓旭</span>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left media-top">
+                                <a href="/play/891109" class="cover-link">
+                                    <img id="891109" class="media-object media-pic lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 14'%3E%3C/svg%3E"  alt="牧神记" data-src="https://image.jinyingimage.com/cover/d1f9d48d5119702d083f9d195e36b3b0.jpg"/>
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h5 class="media-heading">
+                                    <a href="/play/891109" class="title-text">牧神记  2024</a>
+                                    <span class="label" style="color: rgb(0, 173, 63);">[8条线路可播放]</span>
+                                </h5>
+                                <span class="small">中国大陆  </span><br/>
+                                <span class="small" style="margin-top: 5px;">沈乐平 张若瑜,李欣,程玉珠,杜晴晴,虞晓旭</span>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left media-top">
+                                <a href="/play/951736" class="cover-link">
+                                    <img id="951736" class="media-object media-pic lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 14'%3E%3C/svg%3E"  alt="牧神记" data-src="https://tyyswimg.com/upload/vod/20260117-1/b7a20ee6a46855c13f207a3bf1617aed.jpg"/>
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h5 class="media-heading">
+                                    <a href="/play/951736" class="title-text">牧神记  2024</a>
+                                    <span class="label" style="color: rgb(0, 173, 63);">[1条线路可播放]</span>
+                                </h5>
+                                <span class="small">中国大陆  </span><br/>
+                                <span class="small" style="margin-top: 5px;">沈乐平 张若瑜,李欣,程玉珠,杜晴晴,虞晓旭</span>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left media-top">
+                                <a href="/play/1015837" class="cover-link">
+                                    <img id="1015837" class="media-object media-pic lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 14'%3E%3C/svg%3E"  alt="牧神记" data-src="https://vod.xiguazyimg.com/upload/vod/20250211-1/cf20b89c993df5119cb841a291ec6654.jpg"/>
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h5 class="media-heading">
+                                    <a href="/play/1015837" class="title-text">牧神记  2025</a>
+                                    <span class="label" style="color: rgb(0, 173, 63);">[1条线路可播放]</span>
+                                </h5>
+                                <span class="small">大陆  </span><br/>
+                                <span class="small" style="margin-top: 5px;"> </span>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left media-top">
+                                <a href="/play/897520" class="cover-link">
+                                    <img id="897520" class="media-object media-pic lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 14'%3E%3C/svg%3E"  alt="牧神记 短剧版" data-src="https://img.ffzy888.com/upload/vod/20250213-1/464dbbdba0ec1b6bc0cd56c12ac68dec.jpg"/>
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h5 class="media-heading">
+                                    <a href="/play/897520" class="title-text">牧神记 短剧版  2025</a>
+                                    <span class="label" style="color: rgb(0, 173, 63);">[1条线路可播放]</span>
+                                </h5>
+                                <span class="small">大陆  </span><br/>
+                                <span class="small" style="margin-top: 5px;"> </span>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left media-top">
+                                <a href="/play/891171" class="cover-link">
+                                    <img id="891171" class="media-object media-pic lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 14'%3E%3C/svg%3E"  alt="牧神记短剧" data-src="https://suonipic.com/upload/vod/20241227-1/3c72a1f56d6322b26e9881ce65173b9a.jpg"/>
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h5 class="media-heading">
+                                    <a href="/play/891171" class="title-text">牧神记短剧  2024</a>
+                                    <span class="label" style="color: rgb(0, 173, 63);">[10条线路可播放]</span>
+                                </h5>
+                                <span class="small">大陆  </span><br/>
+                                <span class="small" style="margin-top: 5px;"> </span>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left media-top">
+                                <a href="/play/907298" class="cover-link">
+                                    <img id="907298" class="media-object media-pic lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 14'%3E%3C/svg%3E"  alt="牧神记短剧" data-src="https://vip.dytt-img.com/upload/vod/20250211-1/cf20b89c993df5119cb841a291ec6654.jpg"/>
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h5 class="media-heading">
+                                    <a href="/play/907298" class="title-text">牧神记短剧  2025</a>
+                                    <span class="label" style="color: rgb(0, 173, 63);">[2条线路可播放]</span>
+                                </h5>
+                                <span class="small">大陆  </span><br/>
+                                <span class="small" style="margin-top: 5px;"> </span>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left media-top">
+                                <a href="/play/910209" class="cover-link">
+                                    <img id="910209" class="media-object media-pic lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 14'%3E%3C/svg%3E"  alt="牧神记之延康变法" data-src="https://xinlangtupian.com/cover/6f7e4967e171655e9f1412779f43f599.jpg"/>
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h5 class="media-heading">
+                                    <a href="/play/910209" class="title-text">牧神记之延康变法  2025</a>
+                                    <span class="label" style="color: rgb(0, 173, 63);">[15条线路可播放]</span>
+                                </h5>
+                                <span class="small">中国大陆  </span><br/>
+                                <span class="small" style="margin-top: 5px;"> 林嘉慧</span>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left media-top">
+                                <a href="/play/581987" class="cover-link">
+                                    <img id="581987" class="media-object media-pic lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 14'%3E%3C/svg%3E"  alt="枪神记" data-src="https://wolongzywcdn3.com:65/upload/vod/20220102-1/8ad4e9dc9e0ecb7b1cc2b45ea4067f0b.jpg"/>
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h5 class="media-heading">
+                                    <a href="/play/581987" class="title-text">枪神记  2017</a>
+                                    <span class="label" style="color: rgb(0, 173, 63);">[6条线路可播放]</span>
+                                </h5>
+                                <span class="small">中国大陆  枪神记动画,枪神纪同名番剧,枪神记番剧</span><br/>
+                                <span class="small" style="margin-top: 5px;">蔡旭临,宋巍 张杰,山新,边江,张喆,郭浩然</span>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left media-top">
+                                <a href="/play/473754" class="cover-link">
+                                    <img id="473754" class="media-object media-pic lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 14'%3E%3C/svg%3E"  alt="搜神记" data-src="https://img1.doubanio.com/view/photo/m_ratio_poster/public/p2308340810.jpg"/>
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h5 class="media-heading">
+                                    <a href="/play/473754" class="title-text">搜神记  2016</a>
+                                    <span class="label" style="color: rgb(0, 173, 63);">[1条线路可播放]</span>
+                                </h5>
+                                <span class="small">中国大陆  冯唐搜神记</span><br/>
+                                <span class="small" style="margin-top: 5px;"> 冯唐,罗永浩,艾丹,张雪葳,吴小飘</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="page-more">
+                        
+                        
+                        <a href="/search?q=%E7%89%A7%E7%A5%9E%E8%AE%B0&amp;p=2&amp;n=Q1UBABlzY29yZV9kZXNjfGFrYV9jb3VudF9kZXNjAAKVdn_AAAAAAAACA0FAU1cBAAAAAQ">下一页</a>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <div id="pc-adv-wrap">
+                        <div id="adv-content" style="background-color: #f4f4f4;">
+                            <div id="container-301e00b40329cf984f8e1326b4626bf8"></div>
+                            <div id="h-y-container"></div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+    </div>
+    <nav class="navbar navbar-default navbar-fixed-bottom visible-xs-block visible-sm-block">
+        <div class="container" style="font-size: 15px;margin-top:5px;margin-bottom: 5px;padding: 0px;">
+            <ul class="nav nav-pills">
+                <li style="margin-left: 0px">
+
+                    <a  href="/">
+                        <span class="glyphicon glyphicon-home" ></span></br>
+                        <span>首页</span>
+                    </a>
+                </li>
+                <li style="margin-left: 0px">
+                    <a  href="/hot/index-movie-热门.html">
+                        <span class="glyphicon glyphicon-film" ></span></br>
+                        <span>电影</span>
+                    </a>
+                </li>
+                <li style="margin-left: 0px">
+                    <a  href="/hot/index-tv-热门.html">
+                        <span class="glyphicon glyphicon-facetime-video" ></span></br>
+                        <span>剧集</span>
+                    </a>
+                </li>
+                <li style="margin-left: 0px">
+
+                    <a  href="/billboard.html">
+                        <span class="glyphicon glyphicon-stats" ></span></br>
+                        <span>榜单</span>
+                    </a>
+                </li>
+                <li style="margin-left: 0px;display: none">
+                    <a  href="/kanlist/全部-p-1.html">
+                        <span class="glyphicon glyphicon-th-list" ></span></br>
+                        <span>片单</span>
+                    </a>
+                </li>
+                <li style="margin-left: 0px;display: none;">
+                    <a  href="/category/">
+                        <span class="glyphicon glyphicon-th" ></span></br>
+                        <span>分类</span>
+                    </a>
+                </li>
+                <li style="margin-left: 0px;">
+                    <a  href="/history.html">
+                        <span class="glyphicon glyphicon-time" ></span></br>
+                        <span>看过</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <script type="text/javascript">
+        g_init('search',null);
+    </script>
+    <script async data-cfasync="false" src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-lazyload/17.8.3/lazyload.min.js" integrity="sha512-PYqZh14FSExDb67jbM60M4ri5A/Bn/xOiM1ihfPx7c1d8XywMmn2M7+Z4i+v9RF9dlzRYzqk7sXamAHKZjfyFA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+</html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>
+        星辰变-爱看机器人搜索-ikanbot.com
+    </title>
+    <meta name="description" content="星辰变-爱看机器人搜到的影视资源结果" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
+    <link rel="icon" sizes="any" mask href="/resources/logo.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha512-Dop/vW3iOtayerlYAqCgkVr2aTr2ErwwTYOvRFUpzl2VhCMJyjQF0Q9TjUXIo6JhuM/3i0vVEt2e/7QQmnHQqw==" crossorigin="anonymous"  referrerpolicy="no-referrer"/>
+    <link href="/resources/common.css?v=3.0" rel="stylesheet" type="text/css">
+    <script data-cfasync="false" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.6/zepto.min.js" integrity="sha512-8dWIASHPOuL9XbkSrCT5dxYFrISMc2z7RLE1olMBvLvyHhWQPIYeoUKPlRlkaoWUbzt14yWMCCmA5BIYJA5xEw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/resources/common.js?v=3.19"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async data-cfasync="false" src="https://www.googletagmanager.com/gtag/js?id=G-68RFVMY7K6"></script>
+    <script data-cfasync="false">
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-68RFVMY7K6');
+    </script>
+    <style>
+        .page-more{
+            height: 20px;line-height: 20px;text-align: center;width: 100%;margin: 20px 0px;font-size: 14px;font-width: 500;
+        }
+        .media{margin-top: 15px;}
+        .media-pic {
+            width: 65px;
+        }
+        .nav{
+            margin-left: -15px;
+        }
+        .navbar .nav{
+            display: -webkit-flex;
+            display: flex;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            margin-left: 0px;
+        }
+        .navbar .nav>li{
+            /*width: 20%;*/
+            -webkit-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+            -webkit-box-flex: 1;
+            -moz-box-flex: 1;
+            text-align: center;
+        }
+        .navbar .nav a{
+            padding: 10px 0px;
+        }
+        .g-s-common {display: block}
+        ins.adsbygoogle[data-ad-status="unfilled"] {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="jumbotron" style="background: none;border-bottom: solid 1px #eaeaea;padding: 15px 0px;margin-bottom: 0px">
+        <div class="container">
+            <div class="nav-container">
+                <div class="nav-left">
+                    <a href="/" title="回到首页">
+                        <img src="/resources/logo.svg" width="55px" height="55px">
+                    </a>
+                </div>
+                <div class="nav-right">
+                    <form action="/search" method="get">
+                        <div class="green_window" style="left: 0px">
+                            <input id="q"  name="q" type="text" title="" maxlength="255" class="input_text" placeholder="请输入影片、短剧、演职人员"  value="星辰变">
+                        </div>
+                        <button id="search_btn" type="submit"  class="btn_submit" style="right: 0px">
+                            搜索
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="jumbotron hidden-xs hidden-sm" style="background: none;border-bottom: solid 1px #eaeaea;padding: 5px 0px;margin-bottom:0px;-webkit-box-shadow:0 1px 3px 0 rgb(0 0 0 / 12%);box-shadow: 0 1px 3px 0 rgb(0 0 0 / 12%);">
+        <div class="container" style="font-size: 15px;">
+            <ul class="nav nav-pills">
+                <li>
+                    <a  href="/">首页</a>
+                </li>
+                <li>
+                    <a  href="/hot/index-movie-热门.html">电影</a>
+                </li>
+                <li>
+                    <a  href="/hot/index-tv-热门.html">剧集</a>
+                </li>
+                <li>
+                    <a  href="/billboard.html">榜单</a>
+                </li>
+                <li style="display: none">
+                    <a  href="/kanlist/全部-p-1.html">片单</a>
+                </li>
+                <li style="display: none">
+                    <a  href="/category/">分类</a>
+                </li>
+                <li style="float: right;text-decoration: underline">
+                    <a  href="/history.html">播放历史</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="container" style="margin-bottom: 80px;margin-top: 15px;">
+        <div class="row">
+            <div class="alert alert-warning" style="margin: 0px 15px 10px 15px;border-radius: unset;padding: 5px;">建议使用中文搜索，支持简繁体，外文搜索可能结果会不友好。</div>
+                <div class="ol-xs-12 col-md-8">
+                    <div id="t-adv-wrap"></div>
+                    <div id="m-adv-wrap"></div>
+                    <h1 style="margin: 15px 0px;font-size: 24px">搜索：星辰变</h1>
+                    <div>
+                        <div class="media">
+                            <div class="media-left media-top">
+                                <a href="/play/661522" class="cover-link">
+                                    <img id="661522" class="media-object media-pic lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 14'%3E%3C/svg%3E"  alt="星辰变" data-src="https://img.lywyx.com/upload/vod/20220227-1/e010528075a786cde278296d3402ff5d.png"/>
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h5 class="media-heading">
+                                    <a href="/play/661522" class="title-text">星辰变  2022</a>
+                                    <span class="label" style="color: rgb(0, 173, 63);">[1条线路可播放]</span>
+                                </h5>
+                                <span class="small">内地  </span><br/>
+                                <span class="small" style="margin-top: 5px;">汪成果,郑佳 沈达威,则灵,黑石稔,柯暮卿,许棕哲</span>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left media-top">
+                                <a href="/play/589321" class="cover-link">
+                                    <img id="589321" class="media-object media-pic lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 14'%3E%3C/svg%3E"  alt="星辰变" data-src="https://wolongzywcdn3.com:65/upload/vod/20220102-1/f2c1ec8728522235e6f86ef00e4710ad.webp"/>
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h5 class="media-heading">
+                                    <a href="/play/589321" class="title-text">星辰变  2018</a>
+                                    <span class="label" style="color: rgb(0, 173, 63);">[6条线路可播放]</span>
+                                </h5>
+                                <span class="small">中国大陆  </span><br/>
+                                <span class="small" style="margin-top: 5px;">汪成果 沈达威,翁媛,杨鸥,赵铭,符冲</span>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left media-top">
+                                <a href="/play/875891" class="cover-link">
+                                    <img id="875891" class="media-object media-pic lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 14'%3E%3C/svg%3E"  alt="星辰变" data-src="https://img.jisuimage.com/cover/9b7a0234ffb5aaa254c75241b573afb0.jpg"/>
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h5 class="media-heading">
+                                    <a href="/play/875891" class="title-text">星辰变  2024</a>
+                                    <span class="label" style="color: rgb(0, 173, 63);">[11条线路可播放]</span>
+                                </h5>
+                                <span class="small">中国大陆  </span><br/>
+                                <span class="small" style="margin-top: 5px;"> </span>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left media-top">
+                                <a href="/play/974833" class="cover-link">
+                                    <img id="974833" class="media-object media-pic lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 14'%3E%3C/svg%3E"  alt="星辰变 第七季" data-src="https://img1.doubanio.com/view/photo/m_ratio_poster/public/p2931772910.jpg"/>
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h5 class="media-heading">
+                                    <a href="/play/974833" class="title-text">星辰变 第七季  2026</a>
+                                    <span class="label" style="color: rgb(0, 173, 63);">[15条线路可播放]</span>
+                                </h5>
+                                <span class="small">中国大陆  星辰变 最终季,Stellar Transformation 7</span><br/>
+                                <span class="small" style="margin-top: 5px;"> 沈达威,黑石稔,柯暮卿,则灵,符冲</span>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left media-top">
+                                <a href="/play/895383" class="cover-link">
+                                    <img id="895383" class="media-object media-pic lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 14'%3E%3C/svg%3E"  alt="星辰变  第六季" data-src="https://img3.doubanio.com/view/photo/m_ratio_poster/public/p2917860987.jpg"/>
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h5 class="media-heading">
+                                    <a href="/play/895383" class="title-text">星辰变  第六季  2025</a>
+                                    <span class="label" style="color: rgb(0, 173, 63);">[35条线路可播放]</span>
+                                </h5>
+                                <span class="small">中国大陆  星辰变之神界篇,Stellar Transformation Ⅵ</span><br/>
+                                <span class="small" style="margin-top: 5px;">汪成果 沈达威</span>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left media-top">
+                                <a href="/play/776344" class="cover-link">
+                                    <img id="776344" class="media-object media-pic lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 14'%3E%3C/svg%3E"  alt="星辰变 第五季" data-src="https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2885578967.jpg"/>
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h5 class="media-heading">
+                                    <a href="/play/776344" class="title-text">星辰变 第五季  2022</a>
+                                    <span class="label" style="color: rgb(0, 173, 63);">[34条线路可播放]</span>
+                                </h5>
+                                <span class="small">中国大陆  星辰变之暗星界篇 , Stellar Transformation Ⅴ , Legend of Immortals Ⅴ</span><br/>
+                                <span class="small" style="margin-top: 5px;">郑佳 沈达威,则灵,万苏婉,德智,夏磊</span>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left media-top">
+                                <a href="/play/615502" class="cover-link">
+                                    <img id="615502" class="media-object media-pic lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 14'%3E%3C/svg%3E"  alt="星辰变 第一季" data-src="https://img.lywyx.com/upload/vod/20220223-25/98d749c6384d34d3b90efe35170cad1a.jpg"/>
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h5 class="media-heading">
+                                    <a href="/play/615502" class="title-text">星辰变 第一季  2018</a>
+                                    <span class="label" style="color: rgb(0, 173, 63);">[31条线路可播放]</span>
+                                </h5>
+                                <span class="small">内地  </span><br/>
+                                <span class="small" style="margin-top: 5px;">汪成果 沈达威,翁媛,杨鸥,赵铭</span>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left media-top">
+                                <a href="/play/952154" class="cover-link">
+                                    <img id="952154" class="media-object media-pic lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 14'%3E%3C/svg%3E"  alt="星辰变第六季" data-src="https://tyyswimg.com/upload/vod/20260118-1/d65da9e41b06f47e67969434c9ab128c.jpg"/>
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h5 class="media-heading">
+                                    <a href="/play/952154" class="title-text">星辰变第六季  2025</a>
+                                    <span class="label" style="color: rgb(0, 173, 63);">[1条线路可播放]</span>
+                                </h5>
+                                <span class="small">中国大陆  </span><br/>
+                                <span class="small" style="margin-top: 5px;">汪成果 沈达威</span>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left media-top">
+                                <a href="/play/620857" class="cover-link">
+                                    <img id="620857" class="media-object media-pic lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 14'%3E%3C/svg%3E"  alt="星辰变第四季" data-src="https://pic.feisuimg.com/upload/vod/20220220-1/b38843b09370070f55ddd23207d679b5.jpg"/>
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h5 class="media-heading">
+                                    <a href="/play/620857" class="title-text">星辰变第四季  2022</a>
+                                    <span class="label" style="color: rgb(0, 173, 63);">[31条线路可播放]</span>
+                                </h5>
+                                <span class="small">中国大陆  </span><br/>
+                                <span class="small" style="margin-top: 5px;">汪成果,郑佳 沈达威,十四,黑石稔,柯暮卿</span>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left media-top">
+                                <a href="/play/624884" class="cover-link">
+                                    <img id="624884" class="media-object media-pic lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 14'%3E%3C/svg%3E"  alt="星辰变第三季" data-src="https://pic.feisuimg.com/upload/vod/20220225-1/fd6dcd4d8134f246f2a9bdf34163f405.jpg"/>
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h5 class="media-heading">
+                                    <a href="/play/624884" class="title-text">星辰变第三季  2021</a>
+                                    <span class="label" style="color: rgb(0, 173, 63);">[33条线路可播放]</span>
+                                </h5>
+                                <span class="small">中国大陆  </span><br/>
+                                <span class="small" style="margin-top: 5px;">汪成果 沈达威 / v17-十四</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="page-more">
+                        
+                        
+                        <a href="/search?q=%E6%98%9F%E8%BE%B0%E5%8F%98&amp;p=2&amp;n=Q1UBABlzY29yZV9kZXNjfGFrYV9jb3VudF9kZXNjAAXe-H_AAAAAAAACA0Go0YQBAAAAAA">下一页</a>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <div id="pc-adv-wrap">
+                        <div id="adv-content" style="background-color: #f4f4f4;">
+                            <div id="container-301e00b40329cf984f8e1326b4626bf8"></div>
+                            <div id="h-y-container"></div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+    </div>
+    <nav class="navbar navbar-default navbar-fixed-bottom visible-xs-block visible-sm-block">
+        <div class="container" style="font-size: 15px;margin-top:5px;margin-bottom: 5px;padding: 0px;">
+            <ul class="nav nav-pills">
+                <li style="margin-left: 0px">
+
+                    <a  href="/">
+                        <span class="glyphicon glyphicon-home" ></span></br>
+                        <span>首页</span>
+                    </a>
+                </li>
+                <li style="margin-left: 0px">
+                    <a  href="/hot/index-movie-热门.html">
+                        <span class="glyphicon glyphicon-film" ></span></br>
+                        <span>电影</span>
+                    </a>
+                </li>
+                <li style="margin-left: 0px">
+                    <a  href="/hot/index-tv-热门.html">
+                        <span class="glyphicon glyphicon-facetime-video" ></span></br>
+                        <span>剧集</span>
+                    </a>
+                </li>
+                <li style="margin-left: 0px">
+
+                    <a  href="/billboard.html">
+                        <span class="glyphicon glyphicon-stats" ></span></br>
+                        <span>榜单</span>
+                    </a>
+                </li>
+                <li style="margin-left: 0px;display: none">
+                    <a  href="/kanlist/全部-p-1.html">
+                        <span class="glyphicon glyphicon-th-list" ></span></br>
+                        <span>片单</span>
+                    </a>
+                </li>
+                <li style="margin-left: 0px;display: none;">
+                    <a  href="/category/">
+                        <span class="glyphicon glyphicon-th" ></span></br>
+                        <span>分类</span>
+                    </a>
+                </li>
+                <li style="margin-left: 0px;">
+                    <a  href="/history.html">
+                        <span class="glyphicon glyphicon-time" ></span></br>
+                        <span>看过</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <script type="text/javascript">
+        g_init('search',null);
+    </script>
+    <script async data-cfasync="false" src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-lazyload/17.8.3/lazyload.min.js" integrity="sha512-PYqZh14FSExDb67jbM60M4ri5A/Bn/xOiM1ihfPx7c1d8XywMmn2M7+Z4i+v9RF9dlzRYzqk7sXamAHKZjfyFA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+</html>

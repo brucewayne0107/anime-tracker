@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>
+        光阴之外-爱看机器人搜索-ikanbot.com
+    </title>
+    <meta name="description" content="光阴之外-爱看机器人搜到的影视资源结果" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9" />
+    <link rel="icon" sizes="any" mask href="/resources/logo.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha512-Dop/vW3iOtayerlYAqCgkVr2aTr2ErwwTYOvRFUpzl2VhCMJyjQF0Q9TjUXIo6JhuM/3i0vVEt2e/7QQmnHQqw==" crossorigin="anonymous"  referrerpolicy="no-referrer"/>
+    <link href="/resources/common.css?v=3.0" rel="stylesheet" type="text/css">
+    <script data-cfasync="false" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.6/zepto.min.js" integrity="sha512-8dWIASHPOuL9XbkSrCT5dxYFrISMc2z7RLE1olMBvLvyHhWQPIYeoUKPlRlkaoWUbzt14yWMCCmA5BIYJA5xEw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/resources/common.js?v=3.19"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async data-cfasync="false" src="https://www.googletagmanager.com/gtag/js?id=G-68RFVMY7K6"></script>
+    <script data-cfasync="false">
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-68RFVMY7K6');
+    </script>
+    <style>
+        .page-more{
+            height: 20px;line-height: 20px;text-align: center;width: 100%;margin: 20px 0px;font-size: 14px;font-width: 500;
+        }
+        .media{margin-top: 15px;}
+        .media-pic {
+            width: 65px;
+        }
+        .nav{
+            margin-left: -15px;
+        }
+        .navbar .nav{
+            display: -webkit-flex;
+            display: flex;
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            margin-left: 0px;
+        }
+        .navbar .nav>li{
+            /*width: 20%;*/
+            -webkit-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+            -webkit-box-flex: 1;
+            -moz-box-flex: 1;
+            text-align: center;
+        }
+        .navbar .nav a{
+            padding: 10px 0px;
+        }
+        .g-s-common {display: block}
+        ins.adsbygoogle[data-ad-status="unfilled"] {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="jumbotron" style="background: none;border-bottom: solid 1px #eaeaea;padding: 15px 0px;margin-bottom: 0px">
+        <div class="container">
+            <div class="nav-container">
+                <div class="nav-left">
+                    <a href="/" title="回到首页">
+                        <img src="/resources/logo.svg" width="55px" height="55px">
+                    </a>
+                </div>
+                <div class="nav-right">
+                    <form action="/search" method="get">
+                        <div class="green_window" style="left: 0px">
+                            <input id="q"  name="q" type="text" title="" maxlength="255" class="input_text" placeholder="请输入影片、短剧、演职人员"  value="光阴之外">
+                        </div>
+                        <button id="search_btn" type="submit"  class="btn_submit" style="right: 0px">
+                            搜索
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="jumbotron hidden-xs hidden-sm" style="background: none;border-bottom: solid 1px #eaeaea;padding: 5px 0px;margin-bottom:0px;-webkit-box-shadow:0 1px 3px 0 rgb(0 0 0 / 12%);box-shadow: 0 1px 3px 0 rgb(0 0 0 / 12%);">
+        <div class="container" style="font-size: 15px;">
+            <ul class="nav nav-pills">
+                <li>
+                    <a  href="/">首页</a>
+                </li>
+                <li>
+                    <a  href="/hot/index-movie-热门.html">电影</a>
+                </li>
+                <li>
+                    <a  href="/hot/index-tv-热门.html">剧集</a>
+                </li>
+                <li>
+                    <a  href="/billboard.html">榜单</a>
+                </li>
+                <li style="display: none">
+                    <a  href="/kanlist/全部-p-1.html">片单</a>
+                </li>
+                <li style="display: none">
+                    <a  href="/category/">分类</a>
+                </li>
+                <li style="float: right;text-decoration: underline">
+                    <a  href="/history.html">播放历史</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="container" style="margin-bottom: 80px;margin-top: 15px;">
+        <div class="row">
+            <div class="alert alert-warning" style="margin: 0px 15px 10px 15px;border-radius: unset;padding: 5px;">建议使用中文搜索，支持简繁体，外文搜索可能结果会不友好。</div>
+                <div class="ol-xs-12 col-md-8">
+                    <div id="t-adv-wrap"></div>
+                    <div id="m-adv-wrap"></div>
+                    <h1 style="margin: 15px 0px;font-size: 24px">搜索：光阴之外</h1>
+                    <div>
+                        <div class="media">
+                            <div class="media-left media-top">
+                                <a href="/play/947986" class="cover-link">
+                                    <img id="947986" class="media-object media-pic lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 14'%3E%3C/svg%3E"  alt="光阴之外" data-src="https://img3.doubanio.com/view/photo/m_ratio_poster/public/p2928471537.jpg"/>
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h5 class="media-heading">
+                                    <a href="/play/947986" class="title-text">光阴之外  2025</a>
+                                    <span class="label" style="color: rgb(0, 173, 63);">[35条线路可播放]</span>
+                                </h5>
+                                <span class="small">中国大陆  光阴之外 3D动画版,光阴之外·末世的微光,光阴之外·除凶七血瞳,光阴之外·新的开始,光阴之外·决战人鱼岛,光阴之外·决战海尸族,Beyond Time&#39;s Gaze,Beyond Time</span><br/>
+                                <span class="small" style="margin-top: 5px;">张帅,张富鑫,于斌 陈张太康,凌振赫,常文涛,万舒心,刘思岑</span>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left media-top">
+                                <a href="/play/951708" class="cover-link">
+                                    <img id="951708" class="media-object media-pic lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 14'%3E%3C/svg%3E"  alt="光阴之外" data-src="https://tyyswimg.com/upload/vod/20260117-1/894f0a6d1ed46b2e8e95d9ea02431ea7.jpg"/>
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h5 class="media-heading">
+                                    <a href="/play/951708" class="title-text">光阴之外  2025</a>
+                                    <span class="label" style="color: rgb(0, 173, 63);">[1条线路可播放]</span>
+                                </h5>
+                                <span class="small">中国大陆  </span><br/>
+                                <span class="small" style="margin-top: 5px;"> </span>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left media-top">
+                                <a href="/play/633374" class="cover-link">
+                                    <img id="633374" class="media-object media-pic lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 14'%3E%3C/svg%3E"  alt="光阴鬼幻" data-src="https://wolongzywcdn3.com:65/upload/vod/20220102-1/f6436df4d0b10cb253f25e401ec75bff.jpg"/>
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h5 class="media-heading">
+                                    <a href="/play/633374" class="title-text">光阴鬼幻  2017</a>
+                                    <span class="label" style="color: rgb(0, 173, 63);">[21条线路可播放]</span>
+                                </h5>
+                                <span class="small">美国  </span><br/>
+                                <span class="small" style="margin-top: 5px;">凯伦·孟可芙 李·佩斯,凯莉·库恩,艾米·斯马特,莫莉·哈根,阿娜·奥缇兹</span>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left media-top">
+                                <a href="/play/432099" class="cover-link">
+                                    <img id="432099" class="media-object media-pic lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 14'%3E%3C/svg%3E"  alt="光阴的故事" data-src="https://img3.doubanio.com/view/photo/m_ratio_poster/public/p2323595852.jpg"/>
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h5 class="media-heading">
+                                    <a href="/play/432099" class="title-text">光阴的故事  2008</a>
+                                    <span class="label" style="color: rgb(0, 173, 63);">[3条线路可播放]</span>
+                                </h5>
+                                <span class="small">中国台湾  Time Story,光陰的故事</span><br/>
+                                <span class="small" style="margin-top: 5px;">陈俊良,万东文 陈怡蓉,赖雅妍,杨一展,黄腾浩,马念先</span>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left media-top">
+                                <a href="/play/412477" class="cover-link">
+                                    <img id="412477" class="media-object media-pic lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 14'%3E%3C/svg%3E"  alt="光阴的故事" data-src="https://img1.doubanio.com/view/movie_poster_cover/lpst/public/p2298312787.jpg"/>
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h5 class="media-heading">
+                                    <a href="/play/412477" class="title-text">光阴的故事  1982</a>
+                                    <span class="label" style="color: rgb(0, 173, 63);">[21条线路可播放]</span>
+                                </h5>
+                                <span class="small">台湾  光陰的故事,InOurTime</span><br/>
+                                <span class="small" style="margin-top: 5px;">杨德昌,柯一正,陶德辰,张毅 张艾嘉,石安妮,李立群,张盈真,李国修</span>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left media-top">
+                                <a href="/play/888194" class="cover-link">
+                                    <img id="888194" class="media-object media-pic lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 14'%3E%3C/svg%3E"  alt="光阴的乐事" data-src="https://www.imgzy360.com:7788/upload/vod/20241126-1/9f61e908fe8109dca76e1cc0c48e78bb.jpg"/>
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h5 class="media-heading">
+                                    <a href="/play/888194" class="title-text">光阴的乐事  2023</a>
+                                    <span class="label" style="color: rgb(0, 173, 63);">[1条线路可播放]</span>
+                                </h5>
+                                <span class="small">中国大陆  </span><br/>
+                                <span class="small" style="margin-top: 5px;"> </span>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left media-top">
+                                <a href="/play/875646" class="cover-link">
+                                    <img id="875646" class="media-object media-pic lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 14'%3E%3C/svg%3E"  alt="光阴不归路" data-src="https://xinlangtupian.com/cover/36c6d0fb0afb3e474afab292c48d44e1.jpg"/>
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h5 class="media-heading">
+                                    <a href="/play/875646" class="title-text">光阴不归路  2024</a>
+                                    <span class="label" style="color: rgb(0, 173, 63);">[20条线路可播放]</span>
+                                </h5>
+                                <span class="small">中国大陆  </span><br/>
+                                <span class="small" style="margin-top: 5px;"> </span>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left media-top">
+                                <a href="/play/436222" class="cover-link">
+                                    <img id="436222" class="media-object media-pic lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 14'%3E%3C/svg%3E"  alt="山之外" data-src="https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p1717932845.jpg"/>
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h5 class="media-heading">
+                                    <a href="/play/436222" class="title-text">山之外  2012</a>
+                                    <span class="label" style="color: rgb(0, 173, 63);">[36条线路可播放]</span>
+                                </h5>
+                                <span class="small">罗马尼亚,法国,比利时  După dealuri,灵欲告白(台),非常教欲(港),越过群山,Dupadealuri,BeyondtheHills</span><br/>
+                                <span class="small" style="margin-top: 5px;">克里丝蒂安.蒙吉 吕明妮塔·杰尔吉乌,伊昂·萨普达鲁,考斯米娜·斯特拉坦,克里斯蒂娜·弗卢图尔,valeriuandriuta</span>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left media-top">
+                                <a href="/play/626808" class="cover-link">
+                                    <img id="626808" class="media-object media-pic lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 14'%3E%3C/svg%3E"  alt="夜之外" data-src="https://wolongzywcdn3.com:65/upload/vod/20220102-1/b36dcd15b6159568270afb366aea07d3.jpg"/>
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h5 class="media-heading">
+                                    <a href="/play/626808" class="title-text">夜之外  </a>
+                                    <span class="label" style="color: rgb(0, 173, 63);">[1条线路可播放]</span>
+                                </h5>
+                                <span class="small">日本  </span><br/>
+                                <span class="small" style="margin-top: 5px;"> 小西悠加,福永朱梨</span>
+                            </div>
+                        </div>
+                        <div class="media">
+                            <div class="media-left media-top">
+                                <a href="/play/412504" class="cover-link">
+                                    <img id="412504" class="media-object media-pic lazy" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 14'%3E%3C/svg%3E"  alt="大海之外" data-src="https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p2376797664.jpg"/>
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h5 class="media-heading">
+                                    <a href="/play/412504" class="title-text">大海之外  1997</a>
+                                    <span class="label" style="color: rgb(0, 173, 63);">[3条线路可播放]</span>
+                                </h5>
+                                <span class="small">美国  Out to Sea,海之外</span><br/>
+                                <span class="small" style="margin-top: 5px;">玛莎·库利奇 黛恩·坎农,沃尔特·马修,杰克·莱蒙</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="page-more">
+                        
+                        
+                        <a href="/search?q=%E5%85%89%E9%98%B4%E4%B9%8B%E5%A4%96&amp;p=2&amp;n=Q1UBABlzY29yZV9kZXNjfGFrYV9jb3VudF9kZXNjAAJHG3_AAAAAAAACA0EqBrABAAAAAg">下一页</a>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-md-4">
+                    <div id="pc-adv-wrap">
+                        <div id="adv-content" style="background-color: #f4f4f4;">
+                            <div id="container-301e00b40329cf984f8e1326b4626bf8"></div>
+                            <div id="h-y-container"></div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+    </div>
+    <nav class="navbar navbar-default navbar-fixed-bottom visible-xs-block visible-sm-block">
+        <div class="container" style="font-size: 15px;margin-top:5px;margin-bottom: 5px;padding: 0px;">
+            <ul class="nav nav-pills">
+                <li style="margin-left: 0px">
+
+                    <a  href="/">
+                        <span class="glyphicon glyphicon-home" ></span></br>
+                        <span>首页</span>
+                    </a>
+                </li>
+                <li style="margin-left: 0px">
+                    <a  href="/hot/index-movie-热门.html">
+                        <span class="glyphicon glyphicon-film" ></span></br>
+                        <span>电影</span>
+                    </a>
+                </li>
+                <li style="margin-left: 0px">
+                    <a  href="/hot/index-tv-热门.html">
+                        <span class="glyphicon glyphicon-facetime-video" ></span></br>
+                        <span>剧集</span>
+                    </a>
+                </li>
+                <li style="margin-left: 0px">
+
+                    <a  href="/billboard.html">
+                        <span class="glyphicon glyphicon-stats" ></span></br>
+                        <span>榜单</span>
+                    </a>
+                </li>
+                <li style="margin-left: 0px;display: none">
+                    <a  href="/kanlist/全部-p-1.html">
+                        <span class="glyphicon glyphicon-th-list" ></span></br>
+                        <span>片单</span>
+                    </a>
+                </li>
+                <li style="margin-left: 0px;display: none;">
+                    <a  href="/category/">
+                        <span class="glyphicon glyphicon-th" ></span></br>
+                        <span>分类</span>
+                    </a>
+                </li>
+                <li style="margin-left: 0px;">
+                    <a  href="/history.html">
+                        <span class="glyphicon glyphicon-time" ></span></br>
+                        <span>看过</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <script type="text/javascript">
+        g_init('search',null);
+    </script>
+    <script async data-cfasync="false" src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-lazyload/17.8.3/lazyload.min.js" integrity="sha512-PYqZh14FSExDb67jbM60M4ri5A/Bn/xOiM1ihfPx7c1d8XywMmn2M7+Z4i+v9RF9dlzRYzqk7sXamAHKZjfyFA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+</html>
