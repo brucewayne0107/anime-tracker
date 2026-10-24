@@ -7,6 +7,7 @@ import datetime as dt
 import json
 import re
 import sys
+import urllib.parse
 import urllib.request
 from pathlib import Path
 
@@ -100,7 +101,81 @@ def src_regex(cfg, fetch=fetch_text):
     return {"latest": latest, "url": ep_url, "page": cfg["url"]}
 
 
-SOURCES = {"bilibili": src_bilibili, "bangumi": src_bangumi, "regex": src_regex}
+def src_huaren(cfg, fetch=fetch_text):
+    """huaren.live（MacCMS 站）：详情页里有每条线路的分集链接 /vodplay/{id}-{线路}-{序号}.html。"""
+    vid = cfg.get("id") or re.search(r"/vod(?:detail|play)/(\d+)", cfg.get("url", "")).group(1)
+    base = cfg.get("base", "https://huaren.live")
+    page = f"{base}/voddetail/{vid}.html"
+    html = fetch(page)
+    best = None  # (集数, 链接)
+    for href, text in re.findall(rf'href="(/vodplay/{vid}-\d+-\d+\.html)"[^>]*>([^<]*)<', html):
+        n = _num(text)
+        if n is not None and (best is None or n > best[0]):
+            best = (n, base + href)
+    if best is None:
+        raise ValueError("详情页里没找到分集链接")
+    return {"latest": best[0], "url": best[1], "page": page}
+
+
+def ikanbot_token(current_id, e_token):
+    """照抄 ikanbot 播放页里的 get_tks()：取 id 末 4 位，每位决定从 e_token 截哪 8 个字符。"""
+    out = []
+    for ch in str(current_id)[-4:]:
+        s = int(ch) % 3 + 1
+        out.append(e_token[s:s + 8])
+        e_token = e_token[s + 8:]
+    return "".join(out)
+
+
+def _ikanbot_play(pid, fetch_t, fetch_j):
+    page = f"https://www.ikanbot.com/play/{pid}"
+    html = fetch_t(page)
+    e_token = re.search(r'id="e_token" value="([^"]*)"', html).group(1)
+    m = re.search(r'id="mtype" value="([^"]*)"', html)
+    mtype = m.group(1) if m else "2"
+    data = fetch_j(f"https://www.ikanbot.com/api/getResN?videoId={pid}&mtype={mtype}"
+                   f"&token={ikanbot_token(pid, e_token)}")
+    if data.get("state") != 1:
+        raise RuntimeError(f"ikanbot 接口返回 state={data.get('state')}")
+    latest = None
+    for line in data["data"]["list"]:
+        for item in (line.get("url") or "").split("#"):
+            n = _num(item.split("$")[0])
+            if n is not None and (latest is None or n > latest):
+                latest = n
+    return {"latest": latest, "url": page, "page": page}
+
+
+def src_ikanbot(cfg, fetch_t=fetch_text, fetch_j=fetch_json):
+    """ikanbot.com：同名条目常有好几个，搜索后挨个查，取集数最多的那个。
+    可直接给 id（/play/ 后的数字），或给 q（搜索词）+ 可选 year。"""
+    if cfg.get("id"):
+        return _ikanbot_play(cfg["id"], fetch_t, fetch_j)
+    q = cfg["q"]
+    html = fetch_t("https://www.ikanbot.com/search?q=" + urllib.parse.quote(q))
+    cands = []
+    for pid, title in re.findall(r'href="/play/(\d+)" class="title-text">([^<]*)<', html):
+        parts = title.split()
+        year = parts[-1] if parts and re.fullmatch(r"\d{4}", parts[-1]) else ""
+        name = " ".join(parts[:-1] if year else parts)
+        if name == q and (not cfg.get("year") or year == str(cfg["year"])):
+            cands.append(pid)
+    best, errors = None, []
+    for pid in cands[:cfg.get("max_candidates", 4)]:
+        try:
+            r = _ikanbot_play(pid, fetch_t, fetch_j)
+        except Exception as e:
+            errors.append(f"{pid}: {e}")
+            continue
+        if r["latest"] is not None and (best is None or r["latest"] > best["latest"]):
+            best = r
+    if best is None:
+        raise ValueError(f"搜索「{q}」没找到可用条目 {errors[:2]}")
+    return best
+
+
+SOURCES = {"huaren": src_huaren, "ikanbot": src_ikanbot,
+           "bilibili": src_bilibili, "bangumi": src_bangumi, "regex": src_regex}
 
 
 def check_source(cfg):
@@ -140,6 +215,7 @@ def run(shows_path, status_path, check=check_source, now=None):
         result.append({
             "name": show["name"],
             "watched": show.get("watched", 0),
+            "day": show.get("day"),
             "latest": latest,
             "updated_at": updated_at,
             "primary": p,
