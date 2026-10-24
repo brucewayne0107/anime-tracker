@@ -1,9 +1,9 @@
 {
-  "_说明": "每部番一条。day=周几更新(1=周一…7=周日)；watched=看到第几集；primary=主要来源；secondary=次要来源。type 见 README。",
+  "_说明": "每部番一条。day=周几更新(1=周一…7=周日)；note=备注；watched=看到第几集；primary=主要来源；secondary=次要来源。type 见 README。",
   "shows": [
     {
       "name": "仙逆",
-      "day": null,
+      "day": 7,
       "watched": 0,
       "primary": {
         "type": "huaren",
@@ -17,7 +17,7 @@
     },
     {
       "name": "牧神记",
-      "day": null,
+      "day": 7,
       "watched": 0,
       "primary": {
         "type": "huaren",
@@ -30,7 +30,8 @@
     },
     {
       "name": "一斩苍穹",
-      "day": null,
+      "day": 2,
+      "note": "周几待确认",
       "watched": 0,
       "primary": {
         "type": "huaren",
@@ -44,7 +45,7 @@
     },
     {
       "name": "灵境行者",
-      "day": null,
+      "day": 4,
       "watched": 0,
       "primary": {
         "type": "huaren",
@@ -58,7 +59,7 @@
     },
     {
       "name": "沧元图",
-      "day": null,
+      "day": 5,
       "watched": 0,
       "primary": {
         "type": "huaren",
@@ -71,7 +72,7 @@
     },
     {
       "name": "光阴之外",
-      "day": null,
+      "day": 7,
       "watched": 0,
       "primary": {
         "type": "huaren",
@@ -85,7 +86,7 @@
     },
     {
       "name": "择日飞升",
-      "day": null,
+      "day": 6,
       "watched": 0,
       "primary": {
         "type": "huaren",
@@ -99,7 +100,8 @@
     },
     {
       "name": "星辰变",
-      "day": null,
+      "day": 4,
+      "note": "本季已完结",
       "watched": 0,
       "primary": {
         "type": "huaren",
@@ -113,7 +115,8 @@
     },
     {
       "name": "咒术回战",
-      "day": null,
+      "day": 4,
+      "note": "停播中，下半季未定档",
       "watched": 0,
       "primary": {
         "type": "huaren",
@@ -127,7 +130,8 @@
     },
     {
       "name": "海贼王",
-      "day": null,
+      "day": 7,
+      "note": "停播中，预计2027年春回归",
       "watched": 0,
       "primary": {
         "type": "huaren",
@@ -140,7 +144,8 @@
     },
     {
       "name": "斗破苍穹年番",
-      "day": null,
+      "day": 7,
+      "note": "周几待确认",
       "watched": 0,
       "primary": {
         "type": "huaren",

@@ -2,47 +2,61 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#fb7299">
+<meta name="apple-mobile-web-app-capable" content="yes">
 <title>追番进度</title>
 <style>
   :root {
     --bg: #f6f7f9; --card: #fff; --text: #1d2129; --muted: #86909c; --line: #e5e6eb;
-    --accent: #fb7299; --accent-soft: #fff0f4; --ok: #00b42a; --warn: #ff7d00;
+    --accent: #fb7299; --accent-soft: #fff0f4; --warn: #ff7d00; --chip: #f2f3f5;
   }
   @media (prefers-color-scheme: dark) {
     :root { --bg: #17171a; --card: #232326; --text: #e5e6eb; --muted: #8a8f99; --line: #333338;
-            --accent-soft: #3a2029; }
+            --accent-soft: #3a2029; --chip: #2e2e32; }
   }
-  * { box-sizing: border-box; }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
   body { margin: 0; background: var(--bg); color: var(--text);
-         font: 15px/1.5 -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
-  main { max-width: 760px; margin: 0 auto; padding: 24px 16px 48px; }
-  header { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
-  h1 { font-size: 22px; margin: 0; }
-  .meta { color: var(--muted); font-size: 13px; }
-  .filters { margin: 16px 0 12px; display: flex; gap: 8px; }
-  .filters button { border: 1px solid var(--line); background: var(--card); color: var(--text);
-                    padding: 4px 12px; border-radius: 999px; cursor: pointer; font-size: 13px; }
+         font: 16px/1.5 -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+  main { max-width: 640px; margin: 0 auto; padding: calc(12px + env(safe-area-inset-top)) 12px 40px; }
+  header { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+  h1 { font-size: 20px; margin: 4px 0; }
+  .meta { color: var(--muted); font-size: 12px; }
+  .filters { position: sticky; top: 0; z-index: 2; background: var(--bg); margin: 8px -12px 4px;
+             padding: 8px 12px; display: flex; gap: 8px; overflow-x: auto; }
+  .filters button { flex: none; border: 1px solid var(--line); background: var(--card); color: var(--text);
+                    padding: 6px 14px; border-radius: 999px; font-size: 14px; }
   .filters button.on { background: var(--accent); border-color: var(--accent); color: #fff; }
-  ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
-  li { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px;
-       display: grid; grid-template-columns: 1fr auto; gap: 6px 12px; align-items: center; }
-  li.new { border-color: var(--accent); background: linear-gradient(90deg, var(--accent-soft), var(--card) 60%); }
-  .name { font-weight: 600; font-size: 16px; color: inherit; text-decoration: none; }
-  .name:hover { color: var(--accent); }
-  .badge { display: inline-block; margin-left: 6px; font-size: 12px; padding: 0 6px; border-radius: 4px;
-           background: var(--accent); color: #fff; vertical-align: 2px; }
-  .links { grid-column: 1; font-size: 13px; color: var(--muted); display: flex; gap: 12px; flex-wrap: wrap; }
-  .links a { color: var(--muted); }
-  .links .err { color: var(--warn); }
-  .prog { grid-column: 2; grid-row: 1 / span 2; display: flex; align-items: center; gap: 6px; }
-  .count { min-width: 64px; text-align: center; font-variant-numeric: tabular-nums; }
-  .count b { font-size: 18px; }
-  .prog button { width: 30px; height: 30px; border-radius: 8px; border: 1px solid var(--line);
-                 background: var(--bg); color: var(--text); cursor: pointer; font-size: 16px; }
+  h2 { font-size: 14px; color: var(--muted); margin: 16px 4px 8px; font-weight: 600; }
+  h2.today { color: var(--accent); }
+  h2 .tag { margin-left: 6px; font-size: 12px; padding: 1px 6px; border-radius: 4px; background: var(--accent); color: #fff; }
+  ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+  li.card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 12px; }
+  li.card.new { border-color: var(--accent); background: linear-gradient(90deg, var(--accent-soft), var(--card) 70%); }
+  li.card.off { opacity: .6; }
+  .top { display: flex; align-items: center; gap: 10px; }
+  .name { flex: 1; min-width: 0; font-weight: 600; font-size: 17px; color: inherit; text-decoration: none;
+          overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 4px 0; }
+  .badge { font-size: 12px; padding: 0 6px; border-radius: 4px; background: var(--accent); color: #fff; margin-left: 4px; vertical-align: 2px; }
+  .prog { flex: none; display: flex; align-items: center; gap: 4px; }
+  .prog button { width: 36px; height: 36px; border-radius: 10px; border: 1px solid var(--line);
+                 background: var(--bg); color: var(--text); font-size: 18px; }
+  .count { min-width: 58px; text-align: center; font-variant-numeric: tabular-nums; font-size: 14px; color: var(--muted); }
+  .count b { font-size: 18px; color: var(--text); }
+  .note { font-size: 12px; color: var(--warn); margin-top: 2px; }
+  .srcs { display: grid; gap: 6px; margin-top: 8px; }
+  .src { display: flex; align-items: center; gap: 6px; }
+  .src a, .src .err { flex: 1; min-width: 0; display: block; padding: 7px 10px; border-radius: 10px; background: var(--chip);
+                      color: var(--text); text-decoration: none; font-size: 14px;
+                      overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .src .lbl { color: var(--muted); margin-right: 4px; }
+  .src .err { color: var(--warn); }
+  .src .copy { flex: none; height: 36px; padding: 0 12px; border-radius: 10px; border: 1px solid var(--line);
+               background: var(--card); color: var(--text); font-size: 13px; }
+  .src .copy.done { color: var(--accent); border-color: var(--accent); }
   .empty { color: var(--muted); text-align: center; padding: 40px 0; }
-  footer { margin-top: 20px; color: var(--muted); font-size: 12px; }
-  footer button { font-size: 12px; background: none; border: 0; color: var(--accent); cursor: pointer; padding: 0; }
+  footer { margin-top: 24px; color: var(--muted); font-size: 12px; line-height: 1.7; }
+  footer button { font-size: 12px; background: none; border: 0; color: var(--accent); padding: 0; }
 </style>
 </head>
 <body>
@@ -54,17 +68,19 @@
   <div class="filters">
     <button data-f="all" class="on">全部</button>
     <button data-f="new">有新集</button>
-    <button data-f="done">已追平</button>
+    <button data-f="today">今天更新</button>
   </div>
-  <ul id="list"><li class="empty">加载中…</li></ul>
+  <div id="list"><p class="empty">加载中…</p></div>
   <footer>
-    看到第几集保存在这个浏览器里。换设备前可以
-    <button id="export">复制进度</button>，粘贴到 shows.json 的 watched 字段。
+    看到第几集保存在这台设备的浏览器里。换设备前可以
+    <button id="export">复制进度</button>，填回 shows.json 的 watched。
   </footer>
 </main>
 <script>
 const KEY = "anime-tracker-watched";
-const SRC = { bilibili: "B站", bangumi: "Bangumi", regex: "来源" };
+const DAYS = ["", "周一", "周二", "周三", "周四", "周五", "周六", "周日"];
+const SRC = { huaren: "华人直播", ikanbot: "爱看机器人", bilibili: "B站", bangumi: "Bangumi", regex: "来源" };
+const today = ((new Date().getDay() + 6) % 7) + 1; // 1=周一 … 7=周日
 let data = { shows: [] }, filter = "all";
 
 function load() { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch { return {}; } }
@@ -75,44 +91,71 @@ const watchedOf = s => (s.name in local ? local[s.name] : s.watched) || 0;
 const esc = t => String(t ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const ago = iso => {
   if (!iso) return "";
-  const m = Math.round((Date.now() - new Date(iso)) / 60000);
+  const m = Math.max(0, Math.round((Date.now() - new Date(iso)) / 60000));
   return m < 60 ? `${m} 分钟前` : m < 1440 ? `${Math.round(m / 60)} 小时前` : `${Math.round(m / 1440)} 天前`;
 };
+const linkOf = src => src && (src.ok || src.stale) ? (src.url || src.page) : null;
 
-function srcLink(src, label) {
+function srcRow(src, label) {
   if (!src) return "";
-  const name = `${label} · ${SRC[src.type] || src.type}`;
-  if (!src.ok && !src.stale) return `<span class="err" title="${esc(src.error)}">${name} 检查失败</span>`;
-  const ep = src.latest != null ? ` 第${src.latest}集` : "";
-  return `<a href="${esc(src.url || src.page)}" target="_blank" rel="noopener">${name}${ep}</a>`;
+  const site = SRC[src.type] || src.type;
+  const href = linkOf(src);
+  if (!href) return `<div class="src"><span class="err" title="${esc(src.error)}"><span class="lbl">${label}</span>${site} 检查失败</span></div>`;
+  const ep = src.latest != null ? ` · 第${src.latest}集` : "";
+  return `<div class="src">
+    <a href="${esc(href)}" target="_blank" rel="noopener"><span class="lbl">${label}</span>${site}${ep}</a>
+    <button class="copy" data-copy="${esc(href)}">复制</button>
+  </div>`;
+}
+
+function card(s) {
+  const w = watchedOf(s), behind = (s.latest ?? 0) - w;
+  const main = linkOf(s.primary) || linkOf(s.secondary) || "#";
+  return `<li class="card${behind > 0 ? " new" : ""}${s.note && behind <= 0 ? " off" : ""}">
+    <div class="top">
+      <a class="name" href="${esc(main)}" target="_blank" rel="noopener">${esc(s.name)}${behind > 0 ? `<span class="badge">+${behind}</span>` : ""}</a>
+      <div class="prog">
+        <button data-d="-1" data-n="${esc(s.name)}" aria-label="少看一集">−</button>
+        <span class="count"><b>${w}</b>/${s.latest ?? "?"}</span>
+        <button data-d="1" data-n="${esc(s.name)}" aria-label="多看一集">+</button>
+      </div>
+    </div>
+    ${s.note ? `<div class="note">${esc(s.note)}</div>` : ""}
+    <div class="srcs">${srcRow(s.primary, "主")}${srcRow(s.secondary, "次")}</div>
+  </li>`;
 }
 
 function render() {
-  const list = document.getElementById("list");
-  let shows = data.shows.map(s => ({ ...s, w: watchedOf(s), behind: (s.latest ?? 0) - watchedOf(s) }));
-  if (filter === "new") shows = shows.filter(s => s.behind > 0);
-  if (filter === "done") shows = shows.filter(s => s.behind <= 0);
-  // 有新集的排前面，其中最近更新的在上
-  shows.sort((a, b) => (b.behind > 0) - (a.behind > 0) || String(b.updated_at).localeCompare(String(a.updated_at)));
-  if (!shows.length) { list.innerHTML = `<li class="empty">没有番剧</li>`; return; }
-  list.innerHTML = shows.map(s => {
-    const main = s.primary?.ok || s.primary?.stale ? s.primary : s.secondary;
-    const href = main?.url || main?.page || "#";
-    return `<li class="${s.behind > 0 ? "new" : ""}">
-      <div><a class="name" href="${esc(href)}" target="_blank" rel="noopener">${esc(s.name)}</a>${
-        s.behind > 0 ? `<span class="badge">+${s.behind}</span>` : ""}</div>
-      <div class="links">${srcLink(s.primary, "主")}${srcLink(s.secondary, "次")}${
-        s.updated_at ? `<span>更新于 ${ago(s.updated_at)}</span>` : ""}</div>
-      <div class="prog">
-        <button data-d="-1" data-n="${esc(s.name)}" aria-label="少看一集">−</button>
-        <span class="count"><b>${s.w}</b> / ${s.latest ?? "?"}</span>
-        <button data-d="1" data-n="${esc(s.name)}" aria-label="多看一集">+</button>
-      </div>
-    </li>`;
-  }).join("");
+  let shows = data.shows;
+  if (filter === "new") shows = shows.filter(s => (s.latest ?? 0) > watchedOf(s));
+  if (filter === "today") shows = shows.filter(s => s.day === today);
+  const groups = {};
+  for (const s of shows) (groups[s.day >= 1 && s.day <= 7 ? s.day : 0] ||= []).push(s);
+  const order = [1, 2, 3, 4, 5, 6, 7, 0].filter(d => groups[d]);
+  const box = document.getElementById("list");
+  if (!order.length) { box.innerHTML = `<p class="empty">没有番剧</p>`; return; }
+  box.innerHTML = order.map(d => `
+    <h2 class="${d === today ? "today" : ""}">${d ? DAYS[d] : "未定"}${d === today ? `<span class="tag">今天</span>` : ""}</h2>
+    <ul>${groups[d].map(card).join("")}</ul>`).join("");
+}
+
+async function copy(text, btn) {
+  try { await navigator.clipboard.writeText(text); }
+  catch {
+    const t = document.createElement("textarea");
+    t.value = text; t.setAttribute("readonly", ""); t.style.position = "fixed"; t.style.opacity = "0";
+    document.body.appendChild(t); t.select(); t.setSelectionRange(0, text.length);
+    try { document.execCommand("copy"); } catch {}
+    t.remove();
+  }
+  const old = btn.textContent;
+  btn.textContent = "已复制"; btn.classList.add("done");
+  setTimeout(() => { btn.textContent = old; btn.classList.remove("done"); }, 1500);
 }
 
 document.getElementById("list").addEventListener("click", e => {
+  const c = e.target.closest("button[data-copy]");
+  if (c) return copy(c.dataset.copy, c);
   const b = e.target.closest("button[data-d]");
   if (!b) return;
   const s = data.shows.find(x => x.name === b.dataset.n);
@@ -126,17 +169,15 @@ document.querySelector(".filters").addEventListener("click", e => {
   document.querySelectorAll(".filters button").forEach(x => x.classList.toggle("on", x === b));
   render();
 });
-document.getElementById("export").addEventListener("click", async () => {
+document.getElementById("export").addEventListener("click", e => {
   const out = Object.fromEntries(data.shows.map(s => [s.name, watchedOf(s)]));
-  const text = JSON.stringify(out, null, 2);
-  try { await navigator.clipboard.writeText(text); alertOk(); } catch { prompt("复制下面的内容", text); }
+  copy(JSON.stringify(out, null, 2), e.target);
 });
-function alertOk() { const b = document.getElementById("export"); b.textContent = "已复制"; setTimeout(() => b.textContent = "复制进度", 1500); }
 
 fetch("data/status.json", { cache: "no-store" })
   .then(r => r.json())
-  .then(d => { data = d; document.getElementById("checked").textContent = `上次检查：${ago(d.checked_at)}`; render(); })
-  .catch(() => { document.getElementById("list").innerHTML = `<li class="empty">还没有数据，等第一次自动检查跑完</li>`; });
+  .then(d => { data = d; document.getElementById("checked").textContent = `${ago(d.checked_at)}检查`; render(); })
+  .catch(() => { document.getElementById("list").innerHTML = `<p class="empty">还没有数据，等第一次自动检查跑完</p>`; });
 </script>
 </body>
 </html>

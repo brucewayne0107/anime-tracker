@@ -237,6 +237,7 @@ def run(shows_path, status_path, check=check_source, now=None):
             "name": show["name"],
             "watched": show.get("watched", 0),
             "day": show.get("day"),
+            "note": show.get("note"),
             "latest": latest,
             "updated_at": updated_at,
             "primary": p,
