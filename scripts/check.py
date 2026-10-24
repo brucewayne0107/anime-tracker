@@ -12,11 +12,16 @@ import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-UA = "Mozilla/5.0 (anime-tracker; +https://github.com)"
+# 用普通浏览器 UA，ikanbot 的 Cloudflare 会拦自定义 UA
+UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+      "(KHTML, like Gecko) Chrome/129.0 Safari/537.36")
 
 
 def fetch_json(url):
-    req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "application/json"})
+    origin = "/".join(url.split("/")[:3])
+    req = urllib.request.Request(url, headers={
+        "User-Agent": UA, "Accept": "application/json", "Referer": origin + "/",
+        "X-Requested-With": "XMLHttpRequest"})
     with urllib.request.urlopen(req, timeout=20) as r:
         return json.loads(r.read().decode("utf-8"))
 
