@@ -43,6 +43,12 @@ def _num(s):
     return int(n) if n.is_integer() else n
 
 
+def _ep_num(label):
+    """分集标签转集数：'01'、'第12集'、'EP05'、'第3话' 可以；'2026-10-25'、'预告' 之类返回 None。"""
+    m = re.fullmatch(r"\s*(?:第|EP|ep|E)?\s*(\d{1,4}(?:\.\d)?)\s*(?:集|话|話)?\s*", str(label or ""))
+    return _num(m.group(1)) if m else None
+
+
 # ---------- 来源适配器：都返回 {"latest": 集数, "url": 最新集链接, "page": 番剧页面} ----------
 
 def src_bilibili(cfg, fetch=fetch_json):
@@ -116,7 +122,7 @@ def src_huaren(cfg, fetch=fetch_text):
     html = fetch(page)
     best = None  # (集数, 链接)
     for href, text in re.findall(rf'href="(/vodplay/{vid}-\d+-\d+\.html)"[^>]*>([^<]*)<', html):
-        n = _num(text)
+        n = _ep_num(text)
         if n is not None and (best is None or n > best[0]):
             best = (n, base + href)
     if best is None:
@@ -145,9 +151,16 @@ def _ikanbot_play(pid, fetch_t, fetch_j):
     if data.get("state") != 1:
         raise RuntimeError(f"ikanbot 接口返回 state={data.get('state')}")
     latest = None
-    for line in data["data"]["list"]:
-        for item in (line.get("url") or "").split("#"):
-            n = _num(item.split("$")[0])
+    # list 里每个站点一条，resData 是 JSON 字符串：[{"flag":..,"url":"第01集$xx.m3u8#第02集$..."}]
+    urls = []
+    for site in data["data"]["list"]:
+        try:
+            urls += [r.get("url") or "" for r in json.loads(site.get("resData") or "[]")]
+        except ValueError:
+            continue
+    for u in urls:
+        for item in u.split("#"):
+            n = _ep_num(item.split("$")[0])
             if n is not None and (latest is None or n > latest):
                 latest = n
     return {"latest": latest, "url": page, "page": page}
