@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>追番进度</title>
+<style>
+  :root {
+    --bg: #f6f7f9; --card: #fff; --text: #1d2129; --muted: #86909c; --line: #e5e6eb;
+    --accent: #fb7299; --accent-soft: #fff0f4; --ok: #00b42a; --warn: #ff7d00;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #17171a; --card: #232326; --text: #e5e6eb; --muted: #8a8f99; --line: #333338;
+            --accent-soft: #3a2029; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+         font: 15px/1.5 -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 24px 16px 48px; }
+  header { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  h1 { font-size: 22px; margin: 0; }
+  .meta { color: var(--muted); font-size: 13px; }
+  .filters { margin: 16px 0 12px; display: flex; gap: 8px; }
+  .filters button { border: 1px solid var(--line); background: var(--card); color: var(--text);
+                    padding: 4px 12px; border-radius: 999px; cursor: pointer; font-size: 13px; }
+  .filters button.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+  ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  li { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px;
+       display: grid; grid-template-columns: 1fr auto; gap: 6px 12px; align-items: center; }
+  li.new { border-color: var(--accent); background: linear-gradient(90deg, var(--accent-soft), var(--card) 60%); }
+  .name { font-weight: 600; font-size: 16px; color: inherit; text-decoration: none; }
+  .name:hover { color: var(--accent); }
+  .badge { display: inline-block; margin-left: 6px; font-size: 12px; padding: 0 6px; border-radius: 4px;
+           background: var(--accent); color: #fff; vertical-align: 2px; }
+  .links { grid-column: 1; font-size: 13px; color: var(--muted); display: flex; gap: 12px; flex-wrap: wrap; }
+  .links a { color: var(--muted); }
+  .links .err { color: var(--warn); }
+  .prog { grid-column: 2; grid-row: 1 / span 2; display: flex; align-items: center; gap: 6px; }
+  .count { min-width: 64px; text-align: center; font-variant-numeric: tabular-nums; }
+  .count b { font-size: 18px; }
+  .prog button { width: 30px; height: 30px; border-radius: 8px; border: 1px solid var(--line);
+                 background: var(--bg); color: var(--text); cursor: pointer; font-size: 16px; }
+  .empty { color: var(--muted); text-align: center; padding: 40px 0; }
+  footer { margin-top: 20px; color: var(--muted); font-size: 12px; }
+  footer button { font-size: 12px; background: none; border: 0; color: var(--accent); cursor: pointer; padding: 0; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>追番进度</h1>
+    <span class="meta" id="checked"></span>
+  </header>
+  <div class="filters">
+    <button data-f="all" class="on">全部</button>
+    <button data-f="new">有新集</button>
+    <button data-f="done">已追平</button>
+  </div>
+  <ul id="list"><li class="empty">加载中…</li></ul>
+  <footer>
+    看到第几集保存在这个浏览器里。换设备前可以
+    <button id="export">复制进度</button>，粘贴到 shows.json 的 watched 字段。
+  </footer>
+</main>
+<script>
+const KEY = "anime-tracker-watched";
+const SRC = { bilibili: "B站", bangumi: "Bangumi", regex: "来源" };
+let data = { shows: [] }, filter = "all";
+
+function load() { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch { return {}; } }
+function save(v) { try { localStorage.setItem(KEY, JSON.stringify(v)); } catch {} }
+let local = load();
+
+const watchedOf = s => (s.name in local ? local[s.name] : s.watched) || 0;
+const esc = t => String(t ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const ago = iso => {
+  if (!iso) return "";
+  const m = Math.round((Date.now() - new Date(iso)) / 60000);
+  return m < 60 ? `${m} 分钟前` : m < 1440 ? `${Math.round(m / 60)} 小时前` : `${Math.round(m / 1440)} 天前`;
+};
+
+function srcLink(src, label) {
+  if (!src) return "";
+  const name = `${label} · ${SRC[src.type] || src.type}`;
+  if (!src.ok && !src.stale) return `<span class="err" title="${esc(src.error)}">${name} 检查失败</span>`;
+  const ep = src.latest != null ? ` 第${src.latest}集` : "";
+  return `<a href="${esc(src.url || src.page)}" target="_blank" rel="noopener">${name}${ep}</a>`;
+}
+
+function render() {
+  const list = document.getElementById("list");
+  let shows = data.shows.map(s => ({ ...s, w: watchedOf(s), behind: (s.latest ?? 0) - watchedOf(s) }));
+  if (filter === "new") shows = shows.filter(s => s.behind > 0);
+  if (filter === "done") shows = shows.filter(s => s.behind <= 0);
+  // 有新集的排前面，其中最近更新的在上
+  shows.sort((a, b) => (b.behind > 0) - (a.behind > 0) || String(b.updated_at).localeCompare(String(a.updated_at)));
+  if (!shows.length) { list.innerHTML = `<li class="empty">没有番剧</li>`; return; }
+  list.innerHTML = shows.map(s => {
+    const main = s.primary?.ok || s.primary?.stale ? s.primary : s.secondary;
+    const href = main?.url || main?.page || "#";
+    return `<li class="${s.behind > 0 ? "new" : ""}">
+      <div><a class="name" href="${esc(href)}" target="_blank" rel="noopener">${esc(s.name)}</a>${
+        s.behind > 0 ? `<span class="badge">+${s.behind}</span>` : ""}</div>
+      <div class="links">${srcLink(s.primary, "主")}${srcLink(s.secondary, "次")}${
+        s.updated_at ? `<span>更新于 ${ago(s.updated_at)}</span>` : ""}</div>
+      <div class="prog">
+        <button data-d="-1" data-n="${esc(s.name)}" aria-label="少看一集">−</button>
+        <span class="count"><b>${s.w}</b> / ${s.latest ?? "?"}</span>
+        <button data-d="1" data-n="${esc(s.name)}" aria-label="多看一集">+</button>
+      </div>
+    </li>`;
+  }).join("");
+}
+
+document.getElementById("list").addEventListener("click", e => {
+  const b = e.target.closest("button[data-d]");
+  if (!b) return;
+  const s = data.shows.find(x => x.name === b.dataset.n);
+  local[s.name] = Math.max(0, watchedOf(s) + Number(b.dataset.d));
+  save(local); render();
+});
+document.querySelector(".filters").addEventListener("click", e => {
+  const b = e.target.closest("button[data-f]");
+  if (!b) return;
+  filter = b.dataset.f;
+  document.querySelectorAll(".filters button").forEach(x => x.classList.toggle("on", x === b));
+  render();
+});
+document.getElementById("export").addEventListener("click", async () => {
+  const out = Object.fromEntries(data.shows.map(s => [s.name, watchedOf(s)]));
+  const text = JSON.stringify(out, null, 2);
+  try { await navigator.clipboard.writeText(text); alertOk(); } catch { prompt("复制下面的内容", text); }
+});
+function alertOk() { const b = document.getElementById("export"); b.textContent = "已复制"; setTimeout(() => b.textContent = "复制进度", 1500); }
+
+fetch("data/status.json", { cache: "no-store" })
+  .then(r => r.json())
+  .then(d => { data = d; document.getElementById("checked").textContent = `上次检查：${ago(d.checked_at)}`; render(); })
+  .catch(() => { document.getElementById("list").innerHTML = `<li class="empty">还没有数据，等第一次自动检查跑完</li>`; });
+</script>
+</body>
+</html>

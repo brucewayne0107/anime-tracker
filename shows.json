@@ -1,0 +1,11 @@
+{
+  "_说明": "每部番一条。watched=看到第几集；primary=主要来源；secondary=次要来源。type 可选 bilibili / bangumi / regex，见 README。",
+  "shows": [
+    {
+      "name": "示例：葬送的芙莉莲",
+      "watched": 0,
+      "primary": { "type": "bilibili", "url": "https://www.bilibili.com/bangumi/play/ss46244" },
+      "secondary": { "type": "bangumi", "id": 400602 }
+    }
+  ]
+}
