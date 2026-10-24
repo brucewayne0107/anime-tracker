@@ -27,7 +27,9 @@ def fetch_json(url):
 
 
 def fetch_text(url):
-    req = urllib.request.Request(url, headers={"User-Agent": UA})
+    req = urllib.request.Request(url, headers={
+        "User-Agent": UA, "Accept": "text/html,application/xhtml+xml,*/*;q=0.8",
+        "Accept-Language": "zh-CN,zh;q=0.9"})
     with urllib.request.urlopen(req, timeout=20) as r:
         return r.read().decode("utf-8", errors="replace")
 
@@ -175,7 +177,8 @@ def src_ikanbot(cfg, fetch_t=fetch_text, fetch_j=fetch_json):
         if r["latest"] is not None and (best is None or r["latest"] > best["latest"]):
             best = r
     if best is None:
-        raise ValueError(f"搜索「{q}」没找到可用条目 {errors[:2]}")
+        title = re.search(r"<title>([^<]*)", html)
+        raise ValueError(f"搜索「{q}」没找到可用条目（候选 {len(cands)} 个，页面「{title and title.group(1)}」）{errors[:2]}")
     return best
 
 
