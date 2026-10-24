@@ -1,9 +1,14 @@
 name: probe
 on: push
+permissions:
+  contents: write
 jobs:
   probe:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with: { ref: feat/tracker }
-      - run: python scripts/check.py
+      - run: |
+          git fetch -q origin feat/tracker && git checkout -q origin/feat/tracker -- scripts shows.json
+          python scripts/check.py
+          git config user.name bot && git config user.email bot@x
+          git add -f docs/data/status.json && git commit -qm status && git push
