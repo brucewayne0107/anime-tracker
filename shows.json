@@ -1,9 +1,10 @@
 {
-  "_说明": "每部番一条。day=周几更新(1=周一…7=周日)；note=备注（含「完结」「停播」会放进「停更」tab）；watched=看到第几集，不写就默认加入时的最新一集；primary=主要来源；secondary=次要来源。type 见 README。",
+  "_说明": "每部番一条。day=周几更新(1=周一…7=周日)；time=几点更新（北京时间，会员）；note=备注（含「完结」「停播」会放进「停更」tab）；watched=看到第几集，不写就默认加入时的最新一集；primary=主要来源；secondary=次要来源。type 见 README。",
   "shows": [
     {
       "name": "仙逆",
       "day": 7,
+      "time": "18:00",
       "primary": {
         "type": "huaren",
         "id": 109
@@ -17,6 +18,7 @@
     {
       "name": "牧神记",
       "day": 7,
+      "time": "11:00",
       "primary": {
         "type": "huaren",
         "id": 91978
@@ -29,7 +31,7 @@
     {
       "name": "一斩苍穹",
       "day": 2,
-      "note": "周几待确认",
+      "time": "10:00",
       "primary": {
         "type": "huaren",
         "id": 200993
@@ -43,6 +45,7 @@
     {
       "name": "灵境行者",
       "day": 4,
+      "time": "10:00",
       "primary": {
         "type": "huaren",
         "id": 202541
@@ -56,6 +59,7 @@
     {
       "name": "沧元图",
       "day": 5,
+      "time": "10:00",
       "primary": {
         "type": "huaren",
         "id": 2845
@@ -68,6 +72,7 @@
     {
       "name": "光阴之外",
       "day": 7,
+      "time": "10:00",
       "primary": {
         "type": "huaren",
         "id": 189909
@@ -81,6 +86,7 @@
     {
       "name": "择日飞升",
       "day": 6,
+      "time": "09:00",
       "primary": {
         "type": "huaren",
         "id": 200576
@@ -135,7 +141,6 @@
     {
       "name": "斗破苍穹年番",
       "day": 7,
-      "note": "周几待确认",
       "primary": {
         "type": "huaren",
         "id": 93084

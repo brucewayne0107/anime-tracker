@@ -46,6 +46,7 @@
                  background: transparent; border: 0; border-bottom: 1px dashed var(--line); padding: 2px 2px; border-radius: 0; }
   .count input:focus { outline: none; border-bottom-color: var(--accent); }
   .count input::-webkit-inner-spin-button, .count input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+  .time { font-size: 12px; color: var(--muted); font-weight: 400; margin-left: 6px; }
   .note { font-size: 12px; color: var(--warn); margin-top: 2px; }
   .srcs { display: grid; gap: 6px; margin-top: 8px; }
   .src { display: flex; align-items: center; gap: 6px; }
@@ -147,7 +148,7 @@ function card(s) {
   const main = linkOf(s.primary) || linkOf(s.secondary) || "#";
   return `<li class="card${behind > 0 ? " new" : ""}">
     <div class="top">
-      <a class="name" href="${esc(main)}" target="_blank" rel="noopener">${esc(s.name)}${behind > 0 ? `<span class="badge">+${behind}</span>` : ""}</a>
+      <a class="name" href="${esc(main)}" target="_blank" rel="noopener">${esc(s.name)}${s.time ? `<span class="time">${esc(s.time)}</span>` : ""}${behind > 0 ? `<span class="badge">+${behind}</span>` : ""}</a>
       <div class="prog">
         <button data-d="-1" data-n="${esc(s.name)}" aria-label="少看一集">−</button>
         <label class="count"><input type="number" inputmode="numeric" min="0" value="${w}" data-n="${esc(s.name)}" aria-label="看到第几集">/${s.latest ?? "?"}</label>
@@ -170,7 +171,7 @@ function render() {
   if (!order.length) { box.innerHTML = `<p class="empty">没有番剧</p>`; return; }
   box.innerHTML = order.map(d => `
     <h2 class="${d === today ? "today" : ""}">${d ? DAYS[d] : "未定"}${d === today ? `<span class="tag">今天</span>` : ""}</h2>
-    <ul>${groups[d].map(card).join("")}</ul>`).join("");
+    <ul>${groups[d].sort((a, b) => String(a.time ?? "99").localeCompare(String(b.time ?? "99"))).map(card).join("")}</ul>`).join("");
 }
 
 async function copy(text, btn) {

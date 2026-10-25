@@ -274,6 +274,7 @@ def run(shows_path, status_path, check=check_source, now=None):
             "watched": baseline if watched is None else watched,
             "baseline": baseline,
             "day": show.get("day"),
+            "time": show.get("time"),
             "note": show.get("note"),
             "latest": latest,
             "updated_at": updated_at,
