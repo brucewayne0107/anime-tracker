@@ -4,6 +4,7 @@
 只用标准库。用法：python scripts/check.py [shows.json] [status.json]
 """
 import datetime as dt
+import hashlib
 import json
 import re
 import sys
@@ -47,6 +48,33 @@ def _ep_num(label):
     """分集标签转集数：'01'、'第12集'、'EP05'、'第3话' 可以；'2026-10-25'、'预告' 之类返回 None。"""
     m = re.fullmatch(r"\s*(?:第|EP|ep|E)?\s*(\d{1,4}(?:\.\d)?)\s*(?:集|话|話)?\s*", str(label or ""))
     return _num(m.group(1)) if m else None
+
+
+def og_image(html):
+    """取页面的封面图（og:image），没有返回 None。"""
+    m = re.search(r'<meta[^>]*property="og:image"[^>]*content="([^"]+)"', html)
+    return m.group(1) if m else None
+
+
+def save_cover(url, docs_dir):
+    """把封面下载到 docs/covers/，返回页面用的相对路径；已存在就不重复下。下载失败返回原链接。"""
+    ext = (re.search(r"\.(jpe?g|png|webp)(?:\?|$)", url, re.I) or [None, "jpg"])[1].lower()
+    rel = f"covers/{hashlib.md5(url.encode()).hexdigest()[:12]}.{ext}"
+    path = Path(docs_dir) / rel
+    if path.exists():
+        return rel
+    try:
+        origin = "/".join(url.split("/")[:3])
+        req = urllib.request.Request(url, headers={"User-Agent": UA, "Referer": origin + "/"})
+        with urllib.request.urlopen(req, timeout=20) as r:
+            body = r.read()
+        if len(body) < 1000:
+            raise ValueError("图片太小")
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_bytes(body)
+        return rel
+    except Exception:
+        return url
 
 
 # ---------- 来源适配器：都返回 {"latest": 集数, "url": 最新集链接, "page": 番剧页面} ----------
@@ -157,7 +185,7 @@ def src_huaren(cfg, fetch=fetch_text):
             best = (n, base + href)
     if best is None:
         raise ValueError("详情页里没找到分集链接")
-    return {"latest": best[0], "url": best[1], "page": page}
+    return {"latest": best[0], "url": best[1], "page": page, "cover": og_image(html)}
 
 
 def ikanbot_token(current_id, e_token):
@@ -193,7 +221,7 @@ def _ikanbot_play(pid, fetch_t, fetch_j):
             n = _ep_num(item.split("$")[0])
             if n is not None and (latest is None or n > latest):
                 latest = n
-    return {"latest": latest, "url": page, "page": page}
+    return {"latest": latest, "url": page, "page": page, "cover": og_image(html)}
 
 
 def src_ikanbot(cfg, fetch_t=fetch_text, fetch_j=fetch_json):
@@ -243,7 +271,7 @@ def check_source(cfg):
     return out
 
 
-def run(shows_path, status_path, check=check_source, now=None):
+def run(shows_path, status_path, check=check_source, now=None, cover_saver=save_cover):
     shows = json.loads(Path(shows_path).read_text("utf-8"))["shows"]
     old = {}
     if Path(status_path).exists():
@@ -269,6 +297,10 @@ def run(shows_path, status_path, check=check_source, now=None):
         if baseline is None:
             baseline = latest
         watched = show.get("watched")
+        # 卡片背景图：shows.json 里写了 cover 就用它，否则取来源页的封面；下载到 docs/covers/ 避免防盗链
+        cover_src = show.get("cover") or next(
+            (x["cover"] for x in (p, s) if x and x.get("cover")), None) or prev.get("cover_src")
+        cover = cover_saver(cover_src, Path(status_path).parent.parent) if cover_src else None
         result.append({
             "name": show["name"],
             "watched": baseline if watched is None else watched,
@@ -278,6 +310,8 @@ def run(shows_path, status_path, check=check_source, now=None):
             "note": show.get("note"),
             "latest": latest,
             "updated_at": updated_at,
+            "cover": cover,
+            "cover_src": cover_src,
             "primary": p,
             "secondary": s,
         })
