@@ -79,6 +79,20 @@ class RunTests(unittest.TestCase):
         self.assertTrue(r["primary"]["stale"])
 
 
+class BaselineTests(unittest.TestCase):
+    def test_watched_defaults_to_latest_when_added(self):
+        d = Path(tempfile.mkdtemp())
+        shows, status = d / "shows.json", d / "status.json"
+        shows.write_text(json.dumps({"shows": [{"name": "A", "primary": {"type": "x"}}]}))
+        n = {"v": 10}
+        src = lambda cfg: {"ok": True, "type": "x", "latest": n["v"], "url": "u"}
+        check.run(shows, status, check=src, now="T1")
+        n["v"] = 12  # 后来又出了两集
+        check.run(shows, status, check=src, now="T2")
+        r = json.loads(status.read_text())["shows"][0]
+        self.assertEqual((r["watched"], r["latest"]), (10, 12))
+
+
 class HuarenIkanbotTests(unittest.TestCase):
     def test_huaren_latest_from_link_text(self):
         html = ('<a href="/vodplay/109-1-1.html">01</a><a href="/vodplay/109-1-125.html">虚天战纪</a>'

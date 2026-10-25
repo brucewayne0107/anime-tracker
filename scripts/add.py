@@ -84,7 +84,7 @@ def main(argv):
         lines.append(f"「{name}」已在列表里，更新为{('周' + '一二三四五六日'[day - 1]) if day else '未定'}")
     else:
         primary, secondary, notes = resolve(name)
-        shows.append({"name": name, "day": day, "watched": 0, "primary": primary, "secondary": secondary})
+        shows.append({"name": name, "day": day, "primary": primary, "secondary": secondary})
         lines.append(f"已新增「{name}」，{('每周' + '一二三四五六日'[day - 1]) if day else '周几未定'}")
         lines += ["- " + n for n in notes]
 

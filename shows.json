@@ -1,10 +1,10 @@
 {
-  "_说明": "每部番一条。day=周几更新(1=周一…7=周日)；note=备注；watched=看到第几集；primary=主要来源；secondary=次要来源。type 见 README。",
+  "_说明": "每部番一条。day=周几更新(1=周一…7=周日)；time=几点更新（北京时间，会员）；note=备注（含「完结」「停播」会放进「停更」tab）；watched=看到第几集，不写就默认加入时的最新一集；primary=主要来源；secondary=次要来源。type 见 README。",
   "shows": [
     {
       "name": "仙逆",
       "day": 7,
-      "watched": 0,
+      "time": "18:00",
       "primary": {
         "type": "huaren",
         "id": 109
@@ -18,7 +18,7 @@
     {
       "name": "牧神记",
       "day": 7,
-      "watched": 0,
+      "time": "11:00",
       "primary": {
         "type": "huaren",
         "id": 91978
@@ -31,8 +31,7 @@
     {
       "name": "一斩苍穹",
       "day": 2,
-      "note": "周几待确认",
-      "watched": 0,
+      "time": "10:00",
       "primary": {
         "type": "huaren",
         "id": 200993
@@ -46,7 +45,7 @@
     {
       "name": "灵境行者",
       "day": 4,
-      "watched": 0,
+      "time": "10:00",
       "primary": {
         "type": "huaren",
         "id": 202541
@@ -60,7 +59,7 @@
     {
       "name": "沧元图",
       "day": 5,
-      "watched": 0,
+      "time": "10:00",
       "primary": {
         "type": "huaren",
         "id": 2845
@@ -73,7 +72,7 @@
     {
       "name": "光阴之外",
       "day": 7,
-      "watched": 0,
+      "time": "10:00",
       "primary": {
         "type": "huaren",
         "id": 189909
@@ -87,7 +86,7 @@
     {
       "name": "择日飞升",
       "day": 6,
-      "watched": 0,
+      "time": "09:00",
       "primary": {
         "type": "huaren",
         "id": 200576
@@ -102,7 +101,6 @@
       "name": "星辰变",
       "day": 4,
       "note": "本季已完结",
-      "watched": 0,
       "primary": {
         "type": "huaren",
         "id": 197856
@@ -117,7 +115,6 @@
       "name": "咒术回战",
       "day": 4,
       "note": "停播中，下半季未定档",
-      "watched": 0,
       "primary": {
         "type": "huaren",
         "id": 190551
@@ -132,7 +129,6 @@
       "name": "海贼王",
       "day": 7,
       "note": "停播中，预计2027年春回归",
-      "watched": 0,
       "primary": {
         "type": "huaren",
         "id": 108
@@ -145,8 +141,6 @@
     {
       "name": "斗破苍穹年番",
       "day": 7,
-      "note": "周几待确认",
-      "watched": 0,
       "primary": {
         "type": "huaren",
         "id": 93084

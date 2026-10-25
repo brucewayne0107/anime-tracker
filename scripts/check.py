@@ -264,10 +264,17 @@ def run(shows_path, status_path, check=check_source, now=None):
         updated_at = prev.get("updated_at")
         if latest is not None and latest != prev.get("latest"):
             updated_at = now
+        # 没写 watched 的番，默认「已经看到加入列表时的最新一集」，之后出的新集才算 +N
+        baseline = prev.get("baseline")
+        if baseline is None:
+            baseline = latest
+        watched = show.get("watched")
         result.append({
             "name": show["name"],
-            "watched": show.get("watched", 0),
+            "watched": baseline if watched is None else watched,
+            "baseline": baseline,
             "day": show.get("day"),
+            "time": show.get("time"),
             "note": show.get("note"),
             "latest": latest,
             "updated_at": updated_at,
