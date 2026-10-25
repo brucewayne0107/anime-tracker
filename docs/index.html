@@ -111,7 +111,7 @@ function srcRow(src, label) {
 function card(s) {
   const w = watchedOf(s), behind = (s.latest ?? 0) - w;
   const main = linkOf(s.primary) || linkOf(s.secondary) || "#";
-  return `<li class="card${behind > 0 ? " new" : ""}${s.note && behind <= 0 ? " off" : ""}">
+  return `<li class="card${behind > 0 ? " new" : ""}${/完结|停播/.test(s.note || "") && behind <= 0 ? " off" : ""}">
     <div class="top">
       <a class="name" href="${esc(main)}" target="_blank" rel="noopener">${esc(s.name)}${behind > 0 ? `<span class="badge">+${behind}</span>` : ""}</a>
       <div class="prog">
