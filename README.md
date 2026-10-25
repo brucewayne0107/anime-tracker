@@ -86,5 +86,5 @@ push 涉及 `catalog.json` 时 Actions 会解析并提交生成结果；原来�
 
 ## 吉祥物图片
 
-新增噜噜噜妹图片放进 `docs/lulu/`，在 `docs/lulu/list.json` 里加上文件名；页面加载时随机选头像、打乱顶部图带。
+新增噜噜噜妹图片放进 `docs/lulu/`，在 `docs/lulu/list.json` 里加上文件名；每次打开页面从中随机选一张做头像。
 

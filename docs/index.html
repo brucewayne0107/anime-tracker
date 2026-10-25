@@ -111,8 +111,6 @@
   dialog a { color: var(--accent); }
   .sync-ok { color: #3fb27f; }
   .mascot { aspect-ratio: 1; object-fit: cover; border-radius: 50%; flex-shrink: 0; }
-  .lulu-strip { display: flex; gap: 8px; overflow-x: auto; max-width: 100%; margin: 16px 0 8px; padding-bottom: 4px; }
-  .lulu-strip img { width: 90px; height: 90px; object-fit: cover; border-radius: 18px; flex: none; }
   .filters { overscroll-behavior-x: contain; }
   .catalog { margin-top: 14px; }
   .catalog .name { white-space: normal; overflow-wrap: anywhere; }
@@ -137,7 +135,6 @@
     <button class="icon-btn" id="syncBtn" aria-label="同步设置">☁️</button>
     <button class="icon-btn add" id="add">＋ 新增</button>
   </header>
-  <div id="luluStrip" class="lulu-strip" aria-label="噜噜和噜妹相册"></div>
 
   <dialog id="dlg">
     <form method="dialog" id="addForm">
@@ -204,10 +201,6 @@ function setMascots() { document.querySelectorAll("img.mascot").forEach(img => {
 fetch("lulu/list.json").then(r => { if (!r.ok) throw new Error("图片清单读取失败"); return r.json(); }).then(files => {
   if (!files.length) return;
   mascots = files;
-  const shuffled = [...files];
-  for (let i = shuffled.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]; }
-  const strip = document.getElementById("luluStrip");
-  shuffled.forEach(file => { const img = document.createElement("img"); img.src = `lulu/${file}`; img.alt = "噜噜和噜妹"; img.loading = "lazy"; strip.appendChild(img); });
   setMascots();
 }).catch(() => setMascots());
 
