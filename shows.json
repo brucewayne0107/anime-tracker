@@ -164,6 +164,18 @@
         "q": "剑来",
         "title": "剑来第二季"
       }
+    },
+    {
+      "name": "财神窦占龙",
+      "day": null,
+      "primary": {
+        "type": "huaren",
+        "id": 202008
+      },
+      "secondary": {
+        "type": "ikanbot",
+        "q": "财神窦占龙"
+      }
     }
   ]
 }

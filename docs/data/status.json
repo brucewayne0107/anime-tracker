@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-25T13:41:59+00:00",
+  "checked_at": "2026-10-25T17:37:51+00:00",
   "shows": [
     {
       "name": "仙逆",
@@ -333,6 +333,34 @@
         "url": "https://www.ikanbot.com/play/936361",
         "page": "https://www.ikanbot.com/play/936361",
         "cover": "https://img9.doubanio.com/view/photo/m_ratio_poster/public/p2928331496.jpg",
+        "ok": true,
+        "type": "ikanbot"
+      }
+    },
+    {
+      "name": "财神窦占龙",
+      "watched": 13,
+      "baseline": 13,
+      "day": null,
+      "time": null,
+      "note": null,
+      "latest": 13,
+      "updated_at": "2026-10-25T17:37:51+00:00",
+      "cover": "covers/7545a77a701f.jpg",
+      "cover_src": "https://static.huarenlivewebsite.top/piccdn/olo/anime/202008_image.jpg",
+      "primary": {
+        "latest": 13,
+        "url": "https://huaren.live/vodplay/202008-1-13.html",
+        "page": "https://huaren.live/voddetail/202008.html",
+        "cover": "https://static.huarenlivewebsite.top/piccdn/olo/anime/202008_image.jpg",
+        "ok": true,
+        "type": "huaren"
+      },
+      "secondary": {
+        "latest": 13,
+        "url": "https://www.ikanbot.com/play/1006285",
+        "page": "https://www.ikanbot.com/play/1006285",
+        "cover": "https://img3.doubanio.com/view/photo/m_ratio_poster/public/p2934809957.jpg",
         "ok": true,
         "type": "ikanbot"
       }
