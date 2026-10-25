@@ -48,21 +48,21 @@
             border-radius: 22px; padding: 14px; box-shadow: var(--shadow); }
   li.card.new { border-color: var(--accent); background: linear-gradient(120deg, var(--accent-soft), var(--card) 70%); }
   /* 封面背景：图在最底层，上面盖一层从左到右渐淡的卡片色，保证字看得清 */
-  li.card.has-cover { min-height: 168px; padding: 16px; display: flex; flex-direction: column; }
+  li.card.has-cover { min-height: 200px; padding: 16px; display: flex; flex-direction: column; }
   .has-cover .srcs { margin-top: auto; padding-top: 12px; }
   .cover { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
   li.card.has-cover::before { content: ""; position: absolute; inset: 0; z-index: -1;
     background: linear-gradient(100deg, color-mix(in srgb, var(--card) 94%, transparent) 0%,
-                                       color-mix(in srgb, var(--card) 82%, transparent) 45%,
-                                       color-mix(in srgb, var(--card) 50%, transparent) 100%); }
+                                       color-mix(in srgb, var(--card) 72%, transparent) 40%,
+                                       color-mix(in srgb, var(--card) 15%, transparent) 100%); }
   li.card.new.has-cover::before { background: linear-gradient(100deg, color-mix(in srgb, var(--accent-soft) 94%, transparent) 0%,
-                                       color-mix(in srgb, var(--card) 82%, transparent) 45%,
-                                       color-mix(in srgb, var(--card) 50%, transparent) 100%); }
+                                       color-mix(in srgb, var(--card) 72%, transparent) 40%,
+                                       color-mix(in srgb, var(--card) 15%, transparent) 100%); }
   .has-cover .name { text-shadow: 0 0 6px var(--card), 0 0 2px var(--card); }
   .has-cover .note { display: inline-block; align-self: flex-start; padding: 1px 8px; border-radius: 8px;
                      background: color-mix(in srgb, var(--card) 85%, transparent); }
   .has-cover .src a, .has-cover .src .err, .has-cover .prog button, .has-cover .src .copy {
-    background: color-mix(in srgb, var(--chip) 88%, transparent); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+    background: color-mix(in srgb, var(--chip) 72%, transparent); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
   .has-cover .count { padding: 0 4px; border-radius: 10px; background: color-mix(in srgb, var(--card) 80%, transparent); }
   .top { display: flex; align-items: center; gap: 8px; }
   .name { flex: 1; min-width: 0; font-weight: 700; font-size: 17px; color: inherit; text-decoration: none;
