@@ -93,6 +93,30 @@ class BaselineTests(unittest.TestCase):
         self.assertEqual((r["watched"], r["latest"]), (10, 12))
 
 
+class CoverTests(unittest.TestCase):
+    def test_cover_override_then_source_then_previous(self):
+        d = Path(tempfile.mkdtemp())
+        shows, status = d / "shows.json", d / "data" / "status.json"
+        saved = []
+        saver = lambda url, docs: saved.append((url, docs)) or "covers/" + url[-5:]
+        src = lambda cfg: {"ok": True, "type": "x", "latest": 1, "url": "u", "cover": "https://a/p.jpg"}
+        shows.write_text(json.dumps({"shows": [{"name": "A", "primary": {"type": "x"}},
+                                               {"name": "B", "cover": "https://b/q.png", "primary": {"type": "x"}}]}))
+        check.run(shows, status, check=src, now="T1", cover_saver=saver)
+        a, b = json.loads(status.read_text())["shows"]
+        self.assertEqual((a["cover"], b["cover"]), ("covers/p.jpg", "covers/q.png"))
+        self.assertEqual(saved[0][1], d)
+        # 来源失败也没有上次结果时，沿用上次的封面
+        bad = lambda cfg: {"ok": False, "type": "x", "error": "boom"}
+        check.run(shows, status, check=bad, now="T2", cover_saver=saver)
+        self.assertEqual(json.loads(status.read_text())["shows"][0]["cover"], "covers/p.jpg")
+
+    def test_og_image(self):
+        html = '<meta property="og:image" content="https://s/x/109_image.jpg">'
+        self.assertEqual(check.og_image(html), "https://s/x/109_image.jpg")
+        self.assertIsNone(check.og_image("<html></html>"))
+
+
 class HuarenIkanbotTests(unittest.TestCase):
     def test_huaren_latest_from_link_text(self):
         html = ('<a href="/vodplay/109-1-1.html">01</a><a href="/vodplay/109-1-125.html">虚天战纪</a>'
