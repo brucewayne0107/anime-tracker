@@ -153,8 +153,8 @@
     },
     {
       "name": "剑来",
-      "day": null,
-      "watched": 0,
+      "day": 4,
+      "note": "第二季已完结（8 月播完）",
       "primary": {
         "type": "huaren",
         "id": 180956
