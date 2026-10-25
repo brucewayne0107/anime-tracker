@@ -12,9 +12,19 @@
 2. Actions 页面手动运行一次「检查番剧更新」
 3. 打开 `https://<你的用户名>.github.io/<仓库名>/`
 
-## 加一部番
+## 加一部番（最简单）
 
-编辑 `shows.json`，加一条：
+在网页右上角点「＋ 新增」，填番名、选周几，跳到 GitHub 后点「Submit new issue」。
+大约 1 分钟后 Actions 自动去两个网站找到条目，写进 `shows.json`，在 issue 里回复找到了什么并关掉它，网页也跟着更新。
+删除：新开一个标题为「删除 番名」的 issue。改周几：再「新增 番名 周X」一次。
+
+也可以本地运行：`python scripts/add.py 凡人修仙传 3`、`python scripts/add.py --remove 凡人修仙传`。
+
+自动找错了条目的话，在 `shows.json` 里改 id 就行（网页底部有「编辑列表」链接）。
+
+## 手动编辑 shows.json
+
+每部番一条：
 
 ```json
 {
