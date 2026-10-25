@@ -57,6 +57,16 @@
   .empty { color: var(--muted); text-align: center; padding: 40px 0; }
   footer { margin-top: 24px; color: var(--muted); font-size: 12px; line-height: 1.7; }
   footer button { font-size: 12px; background: none; border: 0; color: var(--accent); padding: 0; }
+  .add { border: 0; background: var(--accent); color: #fff; border-radius: 999px; padding: 6px 14px; font-size: 14px; }
+  dialog { border: 0; border-radius: 16px; padding: 16px; width: min(92vw, 360px); background: var(--card); color: var(--text); }
+  dialog::backdrop { background: rgba(0,0,0,.4); }
+  dialog h3 { margin: 0 0 12px; font-size: 17px; }
+  dialog input, dialog select { width: 100%; font-size: 16px; padding: 10px; border-radius: 10px;
+                                border: 1px solid var(--line); background: var(--bg); color: var(--text); margin-bottom: 10px; }
+  dialog .row { display: flex; gap: 8px; justify-content: flex-end; }
+  dialog .row button { font-size: 15px; padding: 8px 16px; border-radius: 10px; border: 1px solid var(--line); background: var(--card); color: var(--text); }
+  dialog .row button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  dialog p { font-size: 12px; color: var(--muted); margin: 0 0 12px; }
 </style>
 </head>
 <body>
@@ -64,7 +74,21 @@
   <header>
     <h1>追番进度</h1>
     <span class="meta" id="checked"></span>
+    <button class="add" id="add">＋ 新增</button>
   </header>
+  <dialog id="dlg">
+    <form method="dialog" id="addForm">
+      <h3>新增番剧</h3>
+      <input id="addName" placeholder="番名，比如 凡人修仙传" required autocomplete="off">
+      <select id="addDay">
+        <option value="">周几更新（可不选）</option>
+        <option value="周一">周一</option><option value="周二">周二</option><option value="周三">周三</option>
+        <option value="周四">周四</option><option value="周五">周五</option><option value="周六">周六</option><option value="周日">周日</option>
+      </select>
+      <p>会跳到 GitHub 页面，点「Submit new issue」提交。后台大约 1 分钟内自动找到两个网站的链接并更新这个页面。删除也一样：标题写「删除 番名」。</p>
+      <div class="row"><button value="cancel" formnovalidate>取消</button><button class="primary" value="ok">去提交</button></div>
+    </form>
+  </dialog>
   <div class="filters">
     <button data-f="all" class="on">全部</button>
     <button data-f="new">有新集</button>
@@ -72,7 +96,7 @@
   </div>
   <div id="list"><p class="empty">加载中…</p></div>
   <footer>
-    看到第几集保存在这台设备的浏览器里。换设备前可以
+    <span id="repoLinks"></span>看到第几集保存在这台设备的浏览器里。换设备前可以
     <button id="export">复制进度</button>，填回 shows.json 的 watched。
   </footer>
 </main>
@@ -80,6 +104,10 @@
 const KEY = "anime-tracker-watched";
 const DAYS = ["", "周一", "周二", "周三", "周四", "周五", "周六", "周日"];
 const SRC = { huaren: "华人直播", ikanbot: "爱看机器人", bilibili: "B站", bangumi: "Bangumi", regex: "来源" };
+// 仓库：在 <用户名>.github.io/<仓库名>/ 上自动识别，本地打开时用默认值
+const REPO = location.hostname.endsWith(".github.io")
+  ? `${location.hostname.split(".")[0]}/${location.pathname.split("/")[1]}`
+  : "brucewayne0107/anime-tracker";
 const today = ((new Date().getDay() + 6) % 7) + 1; // 1=周一 … 7=周日
 let data = { shows: [] }, filter = "all";
 
@@ -173,6 +201,21 @@ document.getElementById("export").addEventListener("click", e => {
   const out = Object.fromEntries(data.shows.map(s => [s.name, watchedOf(s)]));
   copy(JSON.stringify(out, null, 2), e.target);
 });
+
+const dlg = document.getElementById("dlg");
+document.getElementById("add").addEventListener("click", () => {
+  dlg.showModal ? dlg.showModal() : dlg.setAttribute("open", "");
+  document.getElementById("addName").focus();
+});
+document.getElementById("addForm").addEventListener("submit", e => {
+  if (e.submitter && e.submitter.value !== "ok") return;
+  const name = document.getElementById("addName").value.trim();
+  if (!name) return;
+  const title = ["新增", name, document.getElementById("addDay").value].filter(Boolean).join(" ");
+  location.href = `https://github.com/${REPO}/issues/new?title=${encodeURIComponent(title)}`;
+});
+document.getElementById("repoLinks").innerHTML =
+  `<a href="https://github.com/${REPO}/edit/main/shows.json" style="color:inherit">编辑列表</a> · `;
 
 fetch("data/status.json", { cache: "no-store" })
   .then(r => r.json())

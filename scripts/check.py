@@ -114,10 +114,40 @@ def src_regex(cfg, fetch=fetch_text):
     return {"latest": latest, "url": ep_url, "page": cfg["url"]}
 
 
+def huaren_search(q, fetch=fetch_text, base="https://huaren.live"):
+    """在 huaren 搜索，返回 [(id, 标题, 备注)]。备注是封面角标，比如「163」「12集全」「正片」。"""
+    html = fetch(f"{base}/vodsearch/-------------.html?wd=" + urllib.parse.quote(q))
+    out = []
+    for block in html.split('class="public-list-exp"')[1:]:
+        m = re.search(r'thumb-txt[^>]*>\s*<a[^>]*href="/voddetail/(\d+)\.html"[^>]*>([^<]*)<', block)
+        if not m or m.group(1) in [v for v, _, _ in out]:
+            continue
+        r = re.search(r'public-list-prb[^>]*>([^<]*)<', block)
+        out.append((m.group(1), m.group(2).strip(), r.group(1).strip() if r else ""))
+    return out
+
+
+SEASON = re.compile(r"\s*(第[一二三四五六七八九十\d]{1,3}[季部]|年番|\d{1,2})?\s*")
+
+
+def huaren_pick(q, results):
+    """挑正片连载：标题是「搜索词」或「搜索词+第X季/年番」，取 id 最大（最新上架）的那个。"""
+    ok = [(int(v), v) for v, t, r in results
+          if t.startswith(q) and SEASON.fullmatch(t[len(q):]) and r != "正片"]
+    return max(ok)[1] if ok else None
+
+
 def src_huaren(cfg, fetch=fetch_text):
-    """huaren.live（MacCMS 站）：详情页里有每条线路的分集链接 /vodplay/{id}-{线路}-{序号}.html。"""
-    vid = cfg.get("id") or re.search(r"/vod(?:detail|play)/(\d+)", cfg.get("url", "")).group(1)
+    """huaren.live（MacCMS 站）：详情页里有每条线路的分集链接 /vodplay/{id}-{线路}-{序号}.html。
+    给 id（voddetail/ 后的数字）；没有 id 就用 q 搜索。"""
     base = cfg.get("base", "https://huaren.live")
+    vid = cfg.get("id")
+    if not vid and cfg.get("url"):
+        vid = re.search(r"/vod(?:detail|play)/(\d+)", cfg["url"]).group(1)
+    if not vid:
+        vid = huaren_pick(cfg["q"], huaren_search(cfg["q"], fetch, base))
+        if not vid:
+            raise ValueError(f"huaren 搜不到「{cfg['q']}」")
     page = f"{base}/voddetail/{vid}.html"
     html = fetch(page)
     best = None  # (集数, 链接)
@@ -168,7 +198,7 @@ def _ikanbot_play(pid, fetch_t, fetch_j):
 
 def src_ikanbot(cfg, fetch_t=fetch_text, fetch_j=fetch_json):
     """ikanbot.com：同名条目常有好几个，搜索后挨个查，取集数最多的那个。
-    可直接给 id（/play/ 后的数字），或给 q（搜索词）+ 可选 year。"""
+    可直接给 id（/play/ 后的数字），或给 q（搜索词）+ 可选 title（要匹配的标题，忽略空格）、year。"""
     if cfg.get("id"):
         return _ikanbot_play(cfg["id"], fetch_t, fetch_j)
     q = cfg["q"]
@@ -178,7 +208,8 @@ def src_ikanbot(cfg, fetch_t=fetch_text, fetch_j=fetch_json):
         parts = title.split()
         year = parts[-1] if parts and re.fullmatch(r"\d{4}", parts[-1]) else ""
         name = " ".join(parts[:-1] if year else parts)
-        if name == q and (not cfg.get("year") or year == str(cfg["year"])):
+        want = re.sub(r"\s+", "", cfg.get("title") or q)
+        if re.sub(r"\s+", "", name) == want and (not cfg.get("year") or year == str(cfg["year"])):
             cands.append(pid)
     best, errors = None, []
     for pid in cands[:cfg.get("max_candidates", 4)]:
