@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-25T00:46:48+00:00",
+  "checked_at": "2026-10-25T01:02:52+00:00",
   "shows": [
     {
       "name": "仙逆",
@@ -267,11 +267,11 @@
     },
     {
       "name": "剑来",
-      "watched": 0,
+      "watched": 27,
       "baseline": 27,
-      "day": null,
+      "day": 4,
       "time": null,
-      "note": null,
+      "note": "第二季已完结（8 月播完）",
       "latest": 27,
       "updated_at": "2026-10-25T00:39:53+00:00",
       "primary": {
