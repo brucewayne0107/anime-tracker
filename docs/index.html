@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#ffeef3">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="留子追番">
+<meta name="apple-mobile-web-app-title" content="噜妹追番">
 <link rel="icon" href="dumei.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="lulu/lulu01.jpg">
-<title>留子追番</title>
+<title>噜妹追番</title>
 <style>
   :root {
     --bg: #fff7f9; --card: #ffffff; --text: #4a2e3b; --muted: #a8899a; --line: #f6dbe4;
@@ -129,7 +129,7 @@
   <header>
     <img class="mascot" src="lulu/lulu01.jpg" alt="噜噜和噜妹">
     <div class="title">
-      <h1>留子追番</h1>
+      <h1>噜妹追番</h1>
       <div class="meta"><span id="checked"></span> <span id="syncState"></span></div>
     </div>
     <button class="icon-btn" id="syncBtn" aria-label="同步设置">☁️</button>
@@ -431,7 +431,7 @@ document.getElementById("addForm").addEventListener("submit", e => {
 
 const syncDlg = document.getElementById("syncDlg");
 document.getElementById("patLink").href = "https://github.com/settings/personal-access-tokens/new?" + new URLSearchParams({
-  name: "留子追番同步", description: "anime-tracker progress sync", target_name: REPO.split("/")[0],
+  name: "噜妹追番同步", description: "anime-tracker progress sync", target_name: REPO.split("/")[0],
   expires_in: "none", contents: "write" });
 document.getElementById("syncBtn").addEventListener("click", () => {
   document.getElementById("token").value = token() || "";
