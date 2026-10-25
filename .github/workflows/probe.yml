@@ -1,0 +1,17 @@
+name: probe
+on: push
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { ref: feat/tracker }
+      - run: |
+          python scripts/add.py --issue "新增 凡人修仙传 周三"
+          python scripts/add.py --issue "新增 星辰变 周四" 
+          python scripts/add.py --remove 星辰变 && python scripts/add.py 星辰变 4
+          python - <<'PY'
+          import json; d=json.load(open('shows.json'))
+          for s in d['shows'][-2:]: print(json.dumps(s,ensure_ascii=False))
+          PY
+          python scripts/check.py | tail -3
