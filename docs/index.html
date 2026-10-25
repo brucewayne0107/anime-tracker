@@ -3,124 +3,248 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#fb7299">
+<meta name="theme-color" content="#ffeef3">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<title>追番进度</title>
+<meta name="apple-mobile-web-app-title" content="嘟妹追番">
+<link rel="icon" href="dumei.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="dumei.svg">
+<title>嘟妹追番</title>
 <style>
   :root {
-    --bg: #f6f7f9; --card: #fff; --text: #1d2129; --muted: #86909c; --line: #e5e6eb;
-    --accent: #fb7299; --accent-soft: #fff0f4; --warn: #ff7d00; --chip: #f2f3f5;
+    --bg: #fff7f9; --card: #ffffff; --text: #4a2e3b; --muted: #a8899a; --line: #f6dbe4;
+    --accent: #ff7ea6; --accent-2: #ffb36b; --accent-soft: #fff0f5; --chip: #fff3f7; --warn: #f08a4b;
+    --shadow: 0 4px 14px rgba(255, 126, 166, .12);
   }
   @media (prefers-color-scheme: dark) {
-    :root { --bg: #17171a; --card: #232326; --text: #e5e6eb; --muted: #8a8f99; --line: #333338;
-            --accent-soft: #3a2029; --chip: #2e2e32; }
+    :root { --bg: #221a20; --card: #2d2329; --text: #f6e6ee; --muted: #b293a3; --line: #43333d;
+            --accent-soft: #3d2632; --chip: #36292f; --shadow: none; }
   }
   * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-  body { margin: 0; background: var(--bg); color: var(--text);
-         font: 16px/1.5 -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; }
-  main { max-width: 640px; margin: 0 auto; padding: calc(12px + env(safe-area-inset-top)) 12px 40px; }
-  header { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
-  h1 { font-size: 20px; margin: 4px 0; }
+  body { margin: 0; color: var(--text); background: var(--bg);
+         background-image: radial-gradient(var(--line) 1.2px, transparent 1.2px); background-size: 22px 22px;
+         font: 16px/1.5 -apple-system, "PingFang SC", "Hiragino Maru Gothic ProN", "Microsoft YaHei", sans-serif; }
+  main { max-width: 640px; margin: 0 auto; padding: calc(10px + env(safe-area-inset-top)) 12px 40px; }
+  header { display: flex; align-items: center; gap: 10px; }
+  header img { width: 52px; height: 52px; animation: bob 3s ease-in-out infinite; }
+  @keyframes bob { 50% { transform: translateY(-3px) rotate(-3deg); } }
+  .title { flex: 1; min-width: 0; }
+  h1 { font-size: 22px; margin: 0; letter-spacing: 1px; color: var(--accent); }
   .meta { color: var(--muted); font-size: 12px; }
-  .filters { position: sticky; top: 0; z-index: 2; background: var(--bg); margin: 8px -12px 4px;
-             padding: 8px 12px; display: flex; gap: 8px; overflow-x: auto; }
-  .filters button { flex: none; border: 1px solid var(--line); background: var(--card); color: var(--text);
-                    padding: 6px 14px; border-radius: 999px; font-size: 14px; }
+  .icon-btn { border: 0; background: var(--card); color: var(--text); border-radius: 999px; height: 36px; padding: 0 12px;
+              font-size: 14px; box-shadow: var(--shadow); }
+  .add { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #fff; }
+  .filters { position: sticky; top: 0; z-index: 2; margin: 10px -12px 4px; padding: 8px 12px; display: flex; gap: 8px;
+             overflow-x: auto; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(6px); }
+  .filters button { flex: none; border: 2px solid var(--line); background: var(--card); color: var(--text);
+                    padding: 5px 14px; border-radius: 999px; font-size: 14px; }
   .filters button.on { background: var(--accent); border-color: var(--accent); color: #fff; }
-  h2 { font-size: 14px; color: var(--muted); margin: 16px 4px 8px; font-weight: 600; }
+  h2 { font-size: 14px; color: var(--muted); margin: 18px 6px 8px; font-weight: 700; display: flex; align-items: center; gap: 6px; }
+  h2::before { content: "♡"; color: var(--accent); }
   h2.today { color: var(--accent); }
-  h2 .tag { margin-left: 6px; font-size: 12px; padding: 1px 6px; border-radius: 4px; background: var(--accent); color: #fff; }
-  ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
-  li.card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 12px; }
-  li.card.new { border-color: var(--accent); background: linear-gradient(90deg, var(--accent-soft), var(--card) 70%); }
-  li.card.off { opacity: .6; }
-  .top { display: flex; align-items: center; gap: 10px; }
-  .name { flex: 1; min-width: 0; font-weight: 600; font-size: 17px; color: inherit; text-decoration: none;
+  h2.today::before { content: "♥"; }
+  h2 .tag { font-size: 12px; padding: 1px 8px; border-radius: 999px; background: var(--accent); color: #fff; }
+  ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  li.card { background: var(--card); border: 2px solid var(--line); border-radius: 20px; padding: 12px; box-shadow: var(--shadow); }
+  li.card.new { border-color: var(--accent); background: linear-gradient(120deg, var(--accent-soft), var(--card) 70%); }
+  .top { display: flex; align-items: center; gap: 8px; }
+  .name { flex: 1; min-width: 0; font-weight: 700; font-size: 17px; color: inherit; text-decoration: none;
           overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 4px 0; }
-  .badge { font-size: 12px; padding: 0 6px; border-radius: 4px; background: var(--accent); color: #fff; margin-left: 4px; vertical-align: 2px; }
+  .time { font-size: 12px; color: var(--muted); font-weight: 400; margin-left: 6px; }
+  .badge { display: inline-block; font-size: 12px; padding: 0 8px; border-radius: 999px; background: var(--accent); color: #fff;
+           margin-left: 6px; vertical-align: 2px; animation: pop .6s ease-out; }
+  @keyframes pop { 0% { transform: scale(.4); } 70% { transform: scale(1.15); } }
   .prog { flex: none; display: flex; align-items: center; gap: 4px; }
-  .prog button { width: 36px; height: 36px; border-radius: 10px; border: 1px solid var(--line);
-                 background: var(--bg); color: var(--text); font-size: 18px; }
+  .prog button { width: 34px; height: 34px; border-radius: 50%; border: 2px solid var(--line); background: var(--chip);
+                 color: var(--accent); font-size: 18px; font-weight: 700; line-height: 1; }
+  .prog button:active { transform: scale(.9); }
   .count { display: flex; align-items: baseline; font-variant-numeric: tabular-nums; font-size: 14px; color: var(--muted); }
-  .count input { width: 52px; font: inherit; font-size: 18px; font-weight: 600; text-align: right; color: var(--text);
-                 background: transparent; border: 0; border-bottom: 1px dashed var(--line); padding: 2px 2px; border-radius: 0; }
+  .count input { width: 50px; font: inherit; font-size: 18px; font-weight: 700; text-align: right; color: var(--text);
+                 background: transparent; border: 0; border-bottom: 2px dotted var(--line); padding: 2px; border-radius: 0; }
   .count input:focus { outline: none; border-bottom-color: var(--accent); }
   .count input::-webkit-inner-spin-button, .count input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
-  .time { font-size: 12px; color: var(--muted); font-weight: 400; margin-left: 6px; }
   .note { font-size: 12px; color: var(--warn); margin-top: 2px; }
   .srcs { display: grid; gap: 6px; margin-top: 8px; }
   .src { display: flex; align-items: center; gap: 6px; }
-  .src a, .src .err { flex: 1; min-width: 0; display: block; padding: 7px 10px; border-radius: 10px; background: var(--chip);
+  .src a, .src .err { flex: 1; min-width: 0; display: block; padding: 7px 12px; border-radius: 14px; background: var(--chip);
                       color: var(--text); text-decoration: none; font-size: 14px;
                       overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .src .lbl { color: var(--muted); margin-right: 4px; }
+  .src .lbl { display: inline-block; font-size: 11px; color: #fff; background: var(--accent); border-radius: 6px;
+              padding: 0 5px; margin-right: 6px; vertical-align: 1px; }
+  .src .lbl.sub { background: var(--accent-2); }
   .src .err { color: var(--warn); }
-  .src .copy { flex: none; height: 36px; padding: 0 12px; border-radius: 10px; border: 1px solid var(--line);
+  .src .copy { flex: none; height: 34px; padding: 0 12px; border-radius: 14px; border: 2px solid var(--line);
                background: var(--card); color: var(--text); font-size: 13px; }
   .src .copy.done { color: var(--accent); border-color: var(--accent); }
-  .empty { color: var(--muted); text-align: center; padding: 40px 0; }
-  footer { margin-top: 24px; color: var(--muted); font-size: 12px; line-height: 1.7; }
-  footer button { font-size: 12px; background: none; border: 0; color: var(--accent); padding: 0; }
-  .add { border: 0; background: var(--accent); color: #fff; border-radius: 999px; padding: 6px 14px; font-size: 14px; }
-  dialog { border: 0; border-radius: 16px; padding: 16px; width: min(92vw, 360px); background: var(--card); color: var(--text); }
-  dialog::backdrop { background: rgba(0,0,0,.4); }
-  dialog h3 { margin: 0 0 12px; font-size: 17px; }
-  dialog input, dialog select { width: 100%; font-size: 16px; padding: 10px; border-radius: 10px;
-                                border: 1px solid var(--line); background: var(--bg); color: var(--text); margin-bottom: 10px; }
-  dialog .row { display: flex; gap: 8px; justify-content: flex-end; }
-  dialog .row button { font-size: 15px; padding: 8px 16px; border-radius: 10px; border: 1px solid var(--line); background: var(--card); color: var(--text); }
+  .empty { color: var(--muted); text-align: center; padding: 32px 0; }
+  .empty img { width: 96px; display: block; margin: 0 auto 8px; opacity: .9; }
+  footer { margin-top: 24px; color: var(--muted); font-size: 12px; line-height: 1.8; text-align: center; }
+  footer a, footer button { font-size: 12px; background: none; border: 0; color: var(--accent); padding: 0; text-decoration: none; }
+  dialog { border: 0; border-radius: 22px; padding: 18px; width: min(92vw, 380px); background: var(--card); color: var(--text); }
+  dialog::backdrop { background: rgba(74, 46, 59, .35); }
+  dialog h3 { margin: 0 0 12px; font-size: 17px; color: var(--accent); display: flex; align-items: center; gap: 8px; }
+  dialog h3 img { width: 32px; }
+  dialog input, dialog select { width: 100%; font-size: 16px; padding: 10px 12px; border-radius: 14px;
+                                border: 2px solid var(--line); background: var(--bg); color: var(--text); margin-bottom: 10px; }
+  dialog .row { display: flex; gap: 8px; justify-content: flex-end; flex-wrap: wrap; }
+  dialog .row button { font-size: 15px; padding: 8px 16px; border-radius: 14px; border: 2px solid var(--line); background: var(--card); color: var(--text); }
   dialog .row button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
-  dialog p { font-size: 12px; color: var(--muted); margin: 0 0 12px; }
+  dialog p, dialog ol { font-size: 13px; color: var(--muted); margin: 0 0 12px; }
+  dialog ol { padding-left: 18px; }
+  dialog a { color: var(--accent); }
+  .sync-ok { color: #3fb27f; }
 </style>
 </head>
 <body>
 <main>
   <header>
-    <h1>追番进度</h1>
-    <span class="meta" id="checked"></span>
-    <button class="add" id="add">＋ 新增</button>
+    <img src="dumei.svg" alt="">
+    <div class="title">
+      <h1>嘟妹追番</h1>
+      <div class="meta"><span id="checked"></span> <span id="syncState"></span></div>
+    </div>
+    <button class="icon-btn" id="syncBtn" aria-label="同步设置">☁️</button>
+    <button class="icon-btn add" id="add">＋ 新增</button>
   </header>
+
   <dialog id="dlg">
     <form method="dialog" id="addForm">
-      <h3>新增番剧</h3>
+      <h3><img src="dumei.svg" alt="">新增番剧</h3>
       <input id="addName" placeholder="番名，比如 凡人修仙传" required autocomplete="off">
       <select id="addDay">
-        <option value="">周几更新（可不选）</option>
+        <option value="">周几更新（北京时间，可不选）</option>
         <option value="周一">周一</option><option value="周二">周二</option><option value="周三">周三</option>
         <option value="周四">周四</option><option value="周五">周五</option><option value="周六">周六</option><option value="周日">周日</option>
       </select>
-      <p>会跳到 GitHub 页面，点「Submit new issue」提交。后台大约 1 分钟内自动找到两个网站的链接并更新这个页面。删除也一样：标题写「删除 番名」。</p>
+      <p>会跳到 GitHub，点「Submit new issue」提交。大约 1 分钟后自动找好两个网站的链接。删除：标题写「删除 番名」。</p>
       <div class="row"><button value="cancel" formnovalidate>取消</button><button class="primary" value="ok">去提交</button></div>
     </form>
   </dialog>
+
+  <dialog id="syncDlg">
+    <form method="dialog" id="syncForm">
+      <h3><img src="dumei.svg" alt="">多设备同步</h3>
+      <p>看到第几集会存进 GitHub 仓库的 progress.json，每台设备填一次口令就能同步。</p>
+      <ol>
+        <li>打开 <a id="patLink" target="_blank" rel="noopener">新建 GitHub 口令</a>，Repository access 只选这个仓库，Permissions 里 Contents 选 Read and write，生成后复制。</li>
+        <li>粘贴到下面，保存。每台设备都做一次（可以用同一个口令）。</li>
+      </ol>
+      <input id="token" type="password" placeholder="github_pat_…" autocomplete="off">
+      <div class="row">
+        <button value="clear" formnovalidate>清除口令</button>
+        <button value="cancel" formnovalidate>取消</button>
+        <button class="primary" value="ok">保存</button>
+      </div>
+    </form>
+  </dialog>
+
   <div class="filters">
     <button data-f="all" class="on">追番中</button>
     <button data-f="new">有新集</button>
     <button data-f="today">今天更新</button>
     <button data-f="off">停更</button>
   </div>
-  <div id="list"><p class="empty">加载中…</p></div>
+  <div id="list"><p class="empty"><img src="dumei.svg" alt="">嘟妹加载中…</p></div>
   <footer>
-    <span id="repoLinks"></span>看到第几集保存在这台设备的浏览器里。换设备前可以
-    <button id="export">复制进度</button>，填回 shows.json 的 watched。
+    <div id="tzNote"></div>
+    <a id="editLink" target="_blank" rel="noopener">编辑列表</a> · <button id="export">复制进度</button>
   </footer>
 </main>
 <script>
 const KEY = "anime-tracker-watched";
+const TOKEN_KEY = "anime-tracker-token";
 const DAYS = ["", "周一", "周二", "周三", "周四", "周五", "周六", "周日"];
 const SRC = { huaren: "华人直播", ikanbot: "爱看机器人", bilibili: "B站", bangumi: "Bangumi", regex: "来源" };
 // 仓库：在 <用户名>.github.io/<仓库名>/ 上自动识别，本地打开时用默认值
 const REPO = location.hostname.endsWith(".github.io")
   ? `${location.hostname.split(".")[0]}/${location.pathname.split("/")[1]}`
   : "brucewayne0107/anime-tracker";
-const today = ((new Date().getDay() + 6) % 7) + 1; // 1=周一 … 7=周日
+const PROGRESS_API = `https://api.github.com/repos/${REPO}/contents/progress.json`;
 let data = { shows: [] }, filter = "all";
 
-function load() { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch { return {}; } }
-function save(v) { try { localStorage.setItem(KEY, JSON.stringify(v)); } catch {} }
-let local = load();
+const store = {
+  get(k) { try { return localStorage.getItem(k); } catch { return null; } },
+  set(k, v) { try { v == null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch {} },
+};
 
-const watchedOf = s => (s.name in local ? local[s.name] : s.watched) || 0;
+// ---------- 时区：shows.json 里的周几/时间是北京时间，换算成看网页这台设备的时区 ----------
+const BJ_OFFSET = 8 * 60;
+const WEEK = 7 * 1440;
+function localSlot(s) {
+  if (!(s.day >= 1 && s.day <= 7)) return { day: 0, time: null };
+  const [h, m] = (s.time || "12:00").split(":").map(Number); // 没写时间按中午算，只用来定周几
+  const bj = (s.day - 1) * 1440 + h * 60 + m;
+  const local = (((bj - BJ_OFFSET - new Date().getTimezoneOffset()) % WEEK) + WEEK) % WEEK;
+  const pad = n => String(n).padStart(2, "0");
+  return { day: Math.floor(local / 1440) + 1,
+           time: s.time ? `${pad(Math.floor(local % 1440 / 60))}:${pad(local % 60)}` : null };
+}
+const today = ((new Date().getDay() + 6) % 7) + 1; // 本地的周几，1=周一 … 7=周日
+
+// ---------- 看到第几集：{番名: {w: 集数, t: 修改时间}}，本地存一份，设了口令就同步到仓库 ----------
+function loadLocal() {
+  let raw = {};
+  try { raw = JSON.parse(store.get(KEY)) || {}; } catch {}
+  for (const k in raw) if (typeof raw[k] === "number") raw[k] = { w: raw[k], t: 0 }; // 旧格式
+  return raw;
+}
+let local = loadLocal();
+const saveLocal = () => store.set(KEY, JSON.stringify(local));
+const watchedOf = s => (local[s.name] ? local[s.name].w : s.watched) || 0;
+function setWatched(name, w) {
+  local[name] = { w: Math.max(0, w), t: Date.now() };
+  saveLocal(); render(); queueSync();
+}
+function merge(a, b) {
+  const out = { ...a };
+  for (const k in b) if (!out[k] || (b[k].t || 0) > (out[k].t || 0)) out[k] = b[k];
+  return out;
+}
+
+const token = () => store.get(TOKEN_KEY);
+const b64 = { enc: s => btoa(String.fromCharCode(...new TextEncoder().encode(s))),
+              dec: s => new TextDecoder().decode(Uint8Array.from(atob(s.replace(/\s/g, "")), c => c.charCodeAt(0))) };
+async function fetchRemote() {
+  const headers = { Accept: "application/vnd.github+json" };
+  if (token()) headers.Authorization = `Bearer ${token()}`;
+  const r = await fetch(PROGRESS_API + `?t=${Date.now()}`, { headers, cache: "no-store" });
+  if (r.status === 404) return { sha: null, progress: {} };
+  if (!r.ok) throw new Error(`读取失败 ${r.status}`);
+  const j = await r.json();
+  return { sha: j.sha, progress: JSON.parse(b64.dec(j.content)).shows || {} };
+}
+async function pushRemote() {
+  for (let attempt = 0; attempt < 3; attempt++) {
+    const { sha, progress } = await fetchRemote();
+    local = merge(progress, local); saveLocal();
+    const body = { message: "同步看到第几集", content: b64.enc(JSON.stringify({ shows: local }, null, 2) + "\n") };
+    if (sha) body.sha = sha;
+    const r = await fetch(PROGRESS_API, { method: "PUT", body: JSON.stringify(body),
+      headers: { Accept: "application/vnd.github+json", Authorization: `Bearer ${token()}` } });
+    if (r.ok) return;
+    if (r.status !== 409 && r.status !== 422) throw new Error(`保存失败 ${r.status}`);
+  }
+  throw new Error("保存冲突");
+}
+let syncTimer = null;
+function setSync(text, ok) {
+  const el = document.getElementById("syncState");
+  el.textContent = text; el.className = ok ? "sync-ok" : "";
+}
+function queueSync() {
+  if (!token()) return;
+  setSync("同步中…");
+  clearTimeout(syncTimer);
+  syncTimer = setTimeout(() => pushRemote().then(() => setSync("☁️ 已同步", true)).catch(e => setSync(`☁️ ${e.message}`)), 1200);
+}
+async function pullRemote() {
+  try {
+    const { progress } = await fetchRemote();
+    local = merge(local, progress); saveLocal(); render();
+    setSync(token() ? "☁️ 已同步" : "", !!token());
+  } catch (e) { setSync(token() ? `☁️ ${e.message}` : ""); }
+}
+
+// ---------- 渲染 ----------
 const esc = t => String(t ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const ago = iso => {
   if (!iso) return "";
@@ -131,14 +255,14 @@ const ago = iso => {
 const isOff = s => /完结|停播|停更/.test(s.note || "");
 const linkOf = src => src && (src.ok || src.stale) ? (src.url || src.page) : null;
 
-function srcRow(src, label) {
+function srcRow(src, label, cls) {
   if (!src) return "";
   const site = SRC[src.type] || src.type;
   const href = linkOf(src);
-  if (!href) return `<div class="src"><span class="err" title="${esc(src.error)}"><span class="lbl">${label}</span>${site} 检查失败</span></div>`;
+  if (!href) return `<div class="src"><span class="err" title="${esc(src.error)}"><span class="lbl ${cls}">${label}</span>${site} 检查失败</span></div>`;
   const ep = src.latest != null ? ` · 第${src.latest}集` : "";
   return `<div class="src">
-    <a href="${esc(href)}" target="_blank" rel="noopener"><span class="lbl">${label}</span>${site}${ep}</a>
+    <a href="${esc(href)}" target="_blank" rel="noopener"><span class="lbl ${cls}">${label}</span>${site}${ep}</a>
     <button class="copy" data-copy="${esc(href)}">复制</button>
   </div>`;
 }
@@ -148,7 +272,7 @@ function card(s) {
   const main = linkOf(s.primary) || linkOf(s.secondary) || "#";
   return `<li class="card${behind > 0 ? " new" : ""}">
     <div class="top">
-      <a class="name" href="${esc(main)}" target="_blank" rel="noopener">${esc(s.name)}${s.time ? `<span class="time">${esc(s.time)}</span>` : ""}${behind > 0 ? `<span class="badge">+${behind}</span>` : ""}</a>
+      <a class="name" href="${esc(main)}" target="_blank" rel="noopener">${esc(s.name)}${s.slot.time ? `<span class="time">${s.slot.time}</span>` : ""}${behind > 0 ? `<span class="badge">嘟! +${behind}</span>` : ""}</a>
       <div class="prog">
         <button data-d="-1" data-n="${esc(s.name)}" aria-label="少看一集">−</button>
         <label class="count"><input type="number" inputmode="numeric" min="0" value="${w}" data-n="${esc(s.name)}" aria-label="看到第几集">/${s.latest ?? "?"}</label>
@@ -156,22 +280,26 @@ function card(s) {
       </div>
     </div>
     ${s.note ? `<div class="note">${esc(s.note)}</div>` : ""}
-    <div class="srcs">${srcRow(s.primary, "主")}${srcRow(s.secondary, "次")}</div>
+    <div class="srcs">${srcRow(s.primary, "主", "")}${srcRow(s.secondary, "次", "sub")}</div>
   </li>`;
 }
 
 function render() {
-  let shows = data.shows.filter(s => isOff(s) === (filter === "off"));
+  let shows = data.shows.map(s => ({ ...s, slot: localSlot(s) })).filter(s => isOff(s) === (filter === "off"));
   if (filter === "new") shows = shows.filter(s => (s.latest ?? 0) > watchedOf(s));
-  if (filter === "today") shows = shows.filter(s => s.day === today);
+  if (filter === "today") shows = shows.filter(s => s.slot.day === today);
   const groups = {};
-  for (const s of shows) (groups[s.day >= 1 && s.day <= 7 ? s.day : 0] ||= []).push(s);
+  for (const s of shows) (groups[s.slot.day] ||= []).push(s);
   const order = [1, 2, 3, 4, 5, 6, 7, 0].filter(d => groups[d]);
   const box = document.getElementById("list");
-  if (!order.length) { box.innerHTML = `<p class="empty">没有番剧</p>`; return; }
+  if (!order.length) {
+    const msg = { new: "都看完啦，嘟妹等新集中～", today: "今天没有更新哦", off: "没有停更的番" }[filter] || "还没有番剧，点右上角新增吧";
+    box.innerHTML = `<p class="empty"><img src="dumei.svg" alt="">${msg}</p>`;
+    return;
+  }
   box.innerHTML = order.map(d => `
     <h2 class="${d === today ? "today" : ""}">${d ? DAYS[d] : "未定"}${d === today ? `<span class="tag">今天</span>` : ""}</h2>
-    <ul>${groups[d].sort((a, b) => String(a.time ?? "99").localeCompare(String(b.time ?? "99"))).map(card).join("")}</ul>`).join("");
+    <ul>${groups[d].sort((a, b) => String(a.slot.time ?? "99").localeCompare(String(b.slot.time ?? "99"))).map(card).join("")}</ul>`).join("");
 }
 
 async function copy(text, btn) {
@@ -188,25 +316,23 @@ async function copy(text, btn) {
   setTimeout(() => { btn.textContent = old; btn.classList.remove("done"); }, 1500);
 }
 
-document.getElementById("list").addEventListener("click", e => {
+// ---------- 事件 ----------
+const list = document.getElementById("list");
+list.addEventListener("click", e => {
   const c = e.target.closest("button[data-copy]");
   if (c) return copy(c.dataset.copy, c);
   const b = e.target.closest("button[data-d]");
   if (!b) return;
   const s = data.shows.find(x => x.name === b.dataset.n);
-  local[s.name] = Math.max(0, watchedOf(s) + Number(b.dataset.d));
-  save(local); render();
+  setWatched(s.name, watchedOf(s) + Number(b.dataset.d));
 });
-document.getElementById("list").addEventListener("change", e => {
+list.addEventListener("change", e => {
   const i = e.target.closest("input[data-n]");
   if (!i) return;
   const v = parseInt(i.value, 10);
-  local[i.dataset.n] = Number.isFinite(v) && v >= 0 ? v : 0;
-  save(local); render();
+  setWatched(i.dataset.n, Number.isFinite(v) ? v : 0);
 });
-document.getElementById("list").addEventListener("focusin", e => {
-  if (e.target.matches("input[data-n]")) e.target.select();
-});
+list.addEventListener("focusin", e => { if (e.target.matches("input[data-n]")) e.target.select(); });
 document.querySelector(".filters").addEventListener("click", e => {
   const b = e.target.closest("button[data-f]");
   if (!b) return;
@@ -219,11 +345,9 @@ document.getElementById("export").addEventListener("click", e => {
   copy(JSON.stringify(out, null, 2), e.target);
 });
 
+const open = d => d.showModal ? d.showModal() : d.setAttribute("open", "");
 const dlg = document.getElementById("dlg");
-document.getElementById("add").addEventListener("click", () => {
-  dlg.showModal ? dlg.showModal() : dlg.setAttribute("open", "");
-  document.getElementById("addName").focus();
-});
+document.getElementById("add").addEventListener("click", () => { open(dlg); document.getElementById("addName").focus(); });
 document.getElementById("addForm").addEventListener("submit", e => {
   if (e.submitter && e.submitter.value !== "ok") return;
   const name = document.getElementById("addName").value.trim();
@@ -231,13 +355,36 @@ document.getElementById("addForm").addEventListener("submit", e => {
   const title = ["新增", name, document.getElementById("addDay").value].filter(Boolean).join(" ");
   location.href = `https://github.com/${REPO}/issues/new?title=${encodeURIComponent(title)}`;
 });
-document.getElementById("repoLinks").innerHTML =
-  `<a href="https://github.com/${REPO}/edit/main/shows.json" style="color:inherit">编辑列表</a> · `;
+
+const syncDlg = document.getElementById("syncDlg");
+document.getElementById("patLink").href = "https://github.com/settings/personal-access-tokens/new?" + new URLSearchParams({
+  name: "嘟妹追番同步", description: "anime-tracker progress sync", target_name: REPO.split("/")[0],
+  expires_in: "none", contents: "write" });
+document.getElementById("syncBtn").addEventListener("click", () => {
+  document.getElementById("token").value = token() || "";
+  open(syncDlg);
+});
+document.getElementById("syncForm").addEventListener("submit", e => {
+  const v = e.submitter && e.submitter.value;
+  if (v === "clear") { store.set(TOKEN_KEY, null); setSync(""); }
+  if (v === "ok") {
+    const t = document.getElementById("token").value.trim();
+    store.set(TOKEN_KEY, t || null);
+    if (t) { setSync("同步中…"); pushRemote().then(() => { setSync("☁️ 已同步", true); render(); }).catch(err => setSync(`☁️ ${err.message}`)); }
+  }
+});
+
+document.getElementById("editLink").href = `https://github.com/${REPO}/edit/main/shows.json`;
+const offsetMin = -new Date().getTimezoneOffset();
+document.getElementById("tzNote").textContent = offsetMin === BJ_OFFSET
+  ? "更新时间为北京时间"
+  : `更新时间已换算成你的时区（${Intl.DateTimeFormat().resolvedOptions().timeZone || "本地"}）`;
 
 fetch("data/status.json", { cache: "no-store" })
   .then(r => r.json())
-  .then(d => { data = d; document.getElementById("checked").textContent = `${ago(d.checked_at)}检查`; render(); })
-  .catch(() => { document.getElementById("list").innerHTML = `<p class="empty">还没有数据，等第一次自动检查跑完</p>`; });
+  .then(d => { data = d; document.getElementById("checked").textContent = `${ago(d.checked_at)}检查`; render(); pullRemote(); })
+  .catch(() => { list.innerHTML = `<p class="empty"><img src="dumei.svg" alt="">还没有数据，等第一次自动检查跑完</p>`; });
+document.addEventListener("visibilitychange", () => { if (!document.hidden && data.shows.length) pullRemote(); });
 </script>
 </body>
 </html>
