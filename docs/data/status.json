@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-25T01:02:52+00:00",
+  "checked_at": "2026-10-25T01:07:05+00:00",
   "shows": [
     {
       "name": "仙逆",
@@ -10,10 +10,13 @@
       "note": null,
       "latest": 163,
       "updated_at": "2026-10-25T00:21:34+00:00",
+      "cover": "covers/c29ea3765bef.jpg",
+      "cover_src": "https://static.huarenlivewebsite.top/piccdn/olo/anime/109_image.jpg",
       "primary": {
         "latest": 163,
         "url": "https://huaren.live/vodplay/109-1-164.html",
         "page": "https://huaren.live/voddetail/109.html",
+        "cover": "https://static.huarenlivewebsite.top/piccdn/olo/anime/109_image.jpg",
         "ok": true,
         "type": "huaren"
       },
@@ -21,6 +24,7 @@
         "latest": 163,
         "url": "https://www.ikanbot.com/play/951698",
         "page": "https://www.ikanbot.com/play/951698",
+        "cover": "https://tyyswimg.com/upload/vod/20260117-1/d7d06795085650b61b5a95bca2312afa.jpg",
         "ok": true,
         "type": "ikanbot"
       }
@@ -34,10 +38,13 @@
       "note": null,
       "latest": 106,
       "updated_at": "2026-10-25T00:21:34+00:00",
+      "cover": "covers/10dfa7b18c98.jpg",
+      "cover_src": "https://static.huarenlivewebsite.top/piccdn/olo/anime/91978_image.jpg",
       "primary": {
         "latest": 105,
         "url": "https://huaren.live/vodplay/91978-1-105.html",
         "page": "https://huaren.live/voddetail/91978.html",
+        "cover": "https://static.huarenlivewebsite.top/piccdn/olo/anime/91978_image.jpg",
         "ok": true,
         "type": "huaren"
       },
@@ -45,6 +52,7 @@
         "latest": 106,
         "url": "https://www.ikanbot.com/play/1015837",
         "page": "https://www.ikanbot.com/play/1015837",
+        "cover": "https://vod.xiguazyimg.com/upload/vod/20250211-1/cf20b89c993df5119cb841a291ec6654.jpg",
         "ok": true,
         "type": "ikanbot"
       }
@@ -58,10 +66,13 @@
       "note": null,
       "latest": 14,
       "updated_at": "2026-10-25T00:21:34+00:00",
+      "cover": "covers/ea4b6b4c38d5.jpg",
+      "cover_src": "https://static.huarenlivewebsite.top/piccdn/olo/anime/200993_image.jpg",
       "primary": {
         "latest": 14,
         "url": "https://huaren.live/vodplay/200993-1-14.html",
         "page": "https://huaren.live/voddetail/200993.html",
+        "cover": "https://static.huarenlivewebsite.top/piccdn/olo/anime/200993_image.jpg",
         "ok": true,
         "type": "huaren"
       },
@@ -69,6 +80,7 @@
         "latest": 14,
         "url": "https://www.ikanbot.com/play/1000314",
         "page": "https://www.ikanbot.com/play/1000314",
+        "cover": "https://img1.doubanio.com/view/photo/m_ratio_poster/public/p2934481830.jpg",
         "ok": true,
         "type": "ikanbot"
       }
@@ -82,10 +94,13 @@
       "note": null,
       "latest": 9,
       "updated_at": "2026-10-25T00:21:34+00:00",
+      "cover": "covers/067685e408be.jpg",
+      "cover_src": "https://static.huarenlivewebsite.top/piccdn/olo/anime/202541_image.jpg",
       "primary": {
         "latest": 9,
         "url": "https://huaren.live/vodplay/202541-1-9.html",
         "page": "https://huaren.live/voddetail/202541.html",
+        "cover": "https://static.huarenlivewebsite.top/piccdn/olo/anime/202541_image.jpg",
         "ok": true,
         "type": "huaren"
       },
@@ -93,6 +108,7 @@
         "latest": 9,
         "url": "https://www.ikanbot.com/play/1011857",
         "page": "https://www.ikanbot.com/play/1011857",
+        "cover": "https://img3.doubanio.com/view/photo/m_ratio_poster/public/p2935476007.jpg",
         "ok": true,
         "type": "ikanbot"
       }
@@ -106,10 +122,13 @@
       "note": null,
       "latest": 100,
       "updated_at": "2026-10-25T00:21:34+00:00",
+      "cover": "covers/a9d564904113.jpg",
+      "cover_src": "https://static.huarenlivewebsite.top/piccdn/olo/anime/2845_image.jpg",
       "primary": {
         "latest": 100,
         "url": "https://huaren.live/vodplay/2845-1-100.html",
         "page": "https://huaren.live/voddetail/2845.html",
+        "cover": "https://static.huarenlivewebsite.top/piccdn/olo/anime/2845_image.jpg",
         "ok": true,
         "type": "huaren"
       },
@@ -117,6 +136,7 @@
         "latest": 100,
         "url": "https://www.ikanbot.com/play/807348",
         "page": "https://www.ikanbot.com/play/807348",
+        "cover": "https://img2.doubanio.com/view/photo/m_ratio_poster/public/p2892763331.jpg",
         "ok": true,
         "type": "ikanbot"
       }
@@ -130,10 +150,13 @@
       "note": null,
       "latest": 45,
       "updated_at": "2026-10-25T00:21:34+00:00",
+      "cover": "covers/77ab48b3ecf3.jpg",
+      "cover_src": "https://static.huarenlivewebsite.top/piccdn/olo/anime/189909_image.jpg",
       "primary": {
         "latest": 45,
         "url": "https://huaren.live/vodplay/189909-1-45.html",
         "page": "https://huaren.live/voddetail/189909.html",
+        "cover": "https://static.huarenlivewebsite.top/piccdn/olo/anime/189909_image.jpg",
         "ok": true,
         "type": "huaren"
       },
@@ -141,6 +164,7 @@
         "latest": 45,
         "url": "https://www.ikanbot.com/play/947986",
         "page": "https://www.ikanbot.com/play/947986",
+        "cover": "https://img3.doubanio.com/view/photo/m_ratio_poster/public/p2928471537.jpg",
         "ok": true,
         "type": "ikanbot"
       }
@@ -154,10 +178,13 @@
       "note": null,
       "latest": 17,
       "updated_at": "2026-10-25T00:21:34+00:00",
+      "cover": "covers/5f2be2b5b7f9.jpg",
+      "cover_src": "https://static.huarenlivewebsite.top/piccdn/olo/anime/200576_image.jpg",
       "primary": {
         "latest": 17,
         "url": "https://huaren.live/vodplay/200576-1-17.html",
         "page": "https://huaren.live/voddetail/200576.html",
+        "cover": "https://static.huarenlivewebsite.top/piccdn/olo/anime/200576_image.jpg",
         "ok": true,
         "type": "huaren"
       },
@@ -165,6 +192,7 @@
         "latest": 17,
         "url": "https://www.ikanbot.com/play/997376",
         "page": "https://www.ikanbot.com/play/997376",
+        "cover": "https://img3.doubanio.com/view/photo/m_ratio_poster/public/p2934192712.jpg",
         "ok": true,
         "type": "ikanbot"
       }
@@ -178,10 +206,13 @@
       "note": "本季已完结",
       "latest": 12,
       "updated_at": "2026-10-25T00:21:34+00:00",
+      "cover": "covers/7858e894058e.png",
+      "cover_src": "https://static.huarenlivewebsite.top/piccdn/4/24/xing_chen_bian_di_7_ji/197856_image.png",
       "primary": {
         "latest": 12,
         "url": "https://huaren.live/vodplay/197856-1-12.html",
         "page": "https://huaren.live/voddetail/197856.html",
+        "cover": "https://static.huarenlivewebsite.top/piccdn/4/24/xing_chen_bian_di_7_ji/197856_image.png",
         "ok": true,
         "type": "huaren"
       },
@@ -189,6 +220,7 @@
         "latest": 12,
         "url": "https://www.ikanbot.com/play/974833",
         "page": "https://www.ikanbot.com/play/974833",
+        "cover": "https://img1.doubanio.com/view/photo/m_ratio_poster/public/p2931772910.jpg",
         "ok": true,
         "type": "ikanbot"
       }
@@ -202,10 +234,13 @@
       "note": "停播中，下半季未定档",
       "latest": 12,
       "updated_at": "2026-10-25T00:21:34+00:00",
+      "cover": "covers/86deeeaf6d95.png",
+      "cover_src": "https://static.huarenlivewebsite.top/imagecdn/4/24/zhou_shu_hui_zhan_di_3_ji/190551_image.png",
       "primary": {
         "latest": 12,
         "url": "https://huaren.live/vodplay/190551-1-12.html",
         "page": "https://huaren.live/voddetail/190551.html",
+        "cover": "https://static.huarenlivewebsite.top/imagecdn/4/24/zhou_shu_hui_zhan_di_3_ji/190551_image.png",
         "ok": true,
         "type": "huaren"
       },
@@ -213,6 +248,7 @@
         "latest": 12,
         "url": "https://www.ikanbot.com/play/941902",
         "page": "https://www.ikanbot.com/play/941902",
+        "cover": "https://img1.doubanio.com/view/photo/m_ratio_poster/public/p2928402160.jpg",
         "ok": true,
         "type": "ikanbot"
       }
@@ -226,10 +262,13 @@
       "note": "停播中，预计2027年春回归",
       "latest": 1180,
       "updated_at": "2026-10-25T00:21:34+00:00",
+      "cover": "covers/e157478eddbf.jpg",
+      "cover_src": "https://hhmage.com/cover/36ab2a6162713cc28168f2ccd171caae.jpg",
       "primary": {
         "latest": 1180,
         "url": "https://huaren.live/vodplay/108-1-1182.html",
         "page": "https://huaren.live/voddetail/108.html",
+        "cover": "https://hhmage.com/cover/36ab2a6162713cc28168f2ccd171caae.jpg",
         "ok": true,
         "type": "huaren"
       },
@@ -237,6 +276,7 @@
         "latest": 1180,
         "url": "https://www.ikanbot.com/play/603605",
         "page": "https://www.ikanbot.com/play/603605",
+        "cover": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2298457296.jpg",
         "ok": true,
         "type": "ikanbot"
       }
@@ -250,10 +290,13 @@
       "note": null,
       "latest": 216,
       "updated_at": "2026-10-25T00:21:34+00:00",
+      "cover": "covers/a14887221281.jpg",
+      "cover_src": "https://static.huarenlivewebsite.top/piccdn/olo/anime/93084_image.jpg",
       "primary": {
         "latest": 216,
         "url": "https://huaren.live/vodplay/93084-1-219.html",
         "page": "https://huaren.live/voddetail/93084.html",
+        "cover": "https://static.huarenlivewebsite.top/piccdn/olo/anime/93084_image.jpg",
         "ok": true,
         "type": "huaren"
       },
@@ -261,6 +304,7 @@
         "latest": 216,
         "url": "https://www.ikanbot.com/play/700836",
         "page": "https://www.ikanbot.com/play/700836",
+        "cover": "https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2675950683.jpg",
         "ok": true,
         "type": "ikanbot"
       }
@@ -274,10 +318,13 @@
       "note": "第二季已完结（8 月播完）",
       "latest": 27,
       "updated_at": "2026-10-25T00:39:53+00:00",
+      "cover": "covers/2b066977d772.jpg",
+      "cover_src": "https://img.jisuimage.com/cover/46ca629891f3c3bd16b4a4978d31e483.jpg",
       "primary": {
         "latest": 27,
         "url": "https://huaren.live/vodplay/180956-1-28.html",
         "page": "https://huaren.live/voddetail/180956.html",
+        "cover": "https://img.jisuimage.com/cover/46ca629891f3c3bd16b4a4978d31e483.jpg",
         "ok": true,
         "type": "huaren"
       },
@@ -285,6 +332,7 @@
         "latest": 27,
         "url": "https://www.ikanbot.com/play/936361",
         "page": "https://www.ikanbot.com/play/936361",
+        "cover": "https://img9.doubanio.com/view/photo/m_ratio_poster/public/p2928331496.jpg",
         "ok": true,
         "type": "ikanbot"
       }
