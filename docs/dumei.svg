@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="嘟妹">
+  <!-- 原创形象「嘟妹」：圆脸、双丸子头、嘟嘴、腮红 -->
+  <circle cx="30" cy="30" r="17" fill="#5b3a4a"/>
+  <circle cx="90" cy="30" r="17" fill="#5b3a4a"/>
+  <circle cx="24" cy="24" r="5" fill="#7a5266"/>
+  <circle cx="84" cy="24" r="5" fill="#7a5266"/>
+  <path d="M60 22c-29 0-46 20-46 45 0 26 20 43 46 43s46-17 46-43c0-25-17-45-46-45z" fill="#ffe9dc"/>
+  <path d="M14 64c2-24 20-42 46-42s44 18 46 42c-9-9-19-16-30-19 2 5 2 10 0 14-7-8-17-13-29-14 1 4 0 8-3 11-5-6-12-9-20-9-4 5-7 11-10 17z" fill="#5b3a4a"/>
+  <ellipse cx="34" cy="82" rx="9" ry="6" fill="#ff9fb8" opacity=".7"/>
+  <ellipse cx="86" cy="82" rx="9" ry="6" fill="#ff9fb8" opacity=".7"/>
+  <path d="M36 70q6-6 12 0" stroke="#4a2e3b" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <path d="M72 70q6-6 12 0" stroke="#4a2e3b" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <path d="M56 86q4-4 4 0q0 4-4 4q4 0 4 4q0 4-4 0" stroke="#e05a7a" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M99 40l3-7 3 7 7 3-7 3-3 7-3-7-7-3z" fill="#ffd36e"/>
+</svg>
