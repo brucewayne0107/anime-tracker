@@ -156,6 +156,20 @@
         "q": "斗破苍穹 年番",
         "year": 2022
       }
+    },
+    {
+      "name": "剑来",
+      "day": null,
+      "watched": 0,
+      "primary": {
+        "type": "huaren",
+        "id": 180956
+      },
+      "secondary": {
+        "type": "ikanbot",
+        "q": "剑来",
+        "title": "剑来第二季"
+      }
     }
   ]
 }

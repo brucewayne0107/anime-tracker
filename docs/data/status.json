@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-25T00:21:34+00:00",
+  "checked_at": "2026-10-25T00:39:53+00:00",
   "shows": [
     {
       "name": "仙逆",
@@ -239,6 +239,28 @@
         "latest": 216,
         "url": "https://www.ikanbot.com/play/700836",
         "page": "https://www.ikanbot.com/play/700836",
+        "ok": true,
+        "type": "ikanbot"
+      }
+    },
+    {
+      "name": "剑来",
+      "watched": 0,
+      "day": null,
+      "note": null,
+      "latest": 27,
+      "updated_at": "2026-10-25T00:39:53+00:00",
+      "primary": {
+        "latest": 27,
+        "url": "https://huaren.live/vodplay/180956-1-28.html",
+        "page": "https://huaren.live/voddetail/180956.html",
+        "ok": true,
+        "type": "huaren"
+      },
+      "secondary": {
+        "latest": 27,
+        "url": "https://www.ikanbot.com/play/936361",
+        "page": "https://www.ikanbot.com/play/936361",
         "ok": true,
         "type": "ikanbot"
       }
