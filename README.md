@@ -1,4 +1,4 @@
-# 嘟妹追番
+# 留子追番
 
 一个静态网页 + 定时脚本：每部番显示「看到第几集 / 最新第几集」，点名字跳到最新一集。
 
@@ -69,3 +69,22 @@
 python scripts/check.py
 python -m unittest discover -s tests
 ```
+
+
+## 电影与美剧目录
+
+根目录 `catalog.json` 的 `tabs` 包含 `us`（美剧）、`douban`、`oscar`、`nolan`。电影条目填写 `title`、`original`、`year`；豆瓣加 `rank`，奥斯卡加 `ceremony` 和 `award_year`（页面按届数倒序）。美剧填写 `title`、`original`、`seasons`、`start`、`end`，每季分别解析，第一季匹配 `start` 年份，其余季限制在 `start`–`end` 范围内，不推算具体季年份。
+
+```sh
+python3 scripts/catalog.py          # 保留已找到的来源，只补缺失
+python3 scripts/catalog.py --refresh # 强制重新搜索
+```
+
+输出为 `docs/data/catalog.json`，封面下载到 `docs/covers/`；主来源图片下载失败时尝试另一个来源的封面。请求至少间隔 0.55 秒，单个来源失败不影响其他条目；最后按 tab 打印找到/缺失统计（美剧按季计）。电影使用年份严格消歧，中文名未匹配时再搜别名和 `original`；可用 `"aliases": ["其他译名"]` 补充地区译名。手动指定 `"huaren": 123`、`"ikanbot": 456`、`"cover": "https://…"` 优先于搜索；美剧可用 `"huaren": {"1": 123, "2": 456}` 为每季指定，单个 ID 或封面只应用于第一季。缓存记录来源 ID；修改名称、原名、年份、季号或手动 ID 后会重新解析对应内容。未找到时页面提供华人搜索链接。
+
+push 涉及 `catalog.json` 时 Actions 会解析并提交生成结果；原来的每三小时番剧检查不变。macOS 若 Python 报证书错误，可使用系统 CA：`SSL_CERT_FILE=/etc/ssl/cert.pem python3 scripts/catalog.py`。
+
+## 吉祥物图片
+
+新增噜噜噜妹图片放进 `docs/lulu/`，在 `docs/lulu/list.json` 里加上文件名；页面加载时随机选头像、打乱顶部图带。
+

@@ -6,7 +6,7 @@ on:
   workflow_dispatch:          # 可在 Actions 页面手动运行
   push:
     branches: [main]
-    paths: [shows.json, scripts/**, docs/**]
+    paths: [shows.json, catalog.json, scripts/**, docs/**]
   issues:
     types: [opened]           # 网页上点「新增」会开一个 issue，这里接住它
 
@@ -46,19 +46,24 @@ jobs:
 
       - run: python scripts/check.py
 
+      - name: 解析电影与美剧目录
+        if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+        run: python scripts/catalog.py
+
       - name: 有变化就提交
         env:
           MSG: ${{ github.event_name == 'issues' && format('番剧列表：{0}', github.event.issue.title) || '更新番剧状态' }}
         run: |
           # 只有 checked_at 变了不提交，免得每 3 小时一条提交
           f=docs/data/status.json
-          if git ls-files --error-unmatch "$f" >/dev/null 2>&1 && git diff --quiet -I '"checked_at"' -- "$f" shows.json \
-             && [ -z "$(git status --porcelain docs/covers)" ]; then
+          if git ls-files --error-unmatch "$f" >/dev/null 2>&1 && git diff --quiet -I '"checked_at"' -- "$f" shows.json docs/data/catalog.json \
+             && [ -z "$(git status --porcelain docs/covers docs/data/catalog.json)" ]; then
             echo "没有新集"; exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add "$f" shows.json docs/covers
+          if [ -f docs/data/catalog.json ]; then git add docs/data/catalog.json; fi
           git commit -m "$MSG"
           # 网页同步进度会往 main 写 progress.json，先拉一下再推
           git pull --rebase origin main
