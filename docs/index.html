@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#ffeef3">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="嘟妹追番">
+<meta name="apple-mobile-web-app-title" content="留子追番">
 <link rel="icon" href="dumei.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="dumei.svg">
-<title>嘟妹追番</title>
+<link rel="apple-touch-icon" href="lulu/lulu01.jpg">
+<title>留子追番</title>
 <style>
   :root {
     --bg: #fff7f9; --card: #ffffff; --text: #4a2e3b; --muted: #a8899a; --line: #f6dbe4;
@@ -110,23 +110,38 @@
   dialog ol { padding-left: 18px; }
   dialog a { color: var(--accent); }
   .sync-ok { color: #3fb27f; }
+  .mascot { aspect-ratio: 1; object-fit: cover; border-radius: 50%; flex-shrink: 0; }
+  .lulu-strip { display: flex; gap: 8px; overflow-x: auto; max-width: 100%; margin: 16px 0 8px; padding-bottom: 4px; }
+  .lulu-strip img { width: 90px; height: 90px; object-fit: cover; border-radius: 18px; flex: none; }
+  .filters { overscroll-behavior-x: contain; }
+  .catalog { margin-top: 14px; }
+  .catalog .name { white-space: normal; overflow-wrap: anywhere; }
+  .catalog .catalog-meta { color: var(--text); font-size: 13px; margin: 6px 0; }
+  .catalog details { margin-top: auto; }
+  .catalog summary { cursor: pointer; padding: 10px 0; font-size: 14px; font-weight: 600; }
+  .season-row { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; padding: 9px; margin: 5px 0; border-radius: 12px; background: color-mix(in srgb, var(--card) 88%, transparent); font-size: 13px; }
+  .season-row a, .catalog-link { color: var(--text); text-decoration: none; }
+  .season-row a:hover, .catalog-link:hover { text-decoration: underline; }
+  .season-row img { width: 32px; height: 44px; object-fit: cover; border-radius: 5px; }
+  .catalog-link { font-size: 13px; }
 </style>
 </head>
 <body>
 <main>
   <header>
-    <img src="dumei.svg" alt="">
+    <img class="mascot" src="lulu/lulu01.jpg" alt="噜噜和噜妹">
     <div class="title">
-      <h1>嘟妹追番</h1>
+      <h1>留子追番</h1>
       <div class="meta"><span id="checked"></span> <span id="syncState"></span></div>
     </div>
     <button class="icon-btn" id="syncBtn" aria-label="同步设置">☁️</button>
     <button class="icon-btn add" id="add">＋ 新增</button>
   </header>
+  <div id="luluStrip" class="lulu-strip" aria-label="噜噜和噜妹相册"></div>
 
   <dialog id="dlg">
     <form method="dialog" id="addForm">
-      <h3><img src="dumei.svg" alt="">新增番剧</h3>
+      <h3><img class="mascot" src="lulu/lulu01.jpg" alt="噜噜和噜妹">新增番剧</h3>
       <input id="addName" placeholder="番名，比如 凡人修仙传" required autocomplete="off">
       <select id="addDay">
         <option value="">周几更新（北京时间，可不选）</option>
@@ -140,7 +155,7 @@
 
   <dialog id="syncDlg">
     <form method="dialog" id="syncForm">
-      <h3><img src="dumei.svg" alt="">多设备同步</h3>
+      <h3><img class="mascot" src="lulu/lulu01.jpg" alt="噜噜和噜妹">多设备同步</h3>
       <p>看到第几集会存进 GitHub 仓库的 progress.json，每台设备填一次口令就能同步。</p>
       <ol>
         <li>打开 <a id="patLink" target="_blank" rel="noopener">新建 GitHub 口令</a>，Repository access 只选这个仓库，Permissions 里 Contents 选 Read and write，生成后复制。</li>
@@ -156,12 +171,16 @@
   </dialog>
 
   <div class="filters">
-    <button data-f="all" class="on">追番中</button>
+    <button data-f="all" class="on">国漫最热在更</button>
     <button data-f="new">有新集</button>
     <button data-f="today">今天更新</button>
     <button data-f="off">停更</button>
+    <button data-f="us">美剧</button>
+    <button data-f="douban">豆瓣Top50</button>
+    <button data-f="oscar">奥斯卡最佳影片</button>
+    <button data-f="nolan">诺兰专辑</button>
   </div>
-  <div id="list"><p class="empty"><img src="dumei.svg" alt="">嘟妹加载中…</p></div>
+  <div id="list"><p class="empty"><img class="mascot" src="lulu/lulu01.jpg" alt="噜噜和噜妹">噜妹加载中…</p></div>
   <footer>
     <div id="tzNote"></div>
     <a id="editLink" target="_blank" rel="noopener">编辑列表</a> · <button id="export">复制进度</button>
@@ -178,6 +197,19 @@ const REPO = location.hostname.endsWith(".github.io")
   : "brucewayne0107/anime-tracker";
 const PROGRESS_API = `https://api.github.com/repos/${REPO}/contents/progress.json`;
 let data = { shows: [] }, filter = "all";
+let catalog = { tabs: [] }, catalogError = false;
+let mascots = ["lulu01.jpg"];
+const randomMascot = () => `lulu/${mascots[Math.floor(Math.random() * mascots.length)]}`;
+function setMascots() { document.querySelectorAll("img.mascot").forEach(img => { img.src = randomMascot(); }); }
+fetch("lulu/list.json").then(r => { if (!r.ok) throw new Error("图片清单读取失败"); return r.json(); }).then(files => {
+  if (!files.length) return;
+  mascots = files;
+  const shuffled = [...files];
+  for (let i = shuffled.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]; }
+  const strip = document.getElementById("luluStrip");
+  shuffled.forEach(file => { const img = document.createElement("img"); img.src = `lulu/${file}`; img.alt = "噜噜和噜妹"; img.loading = "lazy"; strip.appendChild(img); });
+  setMascots();
+}).catch(() => setMascots());
 
 const store = {
   get(k) { try { return localStorage.getItem(k); } catch { return null; } },
@@ -303,7 +335,36 @@ function card(s) {
   </li>`;
 }
 
+function catalogLinks(entry, label) {
+  const sources = entry.sources || {};
+  const search = `https://huaren.live/vodsearch/-------------.html?wd=${encodeURIComponent(entry.title + (entry.season ? ` 第${entry.season}季` : ""))}`;
+  const main = sources.huaren?.url || (!sources.ikanbot ? search : null);
+  const name = main ? `<a class="name" href="${esc(main)}" target="_blank" rel="noopener">${esc(label)}</a>` : `<span class="name">${esc(label)}</span>`;
+  return `${name}${sources.ikanbot ? `<a class="catalog-link" href="${esc(sources.ikanbot.url)}" target="_blank" rel="noopener">爱看机器人 ↗</a>` : ""}`;
+}
+function seasonRow(entry) {
+  const sources = entry.sources || {};
+  return `<div class="season-row">${entry.cover ? `<img src="${esc(entry.cover)}" alt="" loading="lazy">` : ""}<span>第 ${entry.season} 季</span>${Object.entries(sources).map(([site, source]) => `<a href="${esc(source.url)}" target="_blank" rel="noopener">${SRC[site]} ↗</a>`).join("") || `<a href="https://huaren.live/vodsearch/-------------.html?wd=${encodeURIComponent(entry.title + ` 第${entry.season}季`)}" target="_blank" rel="noopener">搜索华人直播 ↗</a>`}</div>`;
+}
+function catalogCard(item, tab) {
+  const seasons = item.season_items || [];
+  const cover = item.cover ? `<img class="cover" src="${esc(item.cover)}" alt="" loading="lazy" onerror="this.parentNode.classList.remove('has-cover');this.remove()">` : "";
+  const meta = tab.kind === "tv" ? `${item.start || ""}–${item.end || "至今"} · ${seasons.length} 季` : [tab.key === "douban" ? `#${item.rank}` : "", tab.key === "oscar" ? `第 ${item.ceremony} 届 · ${item.award_year} 年颁奖` : "", `${item.year} 年`].filter(Boolean).join(" · ");
+  return `<li class="card${cover ? " has-cover" : ""}">${cover}<div class="top">${catalogLinks(seasons[0] || item, item.title)}</div><div class="catalog-meta">${esc(meta)}</div>${seasons.length > 1 ? `<details><summary>展开各季 · ${seasons.length} 季</summary>${seasons.map(seasonRow).join("")}</details>` : seasons.map(seasonRow).join("")}</li>`;
+}
+function renderCatalog() {
+  const tab = catalog.tabs.find(t => t.key === filter);
+  const box = document.getElementById("list");
+  if (!tab) { box.innerHTML = `<p class="empty">${catalogError ? "目录暂时无法读取，请稍后重试" : "目录加载中…"}</p>`; return; }
+  const items = tab.key === "oscar" ? [...tab.items].sort((a,b) => b.ceremony-a.ceremony) : tab.items;
+  box.innerHTML = `<ul class="catalog">${items.map(item => catalogCard(item, tab)).join("")}</ul>`;
+}
+
 function render() {
+  const isCatalog = ["us", "douban", "oscar", "nolan"].includes(filter);
+  document.getElementById("add").hidden = isCatalog;
+  document.getElementById("tzNote").hidden = isCatalog;
+  if (isCatalog) return renderCatalog();
   let shows = data.shows.map(s => ({ ...s, slot: localSlot(s) })).filter(s => isOff(s) === (filter === "off"));
   if (filter === "new") shows = shows.filter(s => (s.latest ?? 0) > watchedOf(s));
   if (filter === "today") shows = shows.filter(s => s.slot.day === today);
@@ -312,8 +373,8 @@ function render() {
   const order = [1, 2, 3, 4, 5, 6, 7, 0].filter(d => groups[d]);
   const box = document.getElementById("list");
   if (!order.length) {
-    const msg = { new: "都看完啦，嘟妹等新集中～", today: "今天没有更新哦", off: "没有停更的番" }[filter] || "还没有番剧，点右上角新增吧";
-    box.innerHTML = `<p class="empty"><img src="dumei.svg" alt="">${msg}</p>`;
+    const msg = { new: "都看完啦，噜妹等新集中～", today: "今天没有更新哦", off: "没有停更的番" }[filter] || "还没有番剧，点右上角新增吧";
+    box.innerHTML = `<p class="empty"><img class="mascot" src="${randomMascot()}" alt="噜噜和噜妹">${msg}</p>`;
     return;
   }
   box.innerHTML = order.map(d => `
@@ -377,7 +438,7 @@ document.getElementById("addForm").addEventListener("submit", e => {
 
 const syncDlg = document.getElementById("syncDlg");
 document.getElementById("patLink").href = "https://github.com/settings/personal-access-tokens/new?" + new URLSearchParams({
-  name: "嘟妹追番同步", description: "anime-tracker progress sync", target_name: REPO.split("/")[0],
+  name: "留子追番同步", description: "anime-tracker progress sync", target_name: REPO.split("/")[0],
   expires_in: "none", contents: "write" });
 document.getElementById("syncBtn").addEventListener("click", () => {
   document.getElementById("token").value = token() || "";
@@ -399,10 +460,14 @@ document.getElementById("tzNote").textContent = offsetMin === BJ_OFFSET
   ? "更新时间为北京时间"
   : `更新时间已换算成你的时区（${Intl.DateTimeFormat().resolvedOptions().timeZone || "本地"}）`;
 
+fetch("data/catalog.json", { cache: "no-store" })
+  .then(r => { if (!r.ok) throw new Error("目录读取失败"); return r.json(); })
+  .then(d => { catalog = d; render(); })
+  .catch(() => { catalogError = true; if (["us", "douban", "oscar", "nolan"].includes(filter)) render(); });
 fetch("data/status.json", { cache: "no-store" })
   .then(r => r.json())
   .then(d => { data = d; document.getElementById("checked").textContent = `${ago(d.checked_at)}检查`; render(); pullRemote(); })
-  .catch(() => { list.innerHTML = `<p class="empty"><img src="dumei.svg" alt="">还没有数据，等第一次自动检查跑完</p>`; });
+  .catch(() => { if (["us", "douban", "oscar", "nolan"].includes(filter)) return renderCatalog(); list.innerHTML = `<p class="empty"><img class="mascot" src="${randomMascot()}" alt="噜噜和噜妹">还没有数据，等第一次自动检查跑完</p>`; });
 document.addEventListener("visibilitychange", () => { if (!document.hidden && data.shows.length) pullRemote(); });
 </script>
 </body>
