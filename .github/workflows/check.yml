@@ -59,6 +59,8 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add "$f" shows.json
           git commit -m "$MSG"
+          # 网页同步进度会往 main 写 progress.json，先拉一下再推
+          git pull --rebase origin main
           git push
 
       - name: 回复并关闭 issue
