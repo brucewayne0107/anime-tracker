@@ -1,21 +1,16 @@
 name: probe
 on: push
+permissions: { contents: write }
 jobs:
   probe:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - run: |
-          UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0 Safari/537.36"
-          curl -s -A "$UA" https://huaren.live/voddetail/109.html > h.html
-          grep -o '<meta[^>]*image[^>]*>' h.html | head
-          grep -oE '(data-src|data-original|src)="[^"]*\.(jpg|jpeg|png|webp)[^"]*"' h.html | head -20
-          grep -oE 'background[^;"]*url\([^)]*\)' h.html | head
-          echo ---IKAN
-          curl -s -A "$UA" https://www.ikanbot.com/play/622370 > i.html
-          grep -oE '<img[^>]*>' i.html | head -10
-          grep -o '<meta[^>]*image[^>]*>' i.html | head
-          echo ---FETCH
-          U=$(grep -oE '(data-src|data-original)="[^"]*"' h.html | head -1 | cut -d'"' -f2); echo "$U"
-          case "$U" in http*) ;; //*) U="https:$U";; *) U="https://huaren.live$U";; esac
-          curl -s -A "$UA" -o p.img -w '%{http_code} %{content_type} %{size_download}\n' "$U"
-          curl -s -A "$UA" -e https://huaren.live/ -o p2.img -w 'ref %{http_code} %{content_type} %{size_download}\n' "$U"
+          git fetch -q origin feat/dumei && git checkout -q origin/feat/dumei -- scripts shows.json docs
+          python scripts/check.py | tail -12
+          ls -la docs/covers
+          grep '"cover"' docs/data/status.json
+          mkdir -p out && cp -r docs/covers docs/data/status.json out/
+          git rm -rq --cached scripts shows.json docs || true
+          git add out && git -c user.name=p -c user.email=p@x commit -qm "probe covers out" && git push -q origin HEAD:probe2
