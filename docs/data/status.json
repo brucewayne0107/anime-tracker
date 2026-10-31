@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-30T09:56:45+00:00",
+  "checked_at": "2026-10-31T05:34:56+00:00",
   "shows": [
     {
       "name": "仙逆",
@@ -148,20 +148,20 @@
       "day": 7,
       "time": "10:00",
       "note": null,
-      "latest": 45,
-      "updated_at": "2026-10-25T00:21:34+00:00",
+      "latest": 46,
+      "updated_at": "2026-10-31T05:34:56+00:00",
       "cover": "covers/77ab48b3ecf3.jpg",
       "cover_src": "https://static.huarenlivewebsite.top/piccdn/olo/anime/189909_image.jpg",
       "primary": {
-        "latest": 45,
-        "url": "https://huaren.live/vodplay/189909-1-45.html",
+        "latest": 46,
+        "url": "https://huaren.live/vodplay/189909-1-46.html",
         "page": "https://huaren.live/voddetail/189909.html",
         "cover": "https://static.huarenlivewebsite.top/piccdn/olo/anime/189909_image.jpg",
         "ok": true,
         "type": "huaren"
       },
       "secondary": {
-        "latest": 45,
+        "latest": 46,
         "url": "https://www.ikanbot.com/play/947986",
         "page": "https://www.ikanbot.com/play/947986",
         "cover": "https://img3.doubanio.com/view/photo/m_ratio_poster/public/p2928471537.jpg",
@@ -176,20 +176,20 @@
       "day": 6,
       "time": "09:00",
       "note": null,
-      "latest": 17,
-      "updated_at": "2026-10-25T00:21:34+00:00",
+      "latest": 18,
+      "updated_at": "2026-10-31T05:34:56+00:00",
       "cover": "covers/5f2be2b5b7f9.jpg",
       "cover_src": "https://static.huarenlivewebsite.top/piccdn/olo/anime/200576_image.jpg",
       "primary": {
-        "latest": 17,
-        "url": "https://huaren.live/vodplay/200576-1-17.html",
+        "latest": 18,
+        "url": "https://huaren.live/vodplay/200576-1-18.html",
         "page": "https://huaren.live/voddetail/200576.html",
         "cover": "https://static.huarenlivewebsite.top/piccdn/olo/anime/200576_image.jpg",
         "ok": true,
         "type": "huaren"
       },
       "secondary": {
-        "latest": 17,
+        "latest": 18,
         "url": "https://www.ikanbot.com/play/997376",
         "page": "https://www.ikanbot.com/play/997376",
         "cover": "https://img3.doubanio.com/view/photo/m_ratio_poster/public/p2934192712.jpg",
