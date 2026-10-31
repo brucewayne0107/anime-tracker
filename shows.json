@@ -176,6 +176,18 @@
         "type": "ikanbot",
         "q": "财神窦占龙"
       }
+    },
+    {
+      "name": "大王饶命3",
+      "day": null,
+      "primary": {
+        "type": "huaren",
+        "id": 203754
+      },
+      "secondary": {
+        "type": "ikanbot",
+        "q": "大王饶命3"
+      }
     }
   ]
 }

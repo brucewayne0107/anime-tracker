@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-31T12:20:27+00:00",
+  "checked_at": "2026-10-31T17:45:40+00:00",
   "shows": [
     {
       "name": "仙逆",
@@ -361,6 +361,34 @@
         "url": "https://www.ikanbot.com/play/1006285",
         "page": "https://www.ikanbot.com/play/1006285",
         "cover": "https://img3.doubanio.com/view/photo/m_ratio_poster/public/p2934809957.jpg",
+        "ok": true,
+        "type": "ikanbot"
+      }
+    },
+    {
+      "name": "大王饶命3",
+      "watched": 7,
+      "baseline": 7,
+      "day": null,
+      "time": null,
+      "note": null,
+      "latest": 7,
+      "updated_at": "2026-10-31T17:45:40+00:00",
+      "cover": "covers/7127adb8a8d9.jpg",
+      "cover_src": "https://static.huarenlivewebsite.top/piccdn/olo/anime/203754_image.jpg",
+      "primary": {
+        "latest": 7,
+        "url": "https://huaren.live/vodplay/203754-1-7.html",
+        "page": "https://huaren.live/voddetail/203754.html",
+        "cover": "https://static.huarenlivewebsite.top/piccdn/olo/anime/203754_image.jpg",
+        "ok": true,
+        "type": "huaren"
+      },
+      "secondary": {
+        "latest": 7,
+        "url": "https://www.ikanbot.com/play/1022720",
+        "page": "https://www.ikanbot.com/play/1022720",
+        "cover": "https://img3.doubanio.com/view/photo/m_ratio_poster/public/p2935738189.jpg",
         "ok": true,
         "type": "ikanbot"
       }
