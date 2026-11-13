@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-11T19:33:33+00:00",
+  "checked_at": "2026-11-13T10:53:59+00:00",
   "shows": [
     {
       "name": "仙逆",
@@ -120,20 +120,20 @@
       "day": 5,
       "time": "10:00",
       "note": null,
-      "latest": 102,
-      "updated_at": "2026-11-06T06:35:28+00:00",
+      "latest": 103,
+      "updated_at": "2026-11-13T10:53:59+00:00",
       "cover": "covers/a9d564904113.jpg",
       "cover_src": "https://static.huarenlivewebsite.top/piccdn/olo/anime/2845_image.jpg",
       "primary": {
-        "latest": 102,
-        "url": "https://huaren.live/vodplay/2845-1-102.html",
+        "latest": 103,
+        "url": "https://huaren.live/vodplay/2845-1-103.html",
         "page": "https://huaren.live/voddetail/2845.html",
         "cover": "https://static.huarenlivewebsite.top/piccdn/olo/anime/2845_image.jpg",
         "ok": true,
         "type": "huaren"
       },
       "secondary": {
-        "latest": 102,
+        "latest": 103,
         "url": "https://www.ikanbot.com/play/807348",
         "page": "https://www.ikanbot.com/play/807348",
         "cover": "https://img2.doubanio.com/view/photo/m_ratio_poster/public/p2892763331.jpg",
