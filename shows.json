@@ -167,7 +167,7 @@
     },
     {
       "name": "财神窦占龙",
-      "day": null,
+      "day": 7,
       "primary": {
         "type": "huaren",
         "id": 202008
@@ -179,7 +179,7 @@
     },
     {
       "name": "大王饶命3",
-      "day": null,
+      "day": 6,
       "primary": {
         "type": "huaren",
         "id": 203754
