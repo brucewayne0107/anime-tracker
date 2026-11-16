@@ -188,6 +188,18 @@
         "type": "ikanbot",
         "q": "大王饶命3"
       }
+    },
+    {
+      "name": "李熊猫",
+      "day": null,
+      "primary": {
+        "type": "huaren",
+        "id": 201038
+      },
+      "secondary": {
+        "type": "ikanbot",
+        "q": "李熊猫"
+      }
     }
   ]
 }
