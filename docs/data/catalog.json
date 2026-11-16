@@ -2347,7 +2347,10 @@
               },
               "cover": "https://pic.feisuimg.com/upload/vod/20220225-1/7ab4f61d2b757133f925d6f527491e6a.jpg",
               "cover_url": "https://pic.feisuimg.com/upload/vod/20220225-1/7ab4f61d2b757133f925d6f527491e6a.jpg",
-              "cover_input": null
+              "cover_input": null,
+              "errors": {
+                "huaren": "HTTP Error 403: Forbidden"
+              }
             },
             {
               "title": "行尸走肉",
@@ -2408,7 +2411,10 @@
               },
               "cover": "https://mzzyjpg.com/upload/vod/20250203-1/86aa71543e7ebc9bd066521ff13413d0.jpg",
               "cover_url": "https://mzzyjpg.com/upload/vod/20250203-1/86aa71543e7ebc9bd066521ff13413d0.jpg",
-              "cover_input": null
+              "cover_input": null,
+              "errors": {
+                "huaren": "HTTP Error 403: Forbidden"
+              }
             },
             {
               "title": "行尸走肉",
@@ -4395,7 +4401,10 @@
               },
               "cover": "covers/68ac212faf7d.jpg",
               "cover_url": "https://image.jinyingimage.com/cover/ccfc2d538ddff519d893a6b966a1c4f1.jpg",
-              "cover_input": null
+              "cover_input": null,
+              "errors": {
+                "huaren": "HTTP Error 403: Forbidden"
+              }
             },
             {
               "title": "良医",
@@ -5010,7 +5019,10 @@
           },
           "cover": "covers/f10e12dba734.jpg",
           "cover_url": "https://img2.doubanio.com/view/photo/s_ratio_poster/public/p492406163.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 403: Forbidden"
+          }
         },
         {
           "rank": 12,
@@ -5267,7 +5279,10 @@
           },
           "cover": "covers/95d8799a8ec7.jpg",
           "cover_url": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2455050536.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 403: Forbidden"
+          }
         },
         {
           "rank": 20,
@@ -5359,7 +5374,10 @@
           },
           "cover": "covers/460308d383db.jpg",
           "cover_url": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p616779645.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 403: Forbidden"
+          }
         },
         {
           "rank": 23,
@@ -5451,7 +5469,10 @@
           },
           "cover": "covers/9bfa8de97949.jpg",
           "cover_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p501177648.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 403: Forbidden"
+          }
         },
         {
           "rank": 26,
@@ -5576,7 +5597,10 @@
           },
           "cover": "covers/8c6e38f399da.jpg",
           "cover_url": "https://img2.doubanio.com/view/photo/s_ratio_poster/public/p462657443.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 403: Forbidden"
+          }
         },
         {
           "rank": 30,
@@ -5602,7 +5626,10 @@
           },
           "cover": "covers/090d828e6b9d.jpg",
           "cover_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2597919477.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 403: Forbidden"
+          }
         },
         {
           "rank": 31,
@@ -5661,7 +5688,10 @@
           },
           "cover": "covers/2ececf46c96f.jpg",
           "cover_url": "https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2642829472.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 403: Forbidden"
+          }
         },
         {
           "rank": 33,
@@ -5687,7 +5717,10 @@
           },
           "cover": "covers/2ca0bb2783f4.jpg",
           "cover_url": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2540924496.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 403: Forbidden"
+          }
         },
         {
           "rank": 34,
@@ -5779,7 +5812,10 @@
           },
           "cover": "covers/f7f1d77f12d9.jpg",
           "cover_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p1446261379.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 403: Forbidden"
+          }
         },
         {
           "rank": 37,
@@ -6102,7 +6138,10 @@
           },
           "cover": "covers/d08b0baf4c8f.jpg",
           "cover_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2277799019.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 403: Forbidden"
+          }
         },
         {
           "rank": 47,
@@ -6128,7 +6167,10 @@
           },
           "cover": "covers/189f71985c47.jpg",
           "cover_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2194138787.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 403: Forbidden"
+          }
         },
         {
           "rank": 48,
@@ -6722,7 +6764,10 @@
           },
           "cover": "covers/2411f9ce5361.jpg",
           "cover_url": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p1341284796.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 502: Bad Gateway"
+          }
         },
         {
           "ceremony": 83,
@@ -6748,7 +6793,10 @@
           },
           "cover": "covers/d964163a1df9.jpg",
           "cover_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p768879237.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 502: Bad Gateway"
+          }
         },
         {
           "ceremony": 82,
@@ -6774,7 +6822,10 @@
           },
           "cover": "https://tu.kuaibozy.net/7036.jpg",
           "cover_url": "https://tu.kuaibozy.net/7036.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 502: Bad Gateway"
+          }
         },
         {
           "ceremony": 81,
@@ -6899,7 +6950,10 @@
           },
           "cover": "covers/e21e229302a4.jpg",
           "cover_url": "https://img.ukuapi.com/upload/vod/20220410-3/cb17963982bbacab17a6b737f3911fb0.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 502: Bad Gateway"
+          }
         },
         {
           "ceremony": 77,
@@ -6958,7 +7012,10 @@
           },
           "cover": "covers/2ececf46c96f.jpg",
           "cover_url": "https://img2.doubanio.com/view/photo/s_ratio_poster/public/p2642829472.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 502: Bad Gateway"
+          }
         },
         {
           "ceremony": 75,
@@ -7215,7 +7272,10 @@
           },
           "cover": "covers/66a03af072f0.jpg",
           "cover_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2004174709.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 502: Bad Gateway"
+          }
         },
         {
           "ceremony": 67,
@@ -7274,7 +7334,10 @@
           },
           "cover": "covers/f10e12dba734.jpg",
           "cover_url": "https://img2.doubanio.com/view/photo/s_ratio_poster/public/p492406163.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 502: Bad Gateway"
+          }
         },
         {
           "ceremony": 65,
@@ -7300,7 +7363,10 @@
           },
           "cover": "covers/b4ad9af80350.jpg",
           "cover_url": "https://img2.doubanio.com/view/photo/s_ratio_poster/public/p1083392613.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 502: Bad Gateway"
+          }
         },
         {
           "ceremony": 64,
@@ -7557,7 +7623,10 @@
           },
           "cover": "covers/9c439b78a6fd.jpg",
           "cover_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p595764767.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 502: Bad Gateway"
+          }
         },
         {
           "ceremony": 56,
@@ -7649,7 +7718,10 @@
           },
           "cover": "covers/37ddb9515418.jpg",
           "cover_url": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p1588317576.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 502: Bad Gateway"
+          }
         },
         {
           "ceremony": 53,
@@ -7807,7 +7879,10 @@
           },
           "cover": "covers/3b954c794b4f.jpg",
           "cover_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p453792998.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 502: Bad Gateway"
+          }
         },
         {
           "ceremony": 48,
@@ -7866,7 +7941,10 @@
           },
           "cover": "covers/189f71985c47.jpg",
           "cover_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2194138787.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 502: Bad Gateway"
+          }
         },
         {
           "ceremony": 46,
@@ -7892,7 +7970,10 @@
           },
           "cover": "covers/26a432c44c71.jpg",
           "cover_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p1227416748.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 502: Bad Gateway"
+          }
         },
         {
           "ceremony": 45,
@@ -7918,7 +7999,10 @@
           },
           "cover": "covers/460308d383db.jpg",
           "cover_url": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p616779645.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 502: Bad Gateway"
+          }
         },
         {
           "ceremony": 44,
@@ -7944,7 +8028,10 @@
           },
           "cover": "covers/125cfa09dcdd.jpg",
           "cover_url": "https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p1435506144.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 502: Bad Gateway"
+          }
         },
         {
           "ceremony": 43,
@@ -8003,7 +8090,10 @@
           },
           "cover": "covers/9b95bc3a06c1.jpg",
           "cover_url": "https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p2261560304.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 502: Bad Gateway"
+          }
         },
         {
           "ceremony": 41,
@@ -8029,7 +8119,10 @@
           },
           "cover": "covers/cce933fd8383.jpg",
           "cover_url": "https://img.ffzypic.com/upload/vod/20221209-1/c66a5900e26ade73a314a6a9591c8627.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 502: Bad Gateway"
+          }
         },
         {
           "ceremony": 40,
@@ -8055,7 +8148,10 @@
           },
           "cover": "covers/a85fd136f24d.jpg",
           "cover_url": "https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p2360887025.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 502: Bad Gateway"
+          }
         },
         {
           "ceremony": 39,
@@ -8081,7 +8177,10 @@
           },
           "cover": "covers/673211b5ff5f.jpg",
           "cover_url": "https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p2175663883.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 502: Bad Gateway"
+          }
         },
         {
           "ceremony": 38,
@@ -8173,7 +8272,10 @@
           },
           "cover": "covers/68940a42123b.jpg",
           "cover_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p1262194587.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 502: Bad Gateway"
+          }
         },
         {
           "ceremony": 35,
@@ -8265,7 +8367,10 @@
           },
           "cover": "covers/5f78a7680f00.jpg",
           "cover_url": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2501319736.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 502: Bad Gateway"
+          }
         },
         {
           "ceremony": 32,
@@ -8291,7 +8396,10 @@
           },
           "cover": "https://img.lywyx.com/upload/vod/20220223-6/f11ee06b4891a655d39a3665bc7dd0b3.jpg",
           "cover_url": "https://img.lywyx.com/upload/vod/20220223-6/f11ee06b4891a655d39a3665bc7dd0b3.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 502: Bad Gateway"
+          }
         },
         {
           "ceremony": 31,
@@ -8317,7 +8425,10 @@
           },
           "cover": "covers/5b286c460827.jpg",
           "cover_url": "https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p2360104393.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 502: Bad Gateway"
+          }
         },
         {
           "ceremony": 30,
@@ -8343,7 +8454,10 @@
           },
           "cover": "covers/68b405fef896.jpg",
           "cover_url": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2194960044.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 502: Bad Gateway"
+          }
         },
         {
           "ceremony": 29,
@@ -8402,7 +8516,10 @@
           },
           "cover": "https://pic.feisuimg.com/upload/vod/20220401-1/fbe40e32c5990c71eb936fbffd38bb63.jpg",
           "cover_url": "https://pic.feisuimg.com/upload/vod/20220401-1/fbe40e32c5990c71eb936fbffd38bb63.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 502: Bad Gateway"
+          }
         },
         {
           "ceremony": 27,
@@ -8428,7 +8545,10 @@
           },
           "cover": "https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p2074421816.jpg",
           "cover_url": "https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p2074421816.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 502: Bad Gateway"
+          }
         },
         {
           "ceremony": 26,
@@ -8586,7 +8706,10 @@
           },
           "cover": "covers/c804e1b6d4d6.jpg",
           "cover_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2200241278.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 502: Bad Gateway"
+          }
         },
         {
           "ceremony": 21,
@@ -8678,7 +8801,10 @@
           },
           "cover": "https://img.maimn.com/upload/vod/2021-12-17/202112171639720006.jpg",
           "cover_url": "https://img.maimn.com/upload/vod/2021-12-17/202112171639720006.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 502: Bad Gateway"
+          }
         },
         {
           "ceremony": 18,
@@ -8770,7 +8896,10 @@
           },
           "cover": "covers/51af4db75819.jpg",
           "cover_url": "https://img.ukuapi.com/upload/vod/20220410-4/4cd15af76be8cc7eb8823d0ed9312edc.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 502: Bad Gateway"
+          }
         },
         {
           "ceremony": 15,
@@ -8796,7 +8925,10 @@
           },
           "cover": "covers/e27accdfa62f.jpg",
           "cover_url": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p1754230052.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 502: Bad Gateway"
+          }
         },
         {
           "ceremony": 14,
@@ -8855,7 +8987,10 @@
           },
           "cover": "covers/2526523c782a.jpg",
           "cover_url": "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p1071757804.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 502: Bad Gateway"
+          }
         },
         {
           "ceremony": 12,
@@ -8914,7 +9049,10 @@
           },
           "cover": "covers/b996e5cb9299.jpg",
           "cover_url": "https://pic.liangzipic.com//upload/vod/20220531-1/943c62366c7b493f1e4c13efd443a385.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 502: Bad Gateway"
+          }
         },
         {
           "ceremony": 10,
@@ -8973,7 +9111,10 @@
           },
           "cover": "covers/1862ad638177.jpg",
           "cover_url": "https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p1077412173.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 502: Bad Gateway"
+          }
         },
         {
           "ceremony": 8,
@@ -8999,7 +9140,10 @@
           },
           "cover": "https://img.lywyx.com/upload/vod/20220223-21/7d221f38f9db51b1071e850b34fe03e6.jpg",
           "cover_url": "https://img.lywyx.com/upload/vod/20220223-21/7d221f38f9db51b1071e850b34fe03e6.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 502: Bad Gateway"
+          }
         },
         {
           "ceremony": 7,
@@ -9091,7 +9235,10 @@
           },
           "cover": "https://img.lywyx.com/upload/vod/20220223-11/9260f6403c342fe5830a7e28b466e24d.jpg",
           "cover_url": "https://img.lywyx.com/upload/vod/20220223-11/9260f6403c342fe5830a7e28b466e24d.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 502: Bad Gateway"
+          }
         },
         {
           "ceremony": 4,
@@ -9117,7 +9264,10 @@
           },
           "cover": "https://bdzyimg.com/upload/vod/20220709-1/300a9eec82f49b00b7ca06d0f71577cf.jpg",
           "cover_url": "https://bdzyimg.com/upload/vod/20220709-1/300a9eec82f49b00b7ca06d0f71577cf.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 502: Bad Gateway"
+          }
         },
         {
           "ceremony": 3,
@@ -9143,7 +9293,10 @@
           },
           "cover": "covers/0730988cb504.jpg",
           "cover_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2209784767.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 502: Bad Gateway"
+          }
         },
         {
           "ceremony": 2,
@@ -9169,7 +9322,10 @@
           },
           "cover": "http://sd-pic.com/upload/vod/20220309-1/217d167746c46cf26258d39d864f7c50.jpg",
           "cover_url": "http://sd-pic.com/upload/vod/20220309-1/217d167746c46cf26258d39d864f7c50.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 502: Bad Gateway"
+          }
         },
         {
           "ceremony": 1,
@@ -9195,7 +9351,10 @@
           },
           "cover": "covers/a30b216b76f8.jpg",
           "cover_url": "https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2243069597.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 502: Bad Gateway"
+          }
         }
       ]
     },
@@ -9319,7 +9478,10 @@
           },
           "cover": "covers/25c106caa86c.jpg",
           "cover_url": "https://img3.doubanio.com/view/photo/s_ratio_poster/public/p1563566300.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 502: Bad Gateway"
+          }
         },
         {
           "title": "致命魔术",
@@ -9374,7 +9536,10 @@
           },
           "cover": "covers/8c6e38f399da.jpg",
           "cover_url": "https://img2.doubanio.com/view/photo/s_ratio_poster/public/p462657443.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 502: Bad Gateway"
+          }
         },
         {
           "title": "盗梦空间",
@@ -9584,7 +9749,10 @@
           },
           "cover": "covers/ef03057cad2a.jpg",
           "cover_url": "https://img9.doubanio.com/view/photo/m_ratio_poster/public/p2933569626.jpg",
-          "cover_input": null
+          "cover_input": null,
+          "errors": {
+            "huaren": "HTTP Error 502: Bad Gateway"
+          }
         }
       ]
     }
