@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-16T19:33:03+00:00",
+  "checked_at": "2026-11-17T03:48:02+00:00",
   "shows": [
     {
       "name": "仙逆",
@@ -13,14 +13,12 @@
       "cover": "covers/c29ea3765bef.jpg",
       "cover_src": "https://static.huarenlivewebsite.top/piccdn/olo/anime/109_image.jpg",
       "primary": {
-        "ok": false,
-        "error": "TimeoutError: The read operation timed out",
-        "page": "https://huaren.live/voddetail/109.html",
-        "type": "huaren",
         "latest": 167,
         "url": "https://huaren.live/vodplay/109-1-168.html",
+        "page": "https://huaren.live/voddetail/109.html",
         "cover": "https://static.huarenlivewebsite.top/piccdn/olo/anime/109_image.jpg",
-        "stale": true
+        "ok": true,
+        "type": "huaren"
       },
       "secondary": {
         "latest": 167,
