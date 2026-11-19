@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-18T20:26:51+00:00",
+  "checked_at": "2026-11-19T02:31:51+00:00",
   "shows": [
     {
       "name": "仙逆",
@@ -321,12 +321,14 @@
       "cover": "covers/2b066977d772.jpg",
       "cover_src": "https://img.jisuimage.com/cover/46ca629891f3c3bd16b4a4978d31e483.jpg",
       "primary": {
+        "ok": false,
+        "error": "HTTPError: HTTP Error 403: Forbidden",
+        "page": "https://huaren.live/voddetail/180956.html",
+        "type": "huaren",
         "latest": 27,
         "url": "https://huaren.live/vodplay/180956-1-28.html",
-        "page": "https://huaren.live/voddetail/180956.html",
         "cover": "https://img.jisuimage.com/cover/46ca629891f3c3bd16b4a4978d31e483.jpg",
-        "ok": true,
-        "type": "huaren"
+        "stale": true
       },
       "secondary": {
         "latest": 27,
@@ -349,12 +351,14 @@
       "cover": "covers/7545a77a701f.jpg",
       "cover_src": "https://static.huarenlivewebsite.top/piccdn/olo/anime/202008_image.jpg",
       "primary": {
+        "ok": false,
+        "error": "HTTPError: HTTP Error 403: Forbidden",
+        "page": "https://huaren.live/voddetail/202008.html",
+        "type": "huaren",
         "latest": 16,
         "url": "https://huaren.live/vodplay/202008-1-16.html",
-        "page": "https://huaren.live/voddetail/202008.html",
         "cover": "https://static.huarenlivewebsite.top/piccdn/olo/anime/202008_image.jpg",
-        "ok": true,
-        "type": "huaren"
+        "stale": true
       },
       "secondary": {
         "latest": 16,
@@ -377,12 +381,14 @@
       "cover": "covers/7127adb8a8d9.jpg",
       "cover_src": "https://static.huarenlivewebsite.top/piccdn/olo/anime/203754_image.jpg",
       "primary": {
+        "ok": false,
+        "error": "HTTPError: HTTP Error 403: Forbidden",
+        "page": "https://huaren.live/voddetail/203754.html",
+        "type": "huaren",
         "latest": 9,
         "url": "https://huaren.live/vodplay/203754-1-9.html",
-        "page": "https://huaren.live/voddetail/203754.html",
         "cover": "https://static.huarenlivewebsite.top/piccdn/olo/anime/203754_image.jpg",
-        "ok": true,
-        "type": "huaren"
+        "stale": true
       },
       "secondary": {
         "latest": 9,
@@ -405,12 +411,14 @@
       "cover": "covers/2713893506f8.jpg",
       "cover_src": "https://static.huarenlivewebsite.top/piccdn/olo/anime/201038_image.jpg",
       "primary": {
+        "ok": false,
+        "error": "HTTPError: HTTP Error 403: Forbidden",
+        "page": "https://huaren.live/voddetail/201038.html",
+        "type": "huaren",
         "latest": 18,
         "url": "https://huaren.live/vodplay/201038-1-18.html",
-        "page": "https://huaren.live/voddetail/201038.html",
         "cover": "https://static.huarenlivewebsite.top/piccdn/olo/anime/201038_image.jpg",
-        "ok": true,
-        "type": "huaren"
+        "stale": true
       },
       "secondary": {
         "latest": 18,
