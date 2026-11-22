@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-21T19:10:12+00:00",
+  "checked_at": "2026-11-22T11:14:17+00:00",
   "shows": [
     {
       "name": "仙逆",
@@ -8,13 +8,13 @@
       "day": 7,
       "time": "18:00",
       "note": null,
-      "latest": 167,
-      "updated_at": "2026-11-15T16:18:41+00:00",
+      "latest": 168,
+      "updated_at": "2026-11-22T11:14:17+00:00",
       "cover": "covers/c29ea3765bef.jpg",
       "cover_src": "https://static.huarenlivewebsite.top/piccdn/olo/anime/109_image.jpg",
       "primary": {
-        "latest": 167,
-        "url": "https://huaren.live/vodplay/109-1-168.html",
+        "latest": 168,
+        "url": "https://huaren.live/vodplay/109-1-169.html",
         "page": "https://huaren.live/voddetail/109.html",
         "cover": "https://static.huarenlivewebsite.top/piccdn/olo/anime/109_image.jpg",
         "ok": true,
@@ -36,20 +36,20 @@
       "day": 7,
       "time": "11:00",
       "note": null,
-      "latest": 109,
-      "updated_at": "2026-11-15T04:12:19+00:00",
+      "latest": 110,
+      "updated_at": "2026-11-22T11:14:17+00:00",
       "cover": "covers/10dfa7b18c98.jpg",
       "cover_src": "https://static.huarenlivewebsite.top/piccdn/olo/anime/91978_image.jpg",
       "primary": {
-        "latest": 109,
-        "url": "https://huaren.live/vodplay/91978-1-109.html",
+        "latest": 110,
+        "url": "https://huaren.live/vodplay/91978-1-110.html",
         "page": "https://huaren.live/voddetail/91978.html",
         "cover": "https://static.huarenlivewebsite.top/piccdn/olo/anime/91978_image.jpg",
         "ok": true,
         "type": "huaren"
       },
       "secondary": {
-        "latest": 109,
+        "latest": 110,
         "url": "https://www.ikanbot.com/play/885214",
         "page": "https://www.ikanbot.com/play/885214",
         "cover": "https://img9.doubanio.com/view/photo/m_ratio_poster/public/p2898691856.jpg",
@@ -377,8 +377,8 @@
       "cover": "covers/7127adb8a8d9.jpg",
       "cover_src": "https://static.huarenlivewebsite.top/piccdn/olo/anime/203754_image.jpg",
       "primary": {
-        "latest": 10,
-        "url": "https://huaren.live/vodplay/203754-1-10.html",
+        "latest": 16,
+        "url": "https://huaren.live/vodplay/203754-1-16.html",
         "page": "https://huaren.live/voddetail/203754.html",
         "cover": "https://static.huarenlivewebsite.top/piccdn/olo/anime/203754_image.jpg",
         "ok": true,
