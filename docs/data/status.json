@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-24T02:10:31+00:00",
+  "checked_at": "2026-11-25T19:13:23+00:00",
   "shows": [
     {
       "name": "仙逆",
@@ -50,9 +50,9 @@
       },
       "secondary": {
         "latest": 110,
-        "url": "https://www.ikanbot.com/play/885214",
-        "page": "https://www.ikanbot.com/play/885214",
-        "cover": "https://img9.doubanio.com/view/photo/m_ratio_poster/public/p2898691856.jpg",
+        "url": "https://www.ikanbot.com/play/951736",
+        "page": "https://www.ikanbot.com/play/951736",
+        "cover": "https://tyyswimg.com/upload/vod/20260117-1/b7a20ee6a46855c13f207a3bf1617aed.jpg",
         "ok": true,
         "type": "ikanbot"
       }
@@ -92,20 +92,20 @@
       "day": 4,
       "time": "10:00",
       "note": null,
-      "latest": 13,
-      "updated_at": "2026-11-18T11:34:04+00:00",
+      "latest": 14,
+      "updated_at": "2026-11-25T19:13:23+00:00",
       "cover": "covers/067685e408be.jpg",
       "cover_src": "https://static.huarenlivewebsite.top/piccdn/olo/anime/202541_image.jpg",
       "primary": {
-        "latest": 13,
-        "url": "https://huaren.live/vodplay/202541-1-13.html",
+        "latest": 14,
+        "url": "https://huaren.live/vodplay/202541-1-14.html",
         "page": "https://huaren.live/voddetail/202541.html",
         "cover": "https://static.huarenlivewebsite.top/piccdn/olo/anime/202541_image.jpg",
         "ok": true,
         "type": "huaren"
       },
       "secondary": {
-        "latest": 13,
+        "latest": 14,
         "url": "https://www.ikanbot.com/play/1011857",
         "page": "https://www.ikanbot.com/play/1011857",
         "cover": "https://img3.doubanio.com/view/photo/m_ratio_poster/public/p2935476007.jpg",
