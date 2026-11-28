@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-27T12:08:51+00:00",
+  "checked_at": "2026-11-28T03:17:05+00:00",
   "shows": [
     {
       "name": "仙逆",
@@ -148,8 +148,8 @@
       "day": 7,
       "time": "10:00",
       "note": null,
-      "latest": 49,
-      "updated_at": "2026-11-21T02:10:46+00:00",
+      "latest": 50,
+      "updated_at": "2026-11-28T03:17:05+00:00",
       "cover": "covers/77ab48b3ecf3.jpg",
       "cover_src": "https://static.huarenlivewebsite.top/piccdn/olo/anime/189909_image.jpg",
       "primary": {
@@ -161,7 +161,7 @@
         "type": "huaren"
       },
       "secondary": {
-        "latest": 49,
+        "latest": 50,
         "url": "https://www.ikanbot.com/play/947986",
         "page": "https://www.ikanbot.com/play/947986",
         "cover": "https://img3.doubanio.com/view/photo/m_ratio_poster/public/p2928471537.jpg",
@@ -176,8 +176,8 @@
       "day": 6,
       "time": "09:00",
       "note": null,
-      "latest": 21,
-      "updated_at": "2026-11-21T02:10:46+00:00",
+      "latest": 22,
+      "updated_at": "2026-11-28T03:17:05+00:00",
       "cover": "covers/5f2be2b5b7f9.jpg",
       "cover_src": "https://static.huarenlivewebsite.top/piccdn/olo/anime/200576_image.jpg",
       "primary": {
@@ -189,7 +189,7 @@
         "type": "huaren"
       },
       "secondary": {
-        "latest": 21,
+        "latest": 22,
         "url": "https://www.ikanbot.com/play/997376",
         "page": "https://www.ikanbot.com/play/997376",
         "cover": "https://img3.doubanio.com/view/photo/m_ratio_poster/public/p2934192712.jpg",
